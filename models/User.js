@@ -28,6 +28,12 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
+  User.associate = function(model) {
+    User.belongsToMany(model.Classroom, {
+      through: 'UserClassroom'
+    });
+  }
+
 
   return User;
 }
