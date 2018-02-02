@@ -1,38 +1,36 @@
 module.exports = function(sequelize, DataTypes) {
-  var Classroom = sequelize.define('Classroom', {
-    instructor: {
+  var Communication = sequelize.define('Communication', {
+    sender: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
       	len: [1]
       }
     },
-    subject: {
+    recipient: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
-    period: {
-      type: DataTypes.INTEGER,
-      validate: {
-        len: [1]
-      }
-    },    
-    grade: {
+    subject: {
       type: DataTypes.STRING,
       validate: {
         len: [1]
       }
     },    
-    schoolyear: {
+    body: {
       type: DataTypes.STRING,
       validate: {
         len: [1]
       }
+    },    
+    unread: {
+      type: DataTypes.BOOLEAN,
+      default: true
     }   
   });
 
-  return Classroom;
+  return Communication;
 }
