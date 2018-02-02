@@ -1,12 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
   var Classroom = sequelize.define('Classroom', {
-    instructor: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-      	len: [1]
-      }
-    },
     subject: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -33,6 +26,10 @@ module.exports = function(sequelize, DataTypes) {
       }
     }   
   });
+
+  Classroom.associate = function(model) {
+    Classroom.belongsTo(model.User, {as: 'instructor'});
+  }
 
   return Classroom;
 }
