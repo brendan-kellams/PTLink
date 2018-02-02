@@ -8,6 +8,25 @@ router.get('/articles', function(req, res, next) {
   res.send("HAHA GOOD JOB!").status(200).end();
 });
 
+router.get('/classroom/:classId', function(req, res, next) {
+  var responseObj = {};
+  db.Classroom.findById(req.params.classId)
+  .then(function(classroom) {
+    classroom.getInstructor()
+    .then(function(user) {
+      responseObj.classroom = classroom;
+      responseObj.instructor = user;
+      res.send(responseObj).status(200).end()
+    });
+  })
+  .catch(function(err) {
+    if (err) {
+      res.status(500).end();
+      throw err;
+    }
+  });
+});
+
 router.post('/classroom', function(req, res, next) {
   // Create the classroom
   db.Classroom.create({
