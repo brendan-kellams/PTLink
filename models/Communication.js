@@ -1,19 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
   var Communication = sequelize.define('Communication', {
-    sender: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-      	len: [1]
-      }
-    },
-    recipient: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    },
     subject: {
       type: DataTypes.STRING,
       validate: {
@@ -31,6 +17,12 @@ module.exports = function(sequelize, DataTypes) {
       default: true
     }   
   });
+
+  Communication.associate = function(model){
+    Communication.belongsToMany(model.User, {
+      through: 'UserCommunication'
+    });
+  }
 
   return Communication;
 }

@@ -27,6 +27,30 @@ router.get('/classroom/:classId', function(req, res, next) {
   });
 });
 
+router.post('/communication', function(req, res, next) {
+  db.Communication.create({
+    subject: req.body.subject,
+    body: req.body.body,
+    senderId: req.body.senderId
+  })
+  .then(function(newCommunication) {
+    db.User.findAll({
+      where: {
+        id: req.body.recipients
+      }
+    })
+    .then(function(users) {
+      newCommunication.addUsers(users);
+    })
+    .catch(function(err) {
+      if (err) {
+        res.status(500).end();
+        throw err;
+      }
+    })
+  })
+});
+
 router.post('/classroom', function(req, res, next) {
   // Create the classroom
   db.Classroom.create({
