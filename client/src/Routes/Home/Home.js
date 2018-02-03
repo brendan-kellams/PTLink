@@ -28,13 +28,6 @@ class Home extends Component {
     }
   }
 
-  handleTeacherSignup(event) {
-    this.handleSignup(event, 0);
-  }
-  handleParentSignup(event) {
-    this.handleSignup(event, 1);
-  }
-
   render() {
     return (
       <div className="container-fluid home">
@@ -55,13 +48,13 @@ class Home extends Component {
         <section className="signup">
           <BasicBtn 
             classes="btn-success signupBtn teacherSignup" 
-            handleClick={(event) => this.handleTeacherSignup(event)} 
+            handleClick={(event) => this.handleSignup(event, 0)} 
             btnTxt="Signup as Teacher"
           />
 
           <BasicBtn 
             classes="btn-success signupBtn parentSignup" 
-            handleClick={(event) => this.handleParentSignup(event)} 
+            handleClick={(event) => this.handleSignup(event, 1)} 
             btnTxt="Signup as Parent"
           />
         </section>
