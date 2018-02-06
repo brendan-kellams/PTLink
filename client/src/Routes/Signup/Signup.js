@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Header } from '../../components';
-import { SignUpInput } from '../../components';
+import { Header, SignUpInput, CheckBox, BasicBtn } from '../../components';
+// import { SignUpInput } from '../../components';
+// import { CheckBox } from '../../components';
+
 
 class Signup extends Component {
 
@@ -27,6 +29,8 @@ class Signup extends Component {
         <SignUpInput />
         <h4>Password</h4>
         <SignUpInput />
+        <CheckBox/>
+        <BasicBtn />
       </div>
     )
   }
