@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { Header, SignUpInput, CheckBox, BasicBtn } from '../../components';
-// import { SignUpInput } from '../../components';
-// import { CheckBox } from '../../components';
+
 
 
 class Signup extends Component {
