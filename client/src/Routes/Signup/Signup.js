@@ -23,14 +23,12 @@ class Signup extends Component {
           isUser={this.state.userID}
         />
         <h1>This is the signup page yo!</h1>
-        <h4>Username</h4>
-        <SignUpInput />
-        <h4>Email Address</h4>
-        <SignUpInput />
-        <h4>Password</h4>
-        <SignUpInput />
-        <CheckBox/>
-        <BasicBtn />
+        <SignUpInput label="Username" />
+        <SignUpInput label="Email Address"/>
+        <SignUpInput label="Password"/>
+        <CheckBox value="Parent" label= "Parent"/>
+        <CheckBox value="Teacher" label="Teacher"/>
+        <BasicBtn classes="btn-primary" btnTxt="Sign Up"/>
       </div>
     )
   }
