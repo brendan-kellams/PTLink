@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../models');
+const Op = db.Sequelize.Op;
 
 /* GET home page. */
 router.get('/articles', function(req, res, next) {
@@ -36,11 +37,19 @@ router.post('/communication', function(req, res, next) {
   .then(function(newCommunication) {
     db.User.findAll({
       where: {
-        id: req.body.recipients
+        [Op.or]: [
+          {
+            id: req.body.recipients
+          },
+          {
+            id: req.body.senderId
+          }
+        ]
       }
     })
     .then(function(users) {
-      newCommunication.addUsers(users);
+      newCommunication.addUsers(users, {through: {unread: true}});
+      res.status(200).end();
     })
     .catch(function(err) {
       if (err) {

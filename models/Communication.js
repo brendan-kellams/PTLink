@@ -11,11 +11,7 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1]
       }
-    },    
-    unread: {
-      type: DataTypes.BOOLEAN,
-      default: true
-    }   
+    }
   });
 
   Communication.associate = function(model){
