@@ -30,9 +30,15 @@ class MyMainNav extends Component {
   }
 
   handleToggleNav(event) {
-    this.state.navState ? 
-    this.setState({ navState : 0 }) : 
-    this.setState({ navState : 1 })
+    // nav opened
+    if (this.state.navState) {
+      this.props.onToggle(false);
+      this.setState({ navState : 0 });
+    }
+    else {
+      this.props.onToggle(true);
+      this.setState({ navState : 1 });
+    }
   }
 
   getNavClass() {
@@ -57,13 +63,13 @@ class MyMainNav extends Component {
         </a>
         <ul className="navbar-primary-menu">
           <li>
-            <a href="#">
+            <a href="/my">
               <i className="fa fa-clipboard"></i>
               <span className="nav-label">Dashboard</span>
             </a>
-            <a href="#">
+            <a className="user-manage" href="#">
               <i className="fa fa-user"></i>
-              <span className="nav-label">Profile</span>
+              <span className="nav-label">Users</span>
             </a>
             <a href="#">
               <i className="fa fa-sign-out"></i>
