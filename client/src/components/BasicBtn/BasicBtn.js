@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 
 const BasicBtn = props => {
   return (
-    <button type={props.type} className={'btn ' + props.classes}>{props.btnTxt}</button>
+    <button 
+      type={props.type} 
+      className={'btn ' + props.classes}>{props.btnTxt}
+    </button>
   );
 }
 

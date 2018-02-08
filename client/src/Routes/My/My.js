@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { MyMainNav, MyMainContent } from '../../components';
+import { MyMainNav, MyMainContent, InviteUser } from '../../components';
 
 import './My.css';
 
@@ -25,8 +25,9 @@ class My extends Component {
     }
   }
 
+  // mainContentPath: determine what the app would render for the main content
+  // contentClass: class for the main-content div
   setMainContent(path) {
-
     if (path == '') {
       this.setState({mainContentPath : ''})
       this.setState({contentClass : 'dashboard'});  
@@ -37,12 +38,17 @@ class My extends Component {
     }
   }
 
+  // main render function for all the pages once a user login
   renderMainContent() {
     if (this.state.mainContentPath == '') {
       return <div>This is Dashboard</div>;
     }
     else {
-      return <div>This is the User "page"</div>;
+      return (
+        <div class="user-container">
+          <InviteUser />
+        </div>
+      );
     }
   }
 

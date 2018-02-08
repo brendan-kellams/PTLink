@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
 import './MyMainContent.css';
 
-
-// for use with public pages ONLY
 class MyMainContent extends Component {
 
   state = {
@@ -13,7 +10,6 @@ class MyMainContent extends Component {
   componentDidMount() {
 
   }
-
 
   render() {
     return (

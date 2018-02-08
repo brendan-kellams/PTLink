@@ -4,3 +4,18 @@
 .my.main-nav-opened .main-content {
   margin-left: 240px;
 }
+.hidden {
+  display: none!important;
+}
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+/* 
+  temp styles to aid visuallizing compoments 
+  remove before pushing live
+*/
+.invite-user-container {
+  border: 1px solid black;
+}
