@@ -1,0 +1,6 @@
+.my .main-content {
+  margin-left: 100px;
+}
+.my.main-nav-opened .main-content {
+  margin-left: 240px;
+}
