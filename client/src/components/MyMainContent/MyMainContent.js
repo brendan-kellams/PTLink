@@ -14,8 +14,8 @@ class MyMainContent extends Component {
   render() {
     return (
       <div className={'main-content ' + this.props.contentClasses}>
-        <p>This is the main content</p>
-        { this.props.mainContent() }
+        <h1>{this.props.title}</h1>
+        {this.props.children}
       </div>
     );
   }

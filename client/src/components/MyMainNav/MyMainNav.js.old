@@ -68,14 +68,18 @@ class MyMainNav extends Component {
         </a>
         <ul className="navbar-primary-menu">
           <li>
-            <Link className="dash-board" to="/my">
+            <a className="dash-board" href="#" 
+               onClick={event => this.handleNavClick(event, '')}
+            >
               <i className="fa fa-clipboard"></i>
               <span className="nav-label">Dashboard</span>
-            </Link>
-            <Link className="user-manage" to="/my/manage-users">
+            </a>
+            <a className="user-manage" href="#"
+               onClick={event => this.handleNavClick(event, 'user')}
+            >
               <i className="fa fa-user"></i>
               <span className="nav-label">Users</span>
-            </Link>
+            </a>
             <a className="logout" href="#"
                onClick={event => this.handleLogout(event)}
             >

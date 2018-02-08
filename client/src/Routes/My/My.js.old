@@ -60,14 +60,9 @@ class My extends Component {
           setMainContent={(path) => this.setMainContent(path)}
         />
         <MyMainContent
-          contentClasses ='dashboard'
-          title = "dashboard"
-          >
-          <div className="dashboard-container">
-            Just a Dashboard placeholder!
-          </div>
-
-        </MyMainContent>
+          contentClasses = {this.state.contentClass}
+          mainContent = {() => this.renderMainContent()} 
+        />
       </div>
     )
   }
