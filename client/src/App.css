@@ -12,6 +12,17 @@
   font-weight: bold;
 }
 
+.navbar-primary-menu .nav-label {
+  padding-left: 10px;
+}
+
+.main-content {
+  padding: 20px 0;
+}
+.main-content h1 {
+  text-transform: uppercase;
+}
+
 /* 
   temp styles to aid visuallizing compoments 
   remove before pushing live

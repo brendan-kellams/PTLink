@@ -25,46 +25,22 @@ class My extends Component {
     }
   }
 
-  // mainContentPath: determine what the app would render for the main content
-  // contentClass: class for the main-content div
-  setMainContent(path) {
-    if (path == '') {
-      this.setState({mainContentPath : ''})
-      this.setState({contentClass : 'dashboard'});  
-    }
-    else {
-      this.setState({mainContentPath : 'manage-user'})
-      this.setState({contentClass : 'manage-user'});
-    }
-  }
-
-  // main render function for all the pages once a user login
-  renderMainContent() {
-    if (this.state.mainContentPath == '') {
-      return <div>This is Dashboard</div>;
-    }
-    else {
-      return (
-        <div class="user-container">
-          <InviteUser />
-        </div>
-      );
-    }
-  }
-
   render() {
     return (
       <div className={"container-fluid my " + this.state.navStateClass}>
         <MyMainNav 
           onToggle={(isOpen) => this.handleNavToggle(isOpen)}
-          setMainContent={(path) => this.setMainContent(path)}
         />
         <MyMainContent
           contentClasses ='dashboard'
           title = "dashboard"
           >
           <div className="dashboard-container">
-            Just a Dashboard placeholder!
+            This is the Dashboard page, all user have access to this.<br/>
+            <ul>
+              <li>TODO: (optional) insights such as how many classes and users from school</li>
+              <li>TODO: notification?</li>
+            </ul>
           </div>
 
         </MyMainContent>

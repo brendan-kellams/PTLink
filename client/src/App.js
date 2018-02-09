@@ -4,6 +4,7 @@ import Home from './Routes/Home';
 import Signup from './Routes/Signup';
 import My from './Routes/My';
 import ManageUsers from './Routes/ManageUsers';
+import ManageClasses from './Routes/ManageClasses';
 import logo from './logo.svg';
 import './App.css';
 
@@ -31,6 +32,11 @@ class App extends Component {
             exact 
             path="/my/manage-users" 
             component={ManageUsers}
+          />
+          <Route 
+            exact 
+            path="/my/manage-classes" 
+            component={ManageClasses}
           />
         </Switch>
       </BrowserRouter>

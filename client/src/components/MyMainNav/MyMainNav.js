@@ -53,11 +53,6 @@ class MyMainNav extends Component {
            <i className="fa fa-chevron-right"></i>;
   }
 
-  handleNavClick(event, path) {
-    event.preventDefault();
-    this.props.setMainContent(path);
-  }
-
   render() {
     return (
       <nav className={this.getNavClass() + "navbar-primary"}>
@@ -68,14 +63,22 @@ class MyMainNav extends Component {
         </a>
         <ul className="navbar-primary-menu">
           <li>
+
             <Link className="dash-board" to="/my">
               <i className="fa fa-clipboard"></i>
               <span className="nav-label">Dashboard</span>
             </Link>
+
             <Link className="user-manage" to="/my/manage-users">
-              <i className="fa fa-user"></i>
-              <span className="nav-label">Users</span>
+              <i className="fa fa-users"></i>
+              <span className="nav-label">Manage Users</span>
             </Link>
+
+            <Link className="user-manage" to="/my/manage-classes">
+              <i class="fa fa-briefcase"></i>
+              <span className="nav-label">Manage Classes</span>
+            </Link>
+
             <a className="logout" href="#"
                onClick={event => this.handleLogout(event)}
             >

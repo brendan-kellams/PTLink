@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { MyMainNav, MyMainContent, InviteUser } from '../../components';
 
 
-class ManageUsers extends Component {
+class ManageClasses extends Component {
 
   state = {
     navStateClass   : '',
@@ -29,16 +29,15 @@ class ManageUsers extends Component {
           onToggle={(isOpen) => this.handleNavToggle(isOpen)}
         />
         <MyMainContent
-          title="manage users"
-          contentClasses ='manage-users'>
+          title="manage classes"
+          contentClasses ='manage-classes'>
         
           <div className="user-container">
-            <InviteUser />
-            This is the manage user page, teacher access ONLY<br/>
+            This is the manage class page, teacher access ONLY<br/>
             <ul>
-              <li>TODO: Invite User</li>
-              <li>TODO: Display a list of Users from the current teacher's school</li>
-              <li>TODO: add links to edit, delete, archieve Users</li>
+              <li>TODO: Add Class</li>
+              <li>TODO: Display a list of Class from the current teacher's school</li>
+              <li>TODO: add links to edit, delete, archieve classes</li>
             </ul>
           </div>
 
@@ -48,4 +47,4 @@ class ManageUsers extends Component {
   }
 }
 
-export default ManageUsers;
+export default ManageClasses;
