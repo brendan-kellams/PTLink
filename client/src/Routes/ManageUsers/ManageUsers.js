@@ -30,6 +30,13 @@ class ManageUsers extends Component {
     }
   }
 
+  handleDeleteUser(event, userID) {
+    event.preventDefault();
+    console.log('yooooo');
+    // call API to delete User
+    API.deleteUser(userID);
+  }
+
   render() {
     return (
       <div className={"container-fluid my " + this.state.navStateClass}>
@@ -46,6 +53,7 @@ class ManageUsers extends Component {
 
             <UsersList
               users = {this.state.users}
+              doDelete = {(event, userID) => this.handleDeleteUser(event, userID)}
             />
             <ul>
               <li>TODO: Invite User</li>

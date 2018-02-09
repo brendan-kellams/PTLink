@@ -6,23 +6,17 @@ const UserRow = (props) => {
           <div className="col user-id">
           {props.userID}
           </div>
-          <div className="col user-firstname">
-          {props.firstName}
-          </div>
-          <div className="col user-lastname">
-          {props.lastName}
+          <div className="col user-username">
+          {props.userName}
           </div>
           <div className="col user-role">
           {props.role}
           </div>
           <div className="col user-operation">
-            <a href="#"
+            <a  href="#"
+                onClick={(event) => props.handleDelete(event, props.userID)}
             >
-              <i class="fa fa-save"></i>
-            </a>
-            <a href="#"
-            >
-              <i class="fa fa-times"></i>
+              <i className="fa fa-times"></i>
             </a>
           </div>
         </div>

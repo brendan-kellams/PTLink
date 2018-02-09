@@ -6,10 +6,11 @@ const UsersList = (props) => {
     props.users.map((user, index) => {
       return (
         <UserRow
+          key = {index}
           userID = {user.userID}
-          firstName = {user.firstName}
-          lastName = {user.lastName}
+          userName = {user.userName}
           role = {user.role}
+          handleDelete = {(event, userID) => props.doDelete(event, userID)}
         />
       );
     })
