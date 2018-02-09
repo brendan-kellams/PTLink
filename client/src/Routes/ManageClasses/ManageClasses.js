@@ -33,11 +33,12 @@ class ManageClasses extends Component {
           contentClasses ='manage-classes'>
         
           <div className="user-container">
+            
             This is the manage class page, teacher access ONLY<br/>
             <ul>
               <li>TODO: Add Class</li>
-              <li>TODO: Display a list of Class from the current teacher's school</li>
-              <li>TODO: add links to edit, delete, archieve classes</li>
+              <li>TODO: Display a list of Class from the current teacher you have control over</li>
+              <li>TODO: add links to edit, delete, archieve (optional) classes</li>
             </ul>
           </div>
 

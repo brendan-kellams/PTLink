@@ -38,7 +38,7 @@ class My extends Component {
           <div className="dashboard-container">
             This is the Dashboard page, all user have access to this.<br/>
             <ul>
-              <li>TODO: (optional) insights such as how many classes and users from school</li>
+              <li>TODO: (optional) insights such as how many classes and users from classes</li>
               <li>TODO: notification?</li>
             </ul>
           </div>

@@ -14,20 +14,17 @@ export default {
     const yourUsers = [
       {
         userID    : 0,
-        firstName : 'Donald',
-        lastName  : 'Trump',
+        userName  : 'dTrump',
         role      : false,
       },
       {
         userID    : 1,
-        firstName : 'Dwayne',
-        lastName  : 'Johnson',
+        userName  : 'dJohnson',
         role      : false,
       },
       {
         userID    : 2,
-        firstName : 'Greg',
-        lastName  : 'Lee',
+        userName  : 'gLee',
         role      : true,
       }
     ];
@@ -35,6 +32,9 @@ export default {
     if (typeof callback === 'function') {
       callback(yourUsers);
     }
+  },
+  deleteUser: function(userID) {
+    console.log('deleting user', userID);
   }
 
 
