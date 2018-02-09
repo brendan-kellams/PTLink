@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { MyMainNav, MyMainContent, InviteUser } from '../../components';
+import { MyMainNav, MyMainContent, InviteUser, CreateClass } from '../../components';
 
 
 class ManageClasses extends Component {
@@ -35,6 +35,7 @@ class ManageClasses extends Component {
           <div className="user-container">
             
             This is the manage class page, teacher access ONLY<br/>
+            <CreateClass />
             <ul>
               <li>TODO: Add Class</li>
               <li>TODO: Display a list of Class from the current teacher you have control over</li>

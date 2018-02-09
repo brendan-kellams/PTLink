@@ -51,15 +51,13 @@ class ManageUsers extends Component {
             <InviteUser />
             This is the manage user page, teacher access ONLY<br/>
 
+            <hr/>
+            
+            <h3>Users in your classes</h3>
             <UsersList
               users = {this.state.users}
               doDelete = {(event, userID) => this.handleDeleteUser(event, userID)}
             />
-            <ul>
-              <li>TODO: Invite User</li>
-              <li>TODO: Display a list of Users from the current teacher's school</li>
-              <li>TODO: add links to edit, delete, archieve Users</li>
-            </ul>
           </div>
 
         </MyMainContent>

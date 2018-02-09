@@ -6,6 +6,9 @@ const UserRow = (props) => {
           <div className="col user-id">
           {props.userID}
           </div>
+          <div className="col user-email">
+          {props.userEmail}
+          </div>
           <div className="col user-username">
           {props.userName}
           </div>

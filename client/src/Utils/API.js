@@ -14,16 +14,19 @@ export default {
     const yourUsers = [
       {
         userID    : 0,
+        userEmail : 'trump@realdonalidtrump.com',
         userName  : 'dTrump',
         role      : false,
       },
       {
         userID    : 1,
+        userEmail : 'therock@rock.com',
         userName  : 'dJohnson',
         role      : false,
       },
       {
         userID    : 2,
+        userEmail : 'greg@ucsd.edu',
         userName  : 'gLee',
         role      : true,
       }
