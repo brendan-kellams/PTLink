@@ -9,6 +9,7 @@ const UsersList = (props) => {
           key = {index}
           userID = {user.userID}
           userName = {user.userName}
+          userEmail = {user.userEmail}
           role = {user.role}
           handleDelete = {(event, userID) => props.doDelete(event, userID)}
         />
