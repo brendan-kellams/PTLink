@@ -34,30 +34,99 @@ router.post('/communication', function(req, res, next) {
     body: req.body.body,
     senderId: req.body.senderId
   })
-  .then(function(newCommunication) {
-    db.User.findAll({
-      where: {
-        [Op.or]: [
-          {
-            id: req.body.recipients
-          },
-          {
-            id: req.body.senderId
-          }
-        ]
-      }
-    })
-    .then(function(users) {
-      newCommunication.addUsers(users, {through: {unread: true}});
-      res.status(200).end();
+  .then(function(newCommunciation) {
+    res.status(200).end();
+    // db.User.findById(req.body.senderId)
+    // .then(function(user) {
+    //   user.setCommunications(newCommunciation);
+  })
+  .catch(function(err) {
+    if (err) {
+      res.status(500).end();
+      throw err;
+    }
+  })
+});
+
+router.post('/sendcommunication', function(req, res, next) {
+  let recipients = [];
+  db.Communication.findById(req.body.communicationId)
+  .then(function(communication) {
+    for(let i = 0; i < req.body.recipients.length; i++) {
+      recipients.push({
+        recipientId: req.body.recipients[i],
+        unread: true
+      });
+    }
+    db.SentCommunication.bulkCreate(recipients)
+    .then(function(sentCommunications) {
+      communication.setSentCommunications(sentCommunications);
     })
     .catch(function(err) {
       if (err) {
         res.status(500).end();
         throw err;
       }
+    });
+  });
+});
+
+router.get('/outbox/:userId', function(req, res, next) {
+  db.User.findById(req.params.userId)
+  .then(function(user) {
+    user.getCommunications({
+      include: [
+        {
+          model: db.SentCommunication,
+          attributes: ['recipientId'],
+          include: [
+            {
+              model: db.User,
+              attributes: ['id', 'username']
+            }
+          ]
+        }
+      ]
     })
+    .then(function(communications) {
+      res.status(200).send(communications).end();
+    })
+    .catch(function(err) {
+      if (err) {
+        res.status(500).end();
+        throw err;
+      }
+    });
+  });
+});
+
+router.get('/inbox/:userId', function(req, res, next) {
+  db.SentCommunication.findAll({
+    include: [
+      {
+        model: db.Communication,
+        include: [
+          {
+            model: db.User,
+            attributes: ['id', 'username']
+          }
+        ]
+      }
+    ],
+    where: {
+      recipientId: req.params.userId
+      
+    }
   })
+  .then(function(results) {
+    res.status(200).send(results).end();
+  })
+  .catch(function(err) {
+    if (err) {
+      res.status(500).end();
+      throw err;
+    }
+  });
 });
 
 router.post('/classroom', function(req, res, next) {

@@ -1,4 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
+  console.log(sequelize.models);
   var Communication = sequelize.define('Communication', {
     subject: {
       type: DataTypes.STRING,
@@ -15,9 +16,11 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Communication.associate = function(model){
-    Communication.belongsToMany(model.User, {
-      through: 'UserCommunication'
-    });
+    Communication.belongsTo(model.User, {
+      foreignKey: 'senderId',
+      constraints: false
+    })
+    Communication.hasMany(model.SentCommunication);
   }
 
   return Communication;

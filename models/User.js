@@ -30,14 +30,9 @@ module.exports = function(sequelize, DataTypes) {
 
   User.associate = function(model) {
     User.hasMany(model.Communication, {
-      as: 'sender',
-      foreignKey: 'senderId'
-  });
-    User.belongsToMany(model.Communication, {
-      through: 'UserCommunication'
-    });
-    User.belongsToMany(model.Classroom, {
-      through: 'UserClassroom'
+      // as: 'sender',
+      foreignKey: 'senderId',
+      constraints: false
     });
   }
 
