@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 
-import { MyMainNav, MyMainContent, InviteUser, CreateClass } from '../../components';
+import { MyMainNav, MyMainContent, InviteUser, CreateClass, ClassesList } from '../../components';
 
+import { Helper, API } from '../../Utils';
 
 class ManageClasses extends Component {
 
   state = {
     navStateClass   : '',
+    classes : [],
   }
 
   componentDidMount() {
     // call API to get userID (or null)
+    API.getMyClasses((classes) => {
+      this.setState({
+        classes : classes
+      });
+    });
   }
 
   handleNavToggle(isOpen) {
@@ -19,7 +26,21 @@ class ManageClasses extends Component {
     }
     else {
       this.setState({navStateClass : ''})  
+   
     }
+  }
+  handleDeleteClass(event, classID) {
+    event.preventDefault();
+    console.log('deleting class', classID);
+    // call API to delete User
+    API.deleteClass(classID);
+  }
+
+  handleEditClass(event, classID) {
+    event.preventDefault();
+    console.log('editing class', classID);
+    
+    //API.editClass(classObj);
   }
 
   render() {
@@ -34,12 +55,20 @@ class ManageClasses extends Component {
         
           <div className="user-container">
             
-            This is the manage class page, teacher access ONLY<br/>
             <CreateClass />
+
+            <hr />
+
+            <h3>Your classes</h3>
+            <ClassesList
+              classL = {this.state.classes}
+              doDelete = {(event, classID) => this.handleDeleteClass(event, classID)}
+              doEdit = {(event, classID) => this.handleEditClass(event, classID)}
+            />
+
+            This is the manage class page, teacher access ONLY<br/>
             <ul>
-              <li>TODO: Add Class</li>
-              <li>TODO: Display a list of Class from the current teacher you have control over</li>
-              <li>TODO: add links to edit, delete, archieve (optional) classes</li>
+              <li>TODO: add links to edit, archieve (optional) classes</li>
             </ul>
           </div>
 

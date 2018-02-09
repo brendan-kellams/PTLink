@@ -8,6 +8,40 @@ export default {
       callback();
     }
   },
+  getMyClasses: function(callback) {
+    console.log('calling API to classes I have access to');
+
+    const yourClasses = [
+      {
+        classID : 0,
+        period    : 1,
+        name      : 'Math 101',
+        school    : 'Murray Manor Elementry',
+        term      : 'Winter',
+        year      : '2018',
+      },
+      {
+        classID : 1,
+        period    : 6,
+        name      : 'English 1A',
+        school    : 'University of California, San Diego',
+        term      : 'Fall',
+        year      : '2017',
+      },
+      {
+        classID : 2,
+        period    : 2,
+        name      : 'Rocket Science 202B',
+        school    : 'Murray Manor Elementry',
+        term      : 'Summer',
+        year      : '2017',
+      },
+    ];
+
+    if (typeof callback === 'function') {
+      callback(yourClasses);
+    }
+  },
   getMyUsers: function(callback) {
     console.log('calling API to get users I have access to');
 
@@ -38,7 +72,10 @@ export default {
   },
   deleteUser: function(userID) {
     console.log('deleting user', userID);
-  }
+  },
+  deleteClass: function(classID) {
+    console.log('deleting class', classID);
+  },
 
 
   /* Below are example interfaces */

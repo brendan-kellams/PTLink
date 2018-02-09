@@ -16,7 +16,31 @@ class CreateClass extends Component {
   };
 
   handleSubmit(event) {
+
     event.preventDefault();
+
+    this.setState({
+      successMsg  : 'hidden',
+      errorMsg    : 'hidden'
+    });
+
+    if (!Helper.propIsEmpty(this.state.name) &&
+      !Helper.propIsEmpty(this.state.period) &&
+      !Helper.propIsEmpty(this.state.school) &&
+      !Helper.propIsEmpty(this.state.term) &&
+      !Helper.propIsEmpty(this.state.year)) {
+      console.log('all good you shit');
+
+      this.setState({
+        successMsg : ''
+      });
+    }
+    else {
+      this.setState({
+        errorMsg : ''
+      });
+    }
+    
   }
 
   handleUserInput(event, fieldName) {

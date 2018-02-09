@@ -18,7 +18,7 @@ class ManageUsers extends Component {
       this.setState({
         users : users
       });
-    })
+    });
   }
 
   handleNavToggle(isOpen) {
