@@ -74,9 +74,14 @@ class MyMainNav extends Component {
               <span className="nav-label">Manage Users</span>
             </Link>
 
-            <Link className="user-manage" to="/my/manage-classes">
+            <Link className="class-manage" to="/my/manage-classes">
               <i className="fa fa-briefcase"></i>
               <span className="nav-label">Manage Classes</span>
+            </Link>
+
+            <Link className="messages" to="/my/messages">
+              <i className="fa fa-envelope"></i>
+              <span className="nav-label">Messages</span>
             </Link>
 
             <a className="logout" href="#"

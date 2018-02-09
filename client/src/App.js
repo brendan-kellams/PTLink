@@ -41,6 +41,11 @@ class App extends Component {
           />
           <Route 
             exact 
+            path="/my/messages" 
+            component={ManageClasses}
+          />
+          <Route 
+            exact 
             path="/my/class" 
             component={Class}
           />
