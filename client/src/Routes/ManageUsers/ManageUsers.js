@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 
-import { MyMainNav, MyMainContent, InviteUser } from '../../components';
+import { MyMainNav, MyMainContent, InviteUser, UsersList} from '../../components';
+import { Helper, API } from '../../Utils';
 
 
 class ManageUsers extends Component {
 
   state = {
     navStateClass   : '',
+    users           : [],
   }
 
   componentDidMount() {
     // call API to get userID (or null)
+    // if valid userID: call API to get a list of all user accessible by this teacher
+    API.getMyUsers((users) => {
+      this.setState({
+        users : users
+      });
+    })
   }
 
   handleNavToggle(isOpen) {
@@ -35,6 +43,10 @@ class ManageUsers extends Component {
           <div className="user-container">
             <InviteUser />
             This is the manage user page, teacher access ONLY<br/>
+
+            <UsersList
+              users = {this.state.users}
+            />
             <ul>
               <li>TODO: Invite User</li>
               <li>TODO: Display a list of Users from the current teacher's school</li>

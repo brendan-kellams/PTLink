@@ -42,7 +42,7 @@ class InviteUser extends Component {
   render() {
     return (
       <div className="invite-user-container">
-        <p>Invite user to join this app</p>
+        <h3>Invite User</h3>
         <span className={this.state.successMsg + ' success-message'}>Your invite has been sent</span>
         <span className={this.state.errorMsg + ' error error-message'}>Please enter a valid email address</span>
         <form 
