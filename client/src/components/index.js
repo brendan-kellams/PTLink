@@ -12,3 +12,4 @@ export {default as ClassesList} from './ClassesList';
 export {default as CreateClass} from './CreateClass'; 
 export {default as MessageRow} from './MessageRow';
 export {default as Homework} from './Homework';
+export {default as CoveredInClass} from './CoveredInClass';

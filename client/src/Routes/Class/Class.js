@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Homework, MyMainNav, MyMainContent, TextArea, BasicBtn } from '../../components';
+import { CoveredInClass, Homework, MyMainNav, MyMainContent, TextArea, BasicBtn } from '../../components';
 import {API} from '../../Utils';
 
 class Class extends Component {
@@ -36,11 +36,16 @@ class Class extends Component {
                 <MyMainNav
                     onToggle={(isOpen) => this.handleNavToggle(isOpen)} />
                 <MyMainContent
-                    title='FUCK YOU!'
+                    title='Welcome!'
                     contentClasses='class-details'>
-                <h1>Here is the class page</h1>
+                <h1>Mrs. Simpson's 7th Grade Math Class</h1>
+
+                <CoveredInClass 
+                    info = 'This is what was covered in class.' />
+
                 <Homework
-                    info = "This is the info for the class"/>
+                    info = "This is the homework for the class" />
+
                     <form onSubmit={this.handleSubmit}>
                         <TextArea
                             label='Text Box' />
