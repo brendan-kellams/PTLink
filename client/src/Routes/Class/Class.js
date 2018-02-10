@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { MyMainNav, MyMainContent, TextArea, BasicBtn } from '../../components';
+import { Homework, MyMainNav, MyMainContent, TextArea, BasicBtn } from '../../components';
 import {API} from '../../Utils';
 
 class Class extends Component {
@@ -39,6 +39,8 @@ class Class extends Component {
                     title='FUCK YOU!'
                     contentClasses='class-details'>
                 <h1>Here is the class page</h1>
+                <Homework
+                    info = "This is the info for the class"/>
                     <form onSubmit={this.handleSubmit}>
                         <TextArea
                             label='Text Box' />
