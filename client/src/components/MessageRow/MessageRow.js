@@ -6,9 +6,34 @@ const MessageRow = (props) => {
           <div className="col message-id">
           {props.messageID}
           </div>
-          <div className="col message-title">
-          {props.title}
-          </div>
+          {
+            props.isReceived ?  
+            <div className="col message-title">
+              <a href="#" onClick={(event) => props.viewMsg(event, {
+                id : props.messageID,
+                title : props.title,
+                fromUserID : props.fromUserID,
+                fromUser : props.fromUser,
+                dateTime : props.msgDT,
+                isRead : props.isRead,
+                msgBody   : props.msgBody,
+              })} >
+              {props.title}
+              </a>
+            </div> : 
+            <div className="col message-title">
+              <a href="#" onClick={(event) => props.viewMsg(event, {
+                id : props.messageID,
+                title : props.title,
+                toUserID : props.toUserID,
+                toUser : props.toUser,
+                dateTime : props.msgDT,
+                msgBody   : props.msgBody,
+              })} >
+              {props.title}
+              </a>
+            </div>
+          }
           {
               props.isReceived ? 
               <div className="col message-from">

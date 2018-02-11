@@ -42,6 +42,12 @@ export default {
       callback(yourClasses);
     }
   },
+  setMessageRead: function(msgID, callback) {
+    console.log('calling API to mark a message as READ');
+    if (typeof callback === 'function') {
+      callback();
+    }
+  },
   getMessagesReceived: function(callback) {
     console.log('calling API to get messages I received');
     const messages = [
@@ -52,6 +58,7 @@ export default {
         fromUser    : "DTrump",
         dateTime    : "01/02/2018 00:00:00",
         isRead      : false,
+        msgBody     : 'haha good',
       },
       {
         id          : 1,
@@ -60,6 +67,7 @@ export default {
         fromUser    : "VPutin",
         dateTime    : "01/04/2018 08:12:22",
         isRead      : true,
+        msgBody     : 'haha bad',
       },
     ];
     if (typeof callback === 'function') {
@@ -76,6 +84,7 @@ export default {
         toUserID    : 7,
         toUser      : "DJohnson",
         dateTime    : "01/24/2018 10:05:10",
+        msgBody     : 'kaka good',
       },
       {
         id          : 8,
@@ -83,6 +92,7 @@ export default {
         toUserID    : 10,
         toUser      : "BObama",
         dateTime    : "02/01/2018 09:12:22",
+        msgBody     : 'kaka bad',
       },
     ];
     if (typeof callback === 'function') {

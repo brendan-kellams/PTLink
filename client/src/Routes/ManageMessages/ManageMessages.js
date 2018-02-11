@@ -10,6 +10,7 @@ class ManageMessages extends Component {
     navStateClass   : '',
     received        : [],
     sent            : [],
+    viewMsg         : {}
   }
 
   componentDidMount() {
@@ -37,18 +38,19 @@ class ManageMessages extends Component {
     }
   }
 
-  // handleDeleteUser(event, userID) {
-  //   event.preventDefault();
-  //   console.log('yooooo');
-  //   // call API to delete User
-  //   API.deleteUser(userID);
-  // }
-
   handleDeleteMessage(event, msgID) {
     event.preventDefault();
     console.log('deleting message', msgID);;
     // call API to delete User
     API.deleteMsg(msgID);
+  }
+
+  handleViewMessage (event, msgObj) {
+    event.preventDefault();
+    this.setState({
+      viewMsg : msgObj
+    });
+    API.setMessageRead(msgObj.id);
   }
 
   render() {
@@ -65,7 +67,6 @@ class ManageMessages extends Component {
             This is the manage message page<br/>
             <ul>
               <li>TODO: inbox - send message</li>
-              <li>TODO: onclick, open message</li>
             </ul>
 
             <hr/>
@@ -78,13 +79,15 @@ class ManageMessages extends Component {
                   <MessageRow
                     key = {index}
                     isReceived = {true}
+                    viewMsg = {(event, msgID) => this.handleViewMessage(event, msgID)} 
                     messageID = {message.id}
                     title = {message.title}
                     fromUserID = {message.fromUserID}
                     fromUser = {message.fromUser}
                     isRead = {message.isRead}
                     msgDT = {message.dateTime}
-                    handleDelete = {(event, msgID) => this.handleDeleteMessage(event, msgID)}
+                    msgBody = {message.msgBody}
+                    handleDelete = {(event, msgObj) => this.handleDeleteMessage(event, msgObj)}
                   />
                 );
               })
@@ -98,17 +101,33 @@ class ManageMessages extends Component {
                 return (
                   <MessageRow
                     key = {index}
+                    viewMsg = {(event, msgID) => this.handleViewMessage(event, msgID)} 
                     messageID = {message.id}
                     title = {message.title}
                     toUserID = {message.toUserID}
                     toUser = {message.toUser}
                     msgDT = {message.dateTime}
+                    msgBody = {message.msgBody}
                     handleDelete = {(event, msgID) => this.handleDeleteMessage(event, msgID)}
                   />
                 );
               })
             }
             </div>
+
+            <h3>Message Area</h3>
+            {
+              typeof (this.state.viewMsg.id) !== 'undefined' ? 
+              <div className="message-view">
+                <div className="message-id">{this.state.viewMsg.id} </div>
+                <div className="message-title">{this.state.viewMsg.title}</div>
+                <div className="message-to-user">{this.state.viewMsg.toUser}</div>
+                <div className="message-from-user">{this.state.viewMsg.fromUser}</div>
+                <div className="message-body"><p>{this.state.viewMsg.msgBody}</p></div>
+              </div> :
+              <div>Click on a message to read</div>
+            }
+
           </div>
 
         </MyMainContent>
