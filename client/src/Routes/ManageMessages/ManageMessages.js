@@ -57,13 +57,6 @@ class ManageMessages extends Component {
           contentClasses ='manage-messages'>
         
           <div className="messages-container">
-            This is the manage message page<br/>
-            <ul>
-              <li>TODO: inbox - send message</li>
-            </ul>
-
-            <hr/>
-
             <nav>
               <div className="nav nav-tabs" id="nav-tab" role="tablist">
                 <a  className="nav-item nav-link active" 

@@ -61,10 +61,14 @@ class Inbox extends Component {
         }
         </div>
 
+        <hr/>
+
         <MessageArea 
           viewMsg ={this.state.viewMsg}
         />
 
+        <hr/>
+        
         <ComposeMessage />
 
       </div>

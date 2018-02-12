@@ -60,6 +60,8 @@ class Outbox extends Component {
         }
         </div>
 
+        <hr/>
+        
         <MessageArea 
           viewMsg ={this.state.viewMsg}
         />
