@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { MyMainNav, MyMainContent, InviteUser, MessageRow} from '../../components';
+import { MyMainNav, MyMainContent, MessageRow, Inbox, Outbox} from '../../components';
 import { Helper, API } from '../../Utils';
 
 
@@ -10,16 +10,10 @@ class ManageMessages extends Component {
     navStateClass   : '',
     received        : [],
     sent            : [],
+    viewMsg         : {}
   }
 
   componentDidMount() {
-    // get messages received
-    API.getMessagesReceived((messages) => {
-      this.setState({
-        received : messages
-      });
-    });
-
     // get messages sent
     API.getMessagesSent((messages) => {
       this.setState({
@@ -37,18 +31,19 @@ class ManageMessages extends Component {
     }
   }
 
-  // handleDeleteUser(event, userID) {
-  //   event.preventDefault();
-  //   console.log('yooooo');
-  //   // call API to delete User
-  //   API.deleteUser(userID);
-  // }
-
   handleDeleteMessage(event, msgID) {
     event.preventDefault();
     console.log('deleting message', msgID);;
     // call API to delete User
     API.deleteMsg(msgID);
+  }
+
+  handleViewMessage (event, msgObj) {
+    event.preventDefault();
+    this.setState({
+      viewMsg : msgObj
+    });
+    API.setMessageRead(msgObj.id);
   }
 
   render() {
@@ -62,56 +57,32 @@ class ManageMessages extends Component {
           contentClasses ='manage-messages'>
         
           <div className="messages-container">
-            This is the manage message page<br/>
-            <ul>
-              <li>TODO: inbox - send message</li>
-              <li>TODO: onclick, open message</li>
-            </ul>
-
-            <hr/>
-
-            <h3>Inbox</h3>
-            <div className="inbox">
-            {
-              this.state.received.map((message, index) => {
-                return (
-                  <MessageRow
-                    key = {index}
-                    isReceived = {true}
-                    messageID = {message.id}
-                    title = {message.title}
-                    fromUserID = {message.fromUserID}
-                    fromUser = {message.fromUser}
-                    isRead = {message.isRead}
-                    msgDT = {message.dateTime}
-                    handleDelete = {(event, msgID) => this.handleDeleteMessage(event, msgID)}
-                  />
-                );
-              })
-            }
-            </div>
-
-            <h3>Outbox</h3>
-            <div className="outbox">
-            {
-              this.state.sent.map((message, index) => {
-                return (
-                  <MessageRow
-                    key = {index}
-                    messageID = {message.id}
-                    title = {message.title}
-                    toUserID = {message.toUserID}
-                    toUser = {message.toUser}
-                    msgDT = {message.dateTime}
-                    handleDelete = {(event, msgID) => this.handleDeleteMessage(event, msgID)}
-                  />
-                );
-              })
-            }
+            <nav>
+              <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                <a  className="nav-item nav-link active" 
+                    id="nav-home-tab" data-toggle="tab" 
+                    href="#nav-home" role="tab" aria-controls="nav-home" 
+                    aria-selected="true">Inbox</a>
+                <a  className="nav-item nav-link" 
+                    id="nav-contact-tab" data-toggle="tab" 
+                    href="#nav-contact" role="tab" 
+                    aria-controls="nav-contact" aria-selected="false">Outbox</a>
+              </div>
+            </nav>
+            <div className="tab-content" id="nav-tabContent">
+              <div  className="tab-pane fade show active" 
+                    id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <Inbox />
+              </div>
+              <div  className="tab-pane fade" 
+                    id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                <Outbox />  
+              </div>
             </div>
           </div>
 
         </MyMainContent>
+
       </div>
     )
   }
