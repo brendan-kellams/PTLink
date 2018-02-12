@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import {LessonPlan, CoveredInClass, Homework, MyMainNav, MyMainContent, TextArea, BasicBtn } from '../../components';
-import {API} from '../../Utils';
+import { Footer, LessonPlan, CoveredInClass, Homework, MyMainNav, MyMainContent, TextArea, BasicBtn } from '../../components';
+import { API } from '../../Utils';
 
 class Class extends Component {
     constructor(props) {
@@ -17,8 +17,8 @@ class Class extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(label,value) {
-        this.setState({ [label]:value });
+    handleChange(label, value) {
+        this.setState({ [label]: value });
     }
     handleSubmit(event) {
         alert('Class has been Updated');
@@ -50,39 +50,45 @@ class Class extends Component {
                 <MyMainContent
                     title='Welcome!'
                     contentClasses='class-details'>
-                <h1>Mrs. Simpson's 7th Grade Math Class</h1>
+                    <h1>Mrs. Simpson's 7th Grade Math Class</h1>
 
-                {/* this is some logic for dupicating the input field after pressing enter.  
+                    {/* this is some logic for dupicating the input field after pressing enter.  
                 I just don't know how to use it into the code-Brendan */}
-                {this.state.topics.map((topic) => (<input value={topic}/>))}
-                    <input value={''}/>
-
-                <form onSubmit={this.handleSubmit}>
-                {/* I need to find a way to make this into a link when the teacher presses enter-Brendan */}
-                    <LessonPlan
-                        label='plan'
-                        handleChange={this.handleChange.bind(this, 'plan')}
-                        value={this.state.plan} />
-
-                    <CoveredInClass 
-                        label= 'topic'
-                        handleChange={this.handleChange.bind(this, 'topic')}
-                        value={this.state.topic} />
-                </form>
-
-                <Homework
-                    info = "This is the homework for the class" />
+                    {this.state.topics.map((topic) => (<input value={topic} />))}
+                    <input value={''} />
 
                     <form onSubmit={this.handleSubmit}>
-                        <TextArea
-                            label='Text Box' />
+                        {/* I need to find a way to make this into a link when the teacher presses enter-Brendan */}
+                        <LessonPlan
+                            label='plan'
+                            handleChange={this.handleChange.bind(this, 'plan')}
+                            value={this.state.plan}>
+                            {this.state.topics.map((topic) => (<input value={topic} />))}
+                            <input value={''} />
+                        </LessonPlan>
+
+                        <CoveredInClass
+                            label='topic'
+                            handleChange={this.handleChange.bind(this, 'topic')}
+                            value={this.state.topic} />
+                    </form>
+
+                    <Homework
+                        info="This is the homework for the class" />
+
+                    <form onSubmit={this.handleSubmit}>
 
                         <BasicBtn
                             classes='btn-primary'
-                            btnTxt='Send Message' type='submit' />
+                            btnTxt='Add New Day' type='submit' />
                     </form>
                 </MyMainContent>
+                <Footer
+
+                    text="This is a footer" />
             </div>
+
+
         )
     }
 }

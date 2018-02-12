@@ -4,7 +4,7 @@ const LessonPlan = (props) => {
     return (
         <div className='card'>
             <h3 className='card-header'>Lesson Plan</h3>
-            <div classname='card-block'>
+            <div className='card-block'>
                 <input
                     className='form-control'
                     onChange={event => props.handleChange(event.target.value)}
