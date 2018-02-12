@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { CoveredInClass, Homework, MyMainNav, MyMainContent, TextArea, BasicBtn } from '../../components';
+import {LessonPlan, CoveredInClass, Homework, MyMainNav, MyMainContent, TextArea, BasicBtn } from '../../components';
 import {API} from '../../Utils';
 
 class Class extends Component {
@@ -9,6 +9,7 @@ class Class extends Component {
         super(props);
         this.state = {
             navStateClass: '',
+            plan: '',
             topics: [],
             users: []
         };
@@ -56,6 +57,11 @@ class Class extends Component {
                     <input value={''}/>
 
                 <form onSubmit={this.handleSubmit}>
+                    <LessonPlan
+                        label='plan'
+                        handleChange={this.handleChange.bind(this, 'plan')}
+                        value={this.state.plan} />
+
                     <CoveredInClass 
                         label= 'topic'
                         handleChange={this.handleChange.bind(this, 'topic')}
