@@ -213,4 +213,46 @@ router.get('/classroombyuser/:userId', function(req, res, next) {
   });
 });
 
+router.post('/addassignment', function(req, res, next) {
+  db.Assignment.create({
+    lessondate: req.body.lessondate,
+    link: req.body.link,
+    topics: req.body.topics,
+    homework: req.body.homework,
+    duedate: req.body.duedate,
+    ClassroomId: req.body.classroomId
+  })
+  .then(function(newAssignment) {
+    res.status(200).end();
+  })
+  .catch(function(err) {
+    if (err) {
+      res.status(500).end();
+      throw err;
+    }
+  });
+});
+
+router.get('/assignmentsbyclass/:classroomId', function(req, res, next) {
+  db.Classroom.findById(req.params.classroomId)
+  .then(function(classroom) {
+    classroom.getAssignments()
+    .then(function(assignments) {
+      res.status(200).send(assignments).end();
+    })
+    .catch(function(err) {
+      if (err) {
+        res.status(500).end();
+        throw err;
+      }
+    });
+  })
+  .catch(function(err) {
+    if (err) {
+      res.status(500).end();
+      throw err;
+    }
+  });
+})
+
 module.exports = router;
