@@ -9,25 +9,6 @@ router.get('/articles', function(req, res, next) {
   res.send("HAHA GOOD JOB!").status(200).end();
 });
 
-router.get('/classroom/:classId', function(req, res, next) {
-  var responseObj = {};
-  db.Classroom.findById(req.params.classId)
-  .then(function(classroom) {
-    classroom.getInstructor()
-    .then(function(user) {
-      responseObj.classroom = classroom;
-      responseObj.instructor = user;
-      res.send(responseObj).status(200).end()
-    });
-  })
-  .catch(function(err) {
-    if (err) {
-      res.status(500).end();
-      throw err;
-    }
-  });
-});
-
 router.post('/communication', function(req, res, next) {
   db.Communication.create({
     subject: req.body.subject,
@@ -139,9 +120,83 @@ router.post('/classroom', function(req, res, next) {
     // Find user by id
     db.User.findById(req.body.teacherId)
     .then(function(user) {
-      savedClassroom.addUser(user);
       savedClassroom.setInstructor(user);
       res.status(200).end();
+    })
+    .catch(function(err) {
+      if (err) {
+        res.status(500).end();
+        throw err;
+      }
+    });
+  })
+  .catch(function(err) {
+    if (err) {
+      res.status(500).end();
+      throw err;
+    }
+  });
+});
+
+router.get('/classroom/:classId', function(req, res, next) {
+  db.Classroom.findById(req.params.classId, {
+    include: [
+      {
+        model: db.User,
+        as: 'instructor',
+        attributes: ['username']
+      }
+    ]
+  })
+  .then(function(classroom) {
+    res.status(200).send(classroom).end();
+  })
+  .catch(function(err) {
+    if (err) {
+      res.status(500).end();
+      throw err;
+    }
+  });
+});
+
+router.post('/addparticipant', function(req, res, next) {
+  db.Participant.create({
+    userEmail: req.body.userEmail,
+    ClassroomId: req.body.classroomId
+  })
+  .then(function(newParticipant) {
+    res.status(200).end();
+  })
+  .catch(function(err) {
+    if (err) {
+      res.status(500).end();
+      throw err;
+    }
+  });
+});
+
+router.get('/classroombyuser/:userId', function(req, res, next) {
+  db.User.findById(req.params.userId)
+  .then(function(user) {
+    db.Participant.findAll({
+      include: [
+        {
+          model: db.Classroom,
+          include: [
+            {
+              model: db.User,
+              as: 'instructor',
+              attributes: ['username']
+            }
+          ]
+        }
+      ],
+      where: {
+        userEmail: user.email
+      }
+    })
+    .then(function(classrooms) {
+      res.status(200).send(classrooms).end();
     })
     .catch(function(err) {
       if (err) {
