@@ -1,28 +1,32 @@
-.App {
-  text-align: center;
+.my .main-content {
+  margin-left: 100px;
+}
+.my.main-nav-opened .main-content {
+  margin-left: 240px;
+}
+.hidden {
+  display: none!important;
+}
+.error {
+  color: red;
+  font-weight: bold;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.navbar-primary-menu .nav-label {
+  padding-left: 10px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.main-content {
+  padding: 20px 0;
+}
+.main-content h1 {
+  text-transform: uppercase;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+/* 
+  temp styles to aid visuallizing compoments 
+  remove before pushing live
+*/
+/*.invite-user-container {
+  border: 1px solid black;
+}*/

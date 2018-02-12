@@ -30,9 +30,15 @@ class MyMainNav extends Component {
   }
 
   handleToggleNav(event) {
-    this.state.navState ? 
-    this.setState({ navState : 0 }) : 
-    this.setState({ navState : 1 })
+    // nav opened
+    if (this.state.navState) {
+      this.props.onToggle(false);
+      this.setState({ navState : 0 });
+    }
+    else {
+      this.props.onToggle(true);
+      this.setState({ navState : 1 });
+    }
   }
 
   getNavClass() {
@@ -57,15 +63,30 @@ class MyMainNav extends Component {
         </a>
         <ul className="navbar-primary-menu">
           <li>
-            <a href="#">
+
+            <Link className="dash-board" to="/my">
               <i className="fa fa-clipboard"></i>
               <span className="nav-label">Dashboard</span>
-            </a>
-            <a href="#">
-              <i className="fa fa-user"></i>
-              <span className="nav-label">Profile</span>
-            </a>
-            <a href="#">
+            </Link>
+
+            <Link className="user-manage" to="/my/manage-users">
+              <i className="fa fa-users"></i>
+              <span className="nav-label">Manage Users</span>
+            </Link>
+
+            <Link className="class-manage" to="/my/manage-classes">
+              <i className="fa fa-briefcase"></i>
+              <span className="nav-label">Manage Classes</span>
+            </Link>
+
+            <Link className="messages" to="/my/messages">
+              <i className="fa fa-envelope"></i>
+              <span className="nav-label">Messages</span>
+            </Link>
+
+            <a className="logout" href="#"
+               onClick={event => this.handleLogout(event)}
+            >
               <i className="fa fa-sign-out"></i>
               <span className="nav-label">Logout</span>
             </a>
