@@ -36,9 +36,6 @@ router.post('/communication', function(req, res, next) {
   })
   .then(function(newCommunciation) {
     res.status(200).end();
-    // db.User.findById(req.body.senderId)
-    // .then(function(user) {
-    //   user.setCommunications(newCommunciation);
   })
   .catch(function(err) {
     if (err) {
@@ -61,6 +58,7 @@ router.post('/sendcommunication', function(req, res, next) {
     db.SentCommunication.bulkCreate(recipients)
     .then(function(sentCommunications) {
       communication.setSentCommunications(sentCommunications);
+      res.status(200).end();
     })
     .catch(function(err) {
       if (err) {

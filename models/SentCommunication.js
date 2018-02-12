@@ -3,10 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     unread: {
       type: DataTypes.BOOLEAN,
       default: true
-    },
-    // recipientId: {
-    //   type: DataTypes.BIGINT
-    // }
+    }
   });
 
   SentCommunication.associate = function(model) {
