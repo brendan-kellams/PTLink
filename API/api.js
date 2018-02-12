@@ -158,22 +158,4 @@ router.post('/classroom', function(req, res, next) {
   });
 });
 
-router.post('/user', function(req, res, next) {
-  db.User.create({
-    username: req.body.username,
-    password: req.body.password,
-    email: req.body.email,
-    isTeacher: req.body.isTeacher
-  })
-  .then(function(savedUser) {
-    res.status(200).end();
-  })
-  .catch(function(err) {
-    if (err) {
-      res.status(500).end();
-      throw err;
-    }
-  });
-});
-
 module.exports = router;
