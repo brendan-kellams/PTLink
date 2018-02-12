@@ -13,3 +13,7 @@ export {default as CreateClass} from './CreateClass';
 export {default as MessageRow} from './MessageRow';
 export {default as Homework} from './Homework';
 export {default as CoveredInClass} from './CoveredInClass';
+export {default as Inbox} from './Inbox';
+export {default as Outbox} from './Outbox';
+export {default as MessageArea} from './MessageArea';
+export {default as ComposeMessage} from './ComposeMessage';

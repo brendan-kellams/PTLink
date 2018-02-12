@@ -135,7 +135,11 @@ export default {
   },
   deleteMsg: function(msgID) {
     console.log('deleting message', msgID);
+  },
+  sendMessage: function(messageObj) {
+    console.log('sending message', messageObj);
   }
+
 
 
   /* Below are example interfaces */

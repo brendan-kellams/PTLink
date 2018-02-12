@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { MyMainNav, MyMainContent, InviteUser, MessageRow} from '../../components';
+import { MyMainNav, MyMainContent, MessageRow, Inbox, Outbox} from '../../components';
 import { Helper, API } from '../../Utils';
 
 
@@ -14,13 +14,6 @@ class ManageMessages extends Component {
   }
 
   componentDidMount() {
-    // get messages received
-    API.getMessagesReceived((messages) => {
-      this.setState({
-        received : messages
-      });
-    });
-
     // get messages sent
     API.getMessagesSent((messages) => {
       this.setState({
@@ -71,66 +64,32 @@ class ManageMessages extends Component {
 
             <hr/>
 
-            <h3>Inbox</h3>
-            <div className="inbox">
-            {
-              this.state.received.map((message, index) => {
-                return (
-                  <MessageRow
-                    key = {index}
-                    isReceived = {true}
-                    viewMsg = {(event, msgID) => this.handleViewMessage(event, msgID)} 
-                    messageID = {message.id}
-                    title = {message.title}
-                    fromUserID = {message.fromUserID}
-                    fromUser = {message.fromUser}
-                    isRead = {message.isRead}
-                    msgDT = {message.dateTime}
-                    msgBody = {message.msgBody}
-                    handleDelete = {(event, msgObj) => this.handleDeleteMessage(event, msgObj)}
-                  />
-                );
-              })
-            }
+            <nav>
+              <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                <a  className="nav-item nav-link active" 
+                    id="nav-home-tab" data-toggle="tab" 
+                    href="#nav-home" role="tab" aria-controls="nav-home" 
+                    aria-selected="true">Inbox</a>
+                <a  className="nav-item nav-link" 
+                    id="nav-contact-tab" data-toggle="tab" 
+                    href="#nav-contact" role="tab" 
+                    aria-controls="nav-contact" aria-selected="false">Outbox</a>
+              </div>
+            </nav>
+            <div className="tab-content" id="nav-tabContent">
+              <div  className="tab-pane fade show active" 
+                    id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <Inbox />
+              </div>
+              <div  className="tab-pane fade" 
+                    id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                <Outbox />  
+              </div>
             </div>
-
-            <h3>Outbox</h3>
-            <div className="outbox">
-            {
-              this.state.sent.map((message, index) => {
-                return (
-                  <MessageRow
-                    key = {index}
-                    viewMsg = {(event, msgID) => this.handleViewMessage(event, msgID)} 
-                    messageID = {message.id}
-                    title = {message.title}
-                    toUserID = {message.toUserID}
-                    toUser = {message.toUser}
-                    msgDT = {message.dateTime}
-                    msgBody = {message.msgBody}
-                    handleDelete = {(event, msgID) => this.handleDeleteMessage(event, msgID)}
-                  />
-                );
-              })
-            }
-            </div>
-
-            <h3>Message Area</h3>
-            {
-              typeof (this.state.viewMsg.id) !== 'undefined' ? 
-              <div className="message-view">
-                <div className="message-id">{this.state.viewMsg.id} </div>
-                <div className="message-title">{this.state.viewMsg.title}</div>
-                <div className="message-to-user">{this.state.viewMsg.toUser}</div>
-                <div className="message-from-user">{this.state.viewMsg.fromUser}</div>
-                <div className="message-body"><p>{this.state.viewMsg.msgBody}</p></div>
-              </div> :
-              <div>Click on a message to read</div>
-            }
-
           </div>
 
         </MyMainContent>
+
       </div>
     )
   }
