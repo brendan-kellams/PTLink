@@ -9,46 +9,36 @@ router.get('/articles', function(req, res, next) {
   res.send("HAHA GOOD JOB!").status(200).end();
 });
 
-router.get('/classroom/:classId', function(req, res, next) {
-  var responseObj = {};
-  db.Classroom.findById(req.params.classId)
-  .then(function(classroom) {
-    classroom.getInstructor()
-    .then(function(user) {
-      responseObj.classroom = classroom;
-      responseObj.instructor = user;
-      res.send(responseObj).status(200).end()
-    });
-  })
-  .catch(function(err) {
-    if (err) {
-      res.status(500).end();
-      throw err;
-    }
-  });
-});
-
 router.post('/communication', function(req, res, next) {
   db.Communication.create({
     subject: req.body.subject,
     body: req.body.body,
     senderId: req.body.senderId
   })
-  .then(function(newCommunication) {
-    db.User.findAll({
-      where: {
-        [Op.or]: [
-          {
-            id: req.body.recipients
-          },
-          {
-            id: req.body.senderId
-          }
-        ]
-      }
-    })
-    .then(function(users) {
-      newCommunication.addUsers(users, {through: {unread: true}});
+  .then(function(newCommunciation) {
+    res.status(200).end();
+  })
+  .catch(function(err) {
+    if (err) {
+      res.status(500).end();
+      throw err;
+    }
+  })
+});
+
+router.post('/sendcommunication', function(req, res, next) {
+  let recipients = [];
+  db.Communication.findById(req.body.communicationId)
+  .then(function(communication) {
+    for(let i = 0; i < req.body.recipients.length; i++) {
+      recipients.push({
+        recipientId: req.body.recipients[i],
+        unread: true
+      });
+    }
+    db.SentCommunication.bulkCreate(recipients)
+    .then(function(sentCommunications) {
+      communication.setSentCommunications(sentCommunications);
       res.status(200).end();
     })
     .catch(function(err) {
@@ -56,8 +46,66 @@ router.post('/communication', function(req, res, next) {
         res.status(500).end();
         throw err;
       }
+    });
+  });
+});
+
+router.get('/outbox/:userId', function(req, res, next) {
+  db.User.findById(req.params.userId)
+  .then(function(user) {
+    user.getCommunications({
+      include: [
+        {
+          model: db.SentCommunication,
+          attributes: ['recipientId'],
+          include: [
+            {
+              model: db.User,
+              attributes: ['id', 'username']
+            }
+          ]
+        }
+      ]
     })
+    .then(function(communications) {
+      res.status(200).send(communications).end();
+    })
+    .catch(function(err) {
+      if (err) {
+        res.status(500).end();
+        throw err;
+      }
+    });
+  });
+});
+
+router.get('/inbox/:userId', function(req, res, next) {
+  db.SentCommunication.findAll({
+    include: [
+      {
+        model: db.Communication,
+        include: [
+          {
+            model: db.User,
+            attributes: ['id', 'username']
+          }
+        ]
+      }
+    ],
+    where: {
+      recipientId: req.params.userId
+      
+    }
   })
+  .then(function(results) {
+    res.status(200).send(results).end();
+  })
+  .catch(function(err) {
+    if (err) {
+      res.status(500).end();
+      throw err;
+    }
+  });
 });
 
 router.post('/classroom', function(req, res, next) {
@@ -72,7 +120,6 @@ router.post('/classroom', function(req, res, next) {
     // Find user by id
     db.User.findById(req.body.teacherId)
     .then(function(user) {
-      savedClassroom.addUser(user);
       savedClassroom.setInstructor(user);
       res.status(200).end();
     })
@@ -91,14 +138,33 @@ router.post('/classroom', function(req, res, next) {
   });
 });
 
-router.post('/user', function(req, res, next) {
-  db.User.create({
-    username: req.body.username,
-    password: req.body.password,
-    email: req.body.email,
-    isTeacher: req.body.isTeacher
+router.get('/classroom/:classId', function(req, res, next) {
+  db.Classroom.findById(req.params.classId, {
+    include: [
+      {
+        model: db.User,
+        as: 'instructor',
+        attributes: ['username']
+      }
+    ]
   })
-  .then(function(savedUser) {
+  .then(function(classroom) {
+    res.status(200).send(classroom).end();
+  })
+  .catch(function(err) {
+    if (err) {
+      res.status(500).end();
+      throw err;
+    }
+  });
+});
+
+router.post('/addparticipant', function(req, res, next) {
+  db.Participant.create({
+    userEmail: req.body.userEmail,
+    ClassroomId: req.body.classroomId
+  })
+  .then(function(newParticipant) {
     res.status(200).end();
   })
   .catch(function(err) {
@@ -108,5 +174,85 @@ router.post('/user', function(req, res, next) {
     }
   });
 });
+
+router.get('/classroombyuser/:userId', function(req, res, next) {
+  db.User.findById(req.params.userId)
+  .then(function(user) {
+    db.Participant.findAll({
+      include: [
+        {
+          model: db.Classroom,
+          include: [
+            {
+              model: db.User,
+              as: 'instructor',
+              attributes: ['username']
+            }
+          ]
+        }
+      ],
+      where: {
+        userEmail: user.email
+      }
+    })
+    .then(function(classrooms) {
+      res.status(200).send(classrooms).end();
+    })
+    .catch(function(err) {
+      if (err) {
+        res.status(500).end();
+        throw err;
+      }
+    });
+  })
+  .catch(function(err) {
+    if (err) {
+      res.status(500).end();
+      throw err;
+    }
+  });
+});
+
+router.post('/addassignment', function(req, res, next) {
+  db.Assignment.create({
+    lessondate: req.body.lessondate,
+    link: req.body.link,
+    topics: req.body.topics,
+    homework: req.body.homework,
+    duedate: req.body.duedate,
+    ClassroomId: req.body.classroomId
+  })
+  .then(function(newAssignment) {
+    res.status(200).end();
+  })
+  .catch(function(err) {
+    if (err) {
+      res.status(500).end();
+      throw err;
+    }
+  });
+});
+
+router.get('/assignmentsbyclass/:classroomId', function(req, res, next) {
+  db.Classroom.findById(req.params.classroomId)
+  .then(function(classroom) {
+    classroom.getAssignments()
+    .then(function(assignments) {
+      res.status(200).send(assignments).end();
+    })
+    .catch(function(err) {
+      if (err) {
+        res.status(500).end();
+        throw err;
+      }
+    });
+  })
+  .catch(function(err) {
+    if (err) {
+      res.status(500).end();
+      throw err;
+    }
+  });
+})
 
 module.exports = router;
