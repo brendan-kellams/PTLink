@@ -72,9 +72,9 @@ class Class extends Component {
 
 
                         <CoveredInClass
-                            label='topic'
-                            handleChange={this.handleChange.bind(this, 'topic')}
-                            value={this.state.topic} />
+                            label='topics'
+                            handleChange={this.handleChange.bind(this, 'topics')}
+                            value={this.state.topics} />
                     </form>
 
                     <Homework
