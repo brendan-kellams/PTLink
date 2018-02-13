@@ -19,3 +19,4 @@ export {default as Inbox} from './Inbox';
 export {default as Outbox} from './Outbox';
 export {default as MessageArea} from './MessageArea';
 export {default as ComposeMessage} from './ComposeMessage';
+export {default as LoginModal} from './LoginModal';
