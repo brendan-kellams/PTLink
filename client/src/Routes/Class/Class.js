@@ -10,8 +10,10 @@ class Class extends Component {
         this.state = {
             navStateClass: '',
             lessondate: '',
+            topics: '',
             link: '',
             homework: '',
+            duedate: '',
             classroomID: 2,
             users: []
         };
