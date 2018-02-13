@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { Header, SignUpInput, BasicBtn, Radio } from '../../components';
-
-
+import {API} from '../../Utils';
 
 class Signup extends Component {
   constructor(props) {
@@ -25,9 +24,21 @@ class Signup extends Component {
     this.setState({ [label]: value });
   }
   handleSubmit(event) {
-    alert('Profile Created!');
     event.preventDefault();
-    console.log(this.state);
+    let user = {
+      username: this.state.username,
+      password: this.state.password,
+      email: this.state.email,
+      isTeacher: (this.state.role === 'Teacher')
+    }
+    API.signUpUser(user, (err, status) => {
+      if (err) {
+        alert("There has been an error with status: " + status);
+      }
+      else {
+        alert("Profile Created!");
+      }
+    });
   }
 
   componentDidMount() {

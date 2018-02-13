@@ -5,7 +5,10 @@ const BasicBtn = props => {
   return (
     <button 
       type={props.type} 
-      className={'btn ' + props.classes}>{props.btnTxt}
+      className={'btn ' + props.classes}
+      onClick={props.handleClick}
+    >
+      {props.btnTxt}
     </button>
   );
 }

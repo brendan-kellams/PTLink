@@ -2,6 +2,19 @@ import axios from "axios";
 
 export default {
 
+  signUpUser: function(user, callback) {
+    axios.post('./user/signup', user)
+    .then(function(response) {
+      if (typeof callback === 'function') {
+        callback(null, response.status);
+      }
+    })
+    .catch(function(err) {
+      if (typeof callback === 'function') {
+        callback(err, err.response.status);
+      }
+    });
+  },
   sendEmailInvite: function(email, callback) {
     console.log('sending email....');
     if (typeof callback === 'function') {
