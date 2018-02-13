@@ -57,7 +57,7 @@ class ManageMessages extends Component {
           contentClasses ='manage-messages'>
         
           <div className="messages-container">
-            <nav>
+            {/* <nav>
               <div className="nav nav-tabs" id="nav-tab" role="tablist">
                 <a  className="nav-item nav-link active" 
                     id="nav-home-tab" data-toggle="tab" 
@@ -68,8 +68,32 @@ class ManageMessages extends Component {
                     href="#nav-contact" role="tab" 
                     aria-controls="nav-contact" aria-selected="false">Outbox</a>
               </div>
+            </nav> */}
+
+            <nav>
+              <ul className="nav nav-tabs">
+                <li className="active">
+                  <a data-toggle="tab" href="#inbox-pane">
+                    Inbox
+                  </a>
+                </li>
+                <li>
+                  <a data-toggle="tab" href="#outbox-pane">
+                    Outbox
+                  </a>
+                </li>
+              </ul>
             </nav>
-            <div className="tab-content" id="nav-tabContent">
+            <div className="tab-content">
+              <div id="inbox-pane" className="tab-pane fade in active">
+                <Inbox/>
+              </div>
+              <div id="outbox-pane" className="tab-pane fade in">
+                <Outbox/>
+              </div>
+            </div>
+
+            {/* <div className="tab-content" id="nav-tabContent">
               <div  className="tab-pane fade show active" 
                     id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <Inbox />
@@ -78,7 +102,7 @@ class ManageMessages extends Component {
                     id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                 <Outbox />  
               </div>
-            </div>
+            </div> */}
           </div>
 
         </MyMainContent>
