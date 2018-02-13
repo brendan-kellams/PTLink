@@ -7,7 +7,7 @@ const CoveredInClass = (props) => {
         <div>
             <Panel>
                 <Panel.Heading>
-                    <Panel.Title componentClass="h1">Lesson Plan</Panel.Title>
+                    <Panel.Title componentClass="h1">Covered In Class</Panel.Title>
                 </Panel.Heading>
                 <Panel.Body>
                     <input
