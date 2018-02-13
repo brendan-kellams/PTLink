@@ -15,11 +15,24 @@ class ManageMessages extends Component {
   }
 
   componentDidMount() {
-    // get messages sent
-    API.getMessagesSent((messages) => {
-      this.setState({
-        sent : messages
-      });
+    API.checkForUser((err, response) => {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        if (response.status === 200) {
+          this.setState({
+            userPresent: true,
+            username: response.data.username,
+            userId: response.data.id
+          });
+        }
+        else if (response.status === 204) {
+          this.setState({
+            userPresent: false
+          });
+        }
+      }
     });
   }
 
@@ -61,10 +74,14 @@ class ManageMessages extends Component {
             <nav>
               <Tabs defaultActiveKey={1}>
                 <Tab eventKey={1} title="Inbox">
-                  <Inbox/>
+                  <Inbox
+                    userId={this.state.userId}
+                  />
                 </Tab>
                 <Tab eventKey={2} title="Outbox">
-                  <Outbox/>
+                  <Outbox
+                    userId={this.state.userId}
+                  />
                 </Tab>
               </Tabs>
             </nav>

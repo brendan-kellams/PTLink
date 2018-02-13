@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { MyMainNav, MyMainContent, InviteUser } from '../../components';
+import { API } from '../../Utils';
 
 import './My.css';
 
@@ -13,7 +14,26 @@ class My extends Component {
   }
 
   componentDidMount() {
-    // call API to get userID (or null)
+    let ourThis = this;
+    API.checkForUser(function(err, response) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        if (response.status === 200) {
+          ourThis.setState({
+            userPresent: true,
+            username: response.data.username,
+            userId: response.data.id
+          });
+        }
+        else if (response.status === 204) {
+          ourThis.setState({
+            userPresent: false
+          });
+        }
+      }
+    });
   }
 
   handleNavToggle(isOpen) {

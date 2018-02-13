@@ -13,12 +13,40 @@ class Outbox extends Component {
   }
 
   componentDidMount() {
-    // get messages sent
-    API.getMessagesSent((messages) => {
-      this.setState({
-        sent : messages
-      });
+    API.checkForUser((err, response) => {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        if (response.status === 200) {
+          this.setState({
+            userPresent: true,
+            username: response.data.username,
+            userId: response.data.id
+          });
+          API.getMessagesSent(response.data.id, (err, response) => {
+            if (err) {
+              console.log(err);
+            }
+            else {
+              if (response.status === 200) {
+                this.setState({
+                  sent : response.data
+                });
+              }
+            }
+          });
+        }
+        else if (response.status === 204) {
+          this.setState({
+            userPresent: false
+          });
+        }
+      }
     });
+  }
+
+  componentDidUpdate() {
   }
 
   handleDeleteMessage(event, msgID) {
@@ -48,11 +76,11 @@ class Outbox extends Component {
                 key = {index}
                 viewMsg = {(event, msgID) => this.handleViewMessage(event, msgID)} 
                 messageID = {message.id}
-                title = {message.title}
+                title = {message.subject}
                 toUserID = {message.toUserID}
                 toUser = {message.toUser}
-                msgDT = {message.dateTime}
-                msgBody = {message.msgBody}
+                msgDT = {message.createdAt}
+                msgBody = {message.body}
                 handleDelete = {(event, msgID) => this.handleDeleteMessage(event, msgID)}
               />
             );

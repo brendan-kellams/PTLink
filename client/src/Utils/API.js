@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
 
   signUpUser: function(user, callback) {
-    axios.post('./user/signup', user)
+    axios.post('/user/signup', user)
     .then(function(response) {
       if (typeof callback === 'function') {
         callback(null, response.status);
@@ -16,7 +16,7 @@ export default {
     });
   },
   signInUser: function(user, callback) {
-    axios.post('./user/signin', user)
+    axios.post('/user/signin', user)
     .then(function(response) {
       if (typeof callback === 'function') {
         callback(null, response);
@@ -29,7 +29,7 @@ export default {
     });
   },
   signOutUser: function(callback) {
-    axios.post('./user/signout')
+    axios.post('/user/signout')
     .then(function(response) {
       if (typeof callback === 'function') {
         callback(null, response);
@@ -42,7 +42,7 @@ export default {
     });
   },
   checkForUser: function(callback) {
-    axios.get('./user/userpresent')
+    axios.get('/user/userpresent')
     .then(function(response) {
       if (typeof callback === 'function') {
         callback(null, response);
@@ -126,30 +126,39 @@ export default {
       callback(messages);
     }
   },
-  getMessagesSent: function(callback) {
-    console.log('calling API to get messages I sent out');
-
-    const messages = [
-      {
-        id          : 2,
-        title       : 'This is a message I sent 001',
-        toUserID    : 7,
-        toUser      : "DJohnson",
-        dateTime    : "01/24/2018 10:05:10",
-        msgBody     : 'kaka good',
-      },
-      {
-        id          : 8,
-        title       : 'This is a message I sent 002',
-        toUserID    : 10,
-        toUser      : "BObama",
-        dateTime    : "02/01/2018 09:12:22",
-        msgBody     : 'kaka bad',
-      },
-    ];
-    if (typeof callback === 'function') {
-      callback(messages);
-    }
+  getMessagesSent: function(userId, callback) {
+    axios.get('/api/outbox/' + userId)
+    .then(function(response) {
+      if (typeof callback === 'function') {
+        callback(null, response);
+      }
+    })
+    .catch(function(err) {
+      if (typeof callback === 'function') {
+        callback(err, err.response.status);
+      }
+    });
+    // const messages = [
+    //   {
+    //     id          : 2,
+    //     title       : 'This is a message I sent 001',
+    //     toUserID    : 7,
+    //     toUser      : "DJohnson",
+    //     dateTime    : "01/24/2018 10:05:10",
+    //     msgBody     : 'kaka good',
+    //   },
+    //   {
+    //     id          : 8,
+    //     title       : 'This is a message I sent 002',
+    //     toUserID    : 10,
+    //     toUser      : "BObama",
+    //     dateTime    : "02/01/2018 09:12:22",
+    //     msgBody     : 'kaka bad',
+    //   },
+    // ];
+    // if (typeof callback === 'function') {
+    //   callback(messages);
+    // }
   },
   getMyUsers: function(callback) {
     console.log('calling API to get users I have access to');
