@@ -5,7 +5,11 @@ const Homework = (props) => {
         <div className='card'>
             <h3 className='card-header'>Homework</h3>
             <div className='card-block'>
-                <p className='card-text'>{props.info}</p>
+                <input
+                    className='form-control'
+                    onChange={event => props.handleChange(event.target.value)}
+                    value={props.value}
+                />
             </div>
         </div>
     )

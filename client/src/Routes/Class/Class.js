@@ -9,8 +9,10 @@ class Class extends Component {
         super(props);
         this.state = {
             navStateClass: '',
-            plan: '',
-            topics: [],
+            lessondate: '',
+            link: '',
+            homework: '',
+            classroomID: 2,
             users: []
         };
         this.handleChange = this.handleChange.bind(this);
@@ -54,18 +56,18 @@ class Class extends Component {
 
                     {/* this is some logic for dupicating the input field after pressing enter.  
                 I just don't know how to use it into the code-Brendan */}
-                    {this.state.topics.map((topic) => (<input value={topic} />))}
-                    <input value={''} />
+                    {/* {this.state.topics.map((topic) => (<input value={topic} />))}
+                    <input value={''} /> */}
 
                     <form onSubmit={this.handleSubmit}>
                         {/* I need to find a way to make this into a link when the teacher presses enter-Brendan */}
                         <LessonPlan
-                            label='plan'
-                            handleChange={this.handleChange.bind(this, 'plan')}
-                            value={this.state.plan}>
-                            {this.state.topics.map((topic) => (<input value={topic} />))}
-                            <input value={''} />
-                        </LessonPlan>
+                            label='link'
+                            handleChange={this.handleChange.bind(this, 'link')}
+                            value={this.state.link} />
+                        {/* {this.state.topics.map((topic) => (<input value={topic} />))}
+                            <input value={''} /> */}
+
 
                         <CoveredInClass
                             label='topic'
@@ -74,7 +76,9 @@ class Class extends Component {
                     </form>
 
                     <Homework
-                        info="This is the homework for the class" />
+                        label="homework"
+                        handleChange={this.handleChange.bind(this, 'homework')}
+                        value={this.state.homework} />
 
                     <form onSubmit={this.handleSubmit}>
 
