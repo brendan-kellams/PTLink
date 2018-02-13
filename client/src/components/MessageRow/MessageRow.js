@@ -3,12 +3,12 @@ import React from 'react';
 const MessageRow = (props) => {
     return (
         <div className="row message-row">
-          <div className="col message-id">
+          <div className="col-md-1 message-id">
           {props.messageID}
           </div>
           {
             props.isReceived ?  
-            <div className="col message-title">
+            <div className="col-md-3 message-title">
               <a href="#" onClick={(event) => props.viewMsg(event, {
                 id : props.messageID,
                 title : props.title,
@@ -21,7 +21,7 @@ const MessageRow = (props) => {
               {props.title}
               </a>
             </div> : 
-            <div className="col message-title">
+            <div className="col-md-3 message-title">
               <a href="#" onClick={(event) => props.viewMsg(event, {
                 id : props.messageID,
                 title : props.title,
@@ -36,20 +36,20 @@ const MessageRow = (props) => {
           }
           {
               props.isReceived ? 
-              <div className="col message-from">
+              <div className="col-md-3 message-from">
                 {props.fromUser} - (User ID: {props.fromUserID})
               </div> :
-              <div className="col message-from">
+              <div className="col-md-3 message-from">
                 {props.toUser} - (User ID: {props.toUserID})
               </div>
           }
-          <div className="col message-is-read">
+          <div className="col-md-2 message-is-read">
             {props.isRead}
           </div>
-          <div className="col message-dt">
+          <div className="col-md-2 message-dt">
           {props.msgDT}
           </div>
-          <div className="col message-operation">
+          <div className="col-md-1 message-operation">
             <a  href="#"
                 onClick={(event) => props.handleDelete(event, props.messageID)}
             >

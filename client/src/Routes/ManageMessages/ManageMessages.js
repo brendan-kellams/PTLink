@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { MyMainNav, MyMainContent, MessageRow, Inbox, Outbox} from '../../components';
 import { Helper, API } from '../../Utils';
+import { Tabs, Tab } from 'react-bootstrap';
 
 
 class ManageMessages extends Component {
@@ -57,52 +58,16 @@ class ManageMessages extends Component {
           contentClasses ='manage-messages'>
         
           <div className="messages-container">
-            {/* <nav>
-              <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                <a  className="nav-item nav-link active" 
-                    id="nav-home-tab" data-toggle="tab" 
-                    href="#nav-home" role="tab" aria-controls="nav-home" 
-                    aria-selected="true">Inbox</a>
-                <a  className="nav-item nav-link" 
-                    id="nav-contact-tab" data-toggle="tab" 
-                    href="#nav-contact" role="tab" 
-                    aria-controls="nav-contact" aria-selected="false">Outbox</a>
-              </div>
-            </nav> */}
-
             <nav>
-              <ul className="nav nav-tabs">
-                <li className="active">
-                  <a data-toggle="tab" href="#inbox-pane">
-                    Inbox
-                  </a>
-                </li>
-                <li>
-                  <a data-toggle="tab" href="#outbox-pane">
-                    Outbox
-                  </a>
-                </li>
-              </ul>
+              <Tabs defaultActiveKey={1}>
+                <Tab eventKey={1} title="Inbox">
+                  <Inbox/>
+                </Tab>
+                <Tab eventKey={2} title="Outbox">
+                  <Outbox/>
+                </Tab>
+              </Tabs>
             </nav>
-            <div className="tab-content">
-              <div id="inbox-pane" className="tab-pane fade in active">
-                <Inbox/>
-              </div>
-              <div id="outbox-pane" className="tab-pane fade in">
-                <Outbox/>
-              </div>
-            </div>
-
-            {/* <div className="tab-content" id="nav-tabContent">
-              <div  className="tab-pane fade show active" 
-                    id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <Inbox />
-              </div>
-              <div  className="tab-pane fade" 
-                    id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                <Outbox />  
-              </div>
-            </div> */}
           </div>
 
         </MyMainContent>
