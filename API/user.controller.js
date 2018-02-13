@@ -55,9 +55,9 @@ router.post('/signout', function(req, res, next) {
 /** Checks if a user is signed in with the session. */
 router.get('/userpresent', function(req, res, next) {
   if(!req.session.user) {
-    return res.send(false).end();
+    res.status(204).end();
   }
-  else return res.send(true).end();
+  else res.status(200).send(req.session.user).end();
 });
 
 module.exports = router;

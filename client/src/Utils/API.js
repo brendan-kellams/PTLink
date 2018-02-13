@@ -15,6 +15,45 @@ export default {
       }
     });
   },
+  signInUser: function(user, callback) {
+    axios.post('./user/signin', user)
+    .then(function(response) {
+      if (typeof callback === 'function') {
+        callback(null, response);
+      }
+    })
+    .catch(function(err) {
+      if (typeof callback === 'function') {
+        callback(err, err.response.status);
+      }
+    });
+  },
+  signOutUser: function(callback) {
+    axios.post('./user/signout')
+    .then(function(response) {
+      if (typeof callback === 'function') {
+        callback(null, response);
+      }
+    })
+    .catch(function(err) {
+      if (typeof callback === 'function') {
+        callback(err, err.response.status);
+      }
+    });
+  },
+  checkForUser: function(callback) {
+    axios.get('./user/userpresent')
+    .then(function(response) {
+      if (typeof callback === 'function') {
+        callback(null, response);
+      }
+    })
+    .catch(function(err) {
+      if (typeof callback === 'function') {
+        callback(err, err.response.status);
+      }
+    });
+  },
   sendEmailInvite: function(email, callback) {
     console.log('sending email....');
     if (typeof callback === 'function') {

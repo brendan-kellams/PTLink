@@ -8,16 +8,14 @@ const LoginModal = props => {
         <Modal.Title>Login To Your Account</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h1>
-          TODO: add login form here
-        </h1>
+        {props.children}
       </Modal.Body>
       <Modal.Footer>
         <Button 
           onClick={props.handleClose}
-          bsStyle="primary"
+          bsStyle="danger"
         >
-          Login
+          Cancel
         </Button>
       </Modal.Footer>
     </Modal>
