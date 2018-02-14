@@ -112,7 +112,7 @@ router.get('/inbox/:userId', function(req, res, next) {
     }
   });
 });
-
+/** Creates class and sets instructor id */
 router.post('/classroom', function(req, res, next) {
   // Create the classroom
   db.Classroom.create({
@@ -142,7 +142,7 @@ router.post('/classroom', function(req, res, next) {
     }
   });
 });
-
+/** Gets classroom by id and includes the instructor */
 router.get('/classroom/:classId', function(req, res, next) {
   db.Classroom.findById(req.params.classId, {
     include: [
@@ -163,7 +163,7 @@ router.get('/classroom/:classId', function(req, res, next) {
     }
   });
 });
-
+/** Teacher invites parent by classroomId and email */
 router.post('/addparticipant', function(req, res, next) {
   db.Participant.create({
     userEmail: req.body.userEmail,
@@ -179,7 +179,7 @@ router.post('/addparticipant', function(req, res, next) {
     }
   });
 });
-
+/** Gets all classrooms user is invited to. */
 router.get('/classroombyuser/:userId', function(req, res, next) {
   db.User.findById(req.params.userId)
   .then(function(user) {
@@ -199,6 +199,34 @@ router.get('/classroombyuser/:userId', function(req, res, next) {
       where: {
         userEmail: user.email
       }
+    })
+    .then(function(classrooms) {
+      res.status(200).send(classrooms).end();
+    })
+    .catch(function(err) {
+      if (err) {
+        res.status(500).end();
+        throw err;
+      }
+    });
+  })
+  .catch(function(err) {
+    if (err) {
+      res.status(500).end();
+      throw err;
+    }
+  });
+});
+/** Get all classes by instructor with the participants */
+router.get('/instructorclasses/:instructorId', function(req, res, next) {
+  db.User.findById(req.params.instructorId)
+  .then(function(instructor) {
+    instructor.getClassrooms({
+      include: [
+        {
+          model: db.Participant
+        }
+      ]
     })
     .then(function(classrooms) {
       res.status(200).send(classrooms).end();

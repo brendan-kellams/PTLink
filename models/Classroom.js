@@ -30,6 +30,7 @@ module.exports = function(sequelize, DataTypes) {
   Classroom.associate = function(model) {
     Classroom.belongsTo(model.User, {as: 'instructor'});
     Classroom.hasMany(model.Assignment);
+    Classroom.hasMany(model.Participant);
   }
 
   return Classroom;

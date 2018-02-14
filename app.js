@@ -7,6 +7,7 @@ var session = require('express-session');
 
 var api = require('./API/api');
 var user = require('./API/user.controller');
+var seeds = require('./API/seeds');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use(express.static("client/build"));
 
 app.use('/api', api);
 app.use('/user', user);
+app.use('/seeds', seeds);
 
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
