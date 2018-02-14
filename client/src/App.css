@@ -2,8 +2,22 @@
 
 /* Home Page | Landing Page */
 .home .main-jumbo {
+  background-image: url('/images/class.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
+  border: 1px solid black; 
 }
 
+.home .test-bkg {
+  background-image: url('/images/teacher.jpg');
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 100%;
+  border: 1px solid black;  
+  width: 400px;
+  height: 400px;
+}
 .my .main-content {
   margin-left: 100px;
 }

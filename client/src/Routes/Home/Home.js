@@ -27,6 +27,7 @@ class Home extends Component {
 
         <Jumbotron
         className="main-jumbo">
+          
           <h1>Hello, world!</h1>
           <p>
             This is a simple hero unit, a simple jumbotron-style component for calling
@@ -36,6 +37,8 @@ class Home extends Component {
             
           </p>
         </Jumbotron>
+
+        <div className="test-bkg"></div>
 
         <h1>HOME PAGE</h1>
 
