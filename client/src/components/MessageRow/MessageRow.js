@@ -39,7 +39,8 @@ const MessageRow = (props) => {
                 {props.fromUser}
               </div> :
               <div className="col-md-3 message-from">
-                {props.toUser}               </div>
+                {props.toUser}
+              </div>
           }
           <div className="col-md-2 message-is-read">
             {props.isRead} {/*needs a conditional statement*/}
