@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { MyMainNav, MyMainContent, MessageRow, Inbox, Outbox} from '../../components';
 import { Helper, API } from '../../Utils';
+import { Tabs, Tab } from 'react-bootstrap';
 
 
 class ManageMessages extends Component {
@@ -14,11 +15,24 @@ class ManageMessages extends Component {
   }
 
   componentDidMount() {
-    // get messages sent
-    API.getMessagesSent((messages) => {
-      this.setState({
-        sent : messages
-      });
+    API.checkForUser((err, response) => {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        if (response.status === 200) {
+          this.setState({
+            userPresent: true,
+            username: response.data.username,
+            userId: response.data.id
+          });
+        }
+        else if (response.status === 204) {
+          this.setState({
+            userPresent: false
+          });
+        }
+      }
     });
   }
 
@@ -58,27 +72,19 @@ class ManageMessages extends Component {
         
           <div className="messages-container">
             <nav>
-              <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                <a  className="nav-item nav-link active" 
-                    id="nav-home-tab" data-toggle="tab" 
-                    href="#nav-home" role="tab" aria-controls="nav-home" 
-                    aria-selected="true">Inbox</a>
-                <a  className="nav-item nav-link" 
-                    id="nav-contact-tab" data-toggle="tab" 
-                    href="#nav-contact" role="tab" 
-                    aria-controls="nav-contact" aria-selected="false">Outbox</a>
-              </div>
+              <Tabs defaultActiveKey={1}>
+                <Tab eventKey={1} title="Inbox">
+                  <Inbox
+                    userId={this.state.userId}
+                  />
+                </Tab>
+                <Tab eventKey={2} title="Outbox">
+                  <Outbox
+                    userId={this.state.userId}
+                  />
+                </Tab>
+              </Tabs>
             </nav>
-            <div className="tab-content" id="nav-tabContent">
-              <div  className="tab-pane fade show active" 
-                    id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <Inbox />
-              </div>
-              <div  className="tab-pane fade" 
-                    id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                <Outbox />  
-              </div>
-            </div>
           </div>
 
         </MyMainContent>

@@ -3,19 +3,19 @@ import React from 'react';
 const UserRow = (props) => {
     return (
         <div className="row user-row">
-          <div className="col user-id">
+          <div className="col-md-1 user-id">
           {props.userID}
           </div>
-          <div className="col user-email">
+          <div className="col-md-3 user-email">
           {props.userEmail}
           </div>
-          <div className="col user-username">
+          <div className="col-md-3 user-username">
           {props.userName}
           </div>
-          <div className="col user-role">
+          <div className="col-md-3 user-role">
           {props.role}
           </div>
-          <div className="col user-operation">
+          <div className="col-md-2 user-operation">
             <a  href="#"
                 onClick={(event) => props.handleDelete(event, props.userID)}
             >

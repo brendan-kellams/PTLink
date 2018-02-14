@@ -3,25 +3,25 @@ import React from 'react';
 const ClassRow = (props) => {
     return (
         <div className="row class-row">
-          <div className="col class-id">
+          <div className="col-md-1 class-id">
           {props.classID}
           </div>
-          <div className="col class-period">
+          <div className="col-md-2 class-period">
           {props.name}
           </div>
-          <div className="col class-period">
+          <div className="col-md-2 class-period">
           {props.period}
           </div>
-          <div className="col class-school">
+          <div className="col-md-2 class-school">
           {props.school}
           </div>
-          <div className="col class-term">
+          <div className="col-md-2 class-term">
           {props.term}
           </div>
-          <div className="col class-year">
+          <div className="col-md-2 class-year">
           {props.year}
           </div>
-          <div className="col class-operation">
+          <div className="col-md-1 class-operation">
             <a  href="#"
                 onClick={(event) => props.handleDelete(event, props.classID)}
             >

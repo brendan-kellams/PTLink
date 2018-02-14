@@ -1,5 +1,6 @@
 export {default as BasicBtn} from './BasicBtn';
 export {default as Header} from './Header';
+export {default as Footer} from './Footer';
 export {default as MyMainNav} from './MyMainNav';
 export {default as MyMainContent} from './MyMainContent';
 export {default as InviteUser} from './InviteUser';
@@ -13,7 +14,11 @@ export {default as CreateClass} from './CreateClass';
 export {default as MessageRow} from './MessageRow';
 export {default as Homework} from './Homework';
 export {default as CoveredInClass} from './CoveredInClass';
+export {default as LessonPlan} from './LessonPlan';
 export {default as Inbox} from './Inbox';
 export {default as Outbox} from './Outbox';
 export {default as MessageArea} from './MessageArea';
 export {default as ComposeMessage} from './ComposeMessage';
+export {default as LoginModal} from './LoginModal';
+export {default as LoginForm} from './LoginForm';
+export {default as ClassDiv} from './ClassDiv';

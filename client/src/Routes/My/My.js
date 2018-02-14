@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import { MyMainNav, MyMainContent, InviteUser } from '../../components';
-
+import {ClassDiv, Header, MyMainNav, MyMainContent, InviteUser } from '../../components';
+import {API} from '../../Utils'
 import './My.css';
 
 class My extends Component {
@@ -13,7 +13,26 @@ class My extends Component {
   }
 
   componentDidMount() {
-    // call API to get userID (or null)
+    let ourThis = this;
+    API.checkForUser(function(err, response) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        if (response.status === 200) {
+          ourThis.setState({
+            userPresent: true,
+            username: response.data.username,
+            userId: response.data.id
+          });
+        }
+        else if (response.status === 204) {
+          ourThis.setState({
+            userPresent: false
+          });
+        }
+      }
+    });
   }
 
   handleNavToggle(isOpen) {
@@ -28,6 +47,7 @@ class My extends Component {
   render() {
     return (
       <div className={"container-fluid my " + this.state.navStateClass}>
+        <Header />
         <MyMainNav 
           onToggle={(isOpen) => this.handleNavToggle(isOpen)}
         />
@@ -42,6 +62,9 @@ class My extends Component {
               <li>TODO: notification?</li>
             </ul>
           </div>
+          <ClassDiv
+            ClassTitle="Mr.Johnson's Math class"
+            description="Algebra I" />
 
         </MyMainContent>
       </div>

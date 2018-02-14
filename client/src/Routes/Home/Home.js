@@ -12,19 +12,9 @@ class Home extends Component {
     // call API to get userID (or null)
   }
 
-  handleSignup (event, type) {
+  handleSignup (event) {
     event.preventDefault();
-
-    // teacher signup
-    if (type === 0) {
-      console.log('do teacher signup');
-      this.props.history.push('/signup')
-    }
-    // parent signup
-    else {
-      console.log('do parent signup');
-      this.props.history.push('/signup')
-    }
+    this.props.history.push('/signup');
   }
 
   render() {
@@ -46,15 +36,9 @@ class Home extends Component {
 
         <section className="signup">
           <BasicBtn 
-            classes="btn-success signupBtn teacherSignup" 
-            handleClick={(event) => this.handleSignup(event, 0)} 
-            btnTxt="Signup as Teacher"
-          />
-
-          <BasicBtn 
-            classes="btn-success signupBtn parentSignup" 
-            handleClick={(event) => this.handleSignup(event, 1)} 
-            btnTxt="Signup as Parent"
+            classes="btn-success signupBtn" 
+            handleClick={event => this.handleSignup(event)} 
+            btnTxt="Sign Up"
           />
         </section>
       </div>
