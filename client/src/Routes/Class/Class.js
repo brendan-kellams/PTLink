@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Footer, LessonPlan, CoveredInClass, Homework, MyMainNav, MyMainContent, TextArea, BasicBtn } from '../../components';
+import { LessonForm, LessonModal, LessonSection, Footer, MyMainNav, MyMainContent, BasicBtn } from '../../components';
 import { API } from '../../Utils';
 
 class Class extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      showModal: false,
       navStateClass: '',
       lessondate: '',
       topics: '',
@@ -36,6 +37,13 @@ class Class extends Component {
       });
     })
   }
+  handleClose = () => {
+    this.setState({ showModal: false });
+  }
+  handleShow = () => {
+    this.setState({ showModal: true });
+  }
+
 
   handleNavToggle(isOpen) {
     if (isOpen) {
@@ -49,6 +57,14 @@ class Class extends Component {
   render() {
     return (
       <div className={'container-fluid my ' + this.state.navStateClass}>
+        <LessonModal
+          show={this.state.showModal}
+          handleClose={this.handleClose}
+        >
+          <LessonForm
+            handleChange={this.handleChange}
+          />
+        </LessonModal>
         <MyMainNav
           onToggle={(isOpen) => this.handleNavToggle(isOpen)}
         />
@@ -57,43 +73,97 @@ class Class extends Component {
           contentClasses='class-details'>
           <h1>Mrs. Simpson's 7th Grade Math Class</h1>
 
-          {/* this is some logic for dupicating the input field after pressing enter.  
-      I just don't know how to use it into the code-Brendan */}
-          {/* {this.state.topics.map((topic) => (<input value={topic} />))}
-            <input value={''} /> */}
-
           <form onSubmit={this.handleSubmit}>
-            {/* I need to find a way to make this into a link when the teacher presses enter-Brendan */}
-            <LessonPlan
+            <LessonSection
+              SectionTitle='Lesson Plan'
               label='link'
               handleChange={this.handleChange.bind(this, 'link')}
               value={this.state.link}
             />
-            {/* {this.state.topics.map((topic) => (<input value={topic} />))}
-                <input value={''} /> */}
-
-
-            <CoveredInClass
+            <LessonSection
+              SectionTitle='Covered In Class'
               label='topics'
               handleChange={this.handleChange.bind(this, 'topics')}
               value={this.state.topics}
             />
+            <LessonSection
+              SectionTitle='Homework'
+              label="homework"
+              handleChange={this.handleChange.bind(this, 'homework')}
+              value={this.state.homework}
+            />
           </form>
-          <Homework
-            label="homework"
-            handleChange={this.handleChange.bind(this, 'homework')}
-            value={this.state.homework}
-          />
+          <hr/>
           <form onSubmit={this.handleSubmit}>
-
-            <BasicBtn
-              classes='btn-primary'
-              btnTxt='Add New Day' type='submit'
+            <LessonSection
+              SectionTitle='Lesson Plan'
+              label='link'
+              handleChange={this.handleChange.bind(this, 'link')}
+              value={this.state.link}
+            />
+            <LessonSection
+              SectionTitle='Covered In Class'
+              label='topics'
+              handleChange={this.handleChange.bind(this, 'topics')}
+              value={this.state.topics}
+            />
+            <LessonSection
+              SectionTitle='Homework'
+              label="homework"
+              handleChange={this.handleChange.bind(this, 'homework')}
+              value={this.state.homework}
+            />
+          </form>
+          <hr/>
+          <form onSubmit={this.handleSubmit}>
+            <LessonSection
+              SectionTitle='Lesson Plan'
+              label='link'
+              handleChange={this.handleChange.bind(this, 'link')}
+              value={this.state.link}
+            />
+            <LessonSection
+              SectionTitle='Covered In Class'
+              label='topics'
+              handleChange={this.handleChange.bind(this, 'topics')}
+              value={this.state.topics}
+            />
+            <LessonSection
+              SectionTitle='Homework'
+              label="homework"
+              handleChange={this.handleChange.bind(this, 'homework')}
+              value={this.state.homework}
+            />
+          </form>
+          <hr/>
+          <form onSubmit={this.handleSubmit}>
+            <LessonSection
+              SectionTitle='Lesson Plan'
+              label='link'
+              handleChange={this.handleChange.bind(this, 'link')}
+              value={this.state.link}
+            />
+            <LessonSection
+              SectionTitle='Covered In Class'
+              label='topics'
+              handleChange={this.handleChange.bind(this, 'topics')}
+              value={this.state.topics}
+            />
+            <LessonSection
+              SectionTitle='Homework'
+              label="homework"
+              handleChange={this.handleChange.bind(this, 'homework')}
+              value={this.state.homework}
             />
           </form>
         </MyMainContent>
-        <Footer
-          text="This is a footer" 
+        <Footer>
+          <BasicBtn
+            classes='btn-primary'
+            btnTxt='Add New Day'
+            handleClick={this.handleShow}
+          />
+        </Footer>
         />
       </div>
     )

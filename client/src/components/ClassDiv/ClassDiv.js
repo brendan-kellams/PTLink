@@ -11,7 +11,7 @@ const ClassDiv = (props) => {
                             <h3>{props.ClassTitle}</h3>
                             <p>{props.description}</p>
                             <div>
-                                <span className='glphicon glyphicon-book'></span>
+                                <span className='glyphicon glyphicon-book'></span>
                             </div>
                             <p><a href={props.link} className='btn btn-primary' role='button'>Enter Class</a></p>
                         </div>
