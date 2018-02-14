@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { LessonSection, Footer, MyMainNav, MyMainContent, BasicBtn } from '../../components';
+import { LessonForm, LessonModal, LessonSection, Footer, MyMainNav, MyMainContent, BasicBtn } from '../../components';
 import { API } from '../../Utils';
 
 class Class extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      showModal: false,
       navStateClass: '',
       lessondate: '',
       topics: '',
@@ -36,6 +37,13 @@ class Class extends Component {
       });
     })
   }
+  handleClose = () => {
+    this.setState({ showModal: false });
+  }
+  handleShow = () => {
+    this.setState({ showModal: true });
+  }
+
 
   handleNavToggle(isOpen) {
     if (isOpen) {
@@ -49,6 +57,14 @@ class Class extends Component {
   render() {
     return (
       <div className={'container-fluid my ' + this.state.navStateClass}>
+        <LessonModal
+          show={this.state.showModal}
+          handleClose={this.handleClose}
+        >
+          <LessonForm
+            handleChange={this.handleChange}
+          />
+        </LessonModal>
         <MyMainNav
           onToggle={(isOpen) => this.handleNavToggle(isOpen)}
         />
@@ -77,15 +93,76 @@ class Class extends Component {
               value={this.state.homework}
             />
           </form>
-
-        </MyMainContent>
-        <Footer>
+          <hr/>
           <form onSubmit={this.handleSubmit}>
-            <BasicBtn
-              classes='btn-primary'
-              btnTxt='Add New Day' type='submit'
+            <LessonSection
+              SectionTitle='Lesson Plan'
+              label='link'
+              handleChange={this.handleChange.bind(this, 'link')}
+              value={this.state.link}
+            />
+            <LessonSection
+              SectionTitle='Covered In Class'
+              label='topics'
+              handleChange={this.handleChange.bind(this, 'topics')}
+              value={this.state.topics}
+            />
+            <LessonSection
+              SectionTitle='Homework'
+              label="homework"
+              handleChange={this.handleChange.bind(this, 'homework')}
+              value={this.state.homework}
             />
           </form>
+          <hr/>
+          <form onSubmit={this.handleSubmit}>
+            <LessonSection
+              SectionTitle='Lesson Plan'
+              label='link'
+              handleChange={this.handleChange.bind(this, 'link')}
+              value={this.state.link}
+            />
+            <LessonSection
+              SectionTitle='Covered In Class'
+              label='topics'
+              handleChange={this.handleChange.bind(this, 'topics')}
+              value={this.state.topics}
+            />
+            <LessonSection
+              SectionTitle='Homework'
+              label="homework"
+              handleChange={this.handleChange.bind(this, 'homework')}
+              value={this.state.homework}
+            />
+          </form>
+          <hr/>
+          <form onSubmit={this.handleSubmit}>
+            <LessonSection
+              SectionTitle='Lesson Plan'
+              label='link'
+              handleChange={this.handleChange.bind(this, 'link')}
+              value={this.state.link}
+            />
+            <LessonSection
+              SectionTitle='Covered In Class'
+              label='topics'
+              handleChange={this.handleChange.bind(this, 'topics')}
+              value={this.state.topics}
+            />
+            <LessonSection
+              SectionTitle='Homework'
+              label="homework"
+              handleChange={this.handleChange.bind(this, 'homework')}
+              value={this.state.homework}
+            />
+          </form>
+        </MyMainContent>
+        <Footer>
+          <BasicBtn
+            classes='btn-primary'
+            btnTxt='Add New Day'
+            handleClick={this.handleShow}
+          />
         </Footer>
         />
       </div>

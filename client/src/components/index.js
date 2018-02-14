@@ -13,6 +13,8 @@ export {default as ClassesList} from './ClassesList';
 export {default as CreateClass} from './CreateClass'; 
 export {default as MessageRow} from './MessageRow';
 export {default as LessonSection} from './LessonSection';
+export {default as LessonModal} from './LessonModal';
+export {default as LessonForm} from './LessonForm';
 export {default as Inbox} from './Inbox';
 export {default as Outbox} from './Outbox';
 export {default as MessageArea} from './MessageArea';
