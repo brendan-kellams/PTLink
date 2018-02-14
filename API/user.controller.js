@@ -4,15 +4,15 @@ var db = require('../models');
 var { hashPassword, comparePassword } = require('../util/passwordHandler');
 var users = require('../lib/users');
 
-/*
-hashPassword(users[0].password, function(hashedPassword) {
-  for (let i = 0; i < users.length; i++) {
-    users[i].password = hashedPassword;
-  }
-  db.User.bulkCreate (users);
-});
 
-*/
+// hashPassword(users[0].password, function(hashedPassword) {
+//   for (let i = 0; i < users.length; i++) {
+//     users[i].password = hashedPassword;
+//   }
+//   db.User.bulkCreate (users);
+// });
+
+
 /** Signs a user up and stores a hashed password in the database */
 router.post('/signup', function(req, res, next) {
   hashPassword(req.body.password, function(hashedPassword) {

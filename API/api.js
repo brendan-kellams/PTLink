@@ -71,7 +71,7 @@ router.get('/outbox/:userId', function(req, res, next) {
     })
     .then(function(communications) {
       outboxFormatter(communications,function (formattedCommunications){
-        console.log(formattedCommunications);
+        // console.log(formattedCommunications);
         res.status(200).send(formattedCommunications).end();
       });
     })

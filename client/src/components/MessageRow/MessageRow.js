@@ -43,7 +43,7 @@ const MessageRow = (props) => {
               </div>
           }
           <div className="col-md-2 message-is-read">
-            {props.isRead} {/*needs a conditional statement*/}
+            {props.isRead}
           </div>
           <div className="col-md-2 message-dt">
           {props.msgDT}

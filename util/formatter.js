@@ -5,7 +5,8 @@ const formatter = {
 			for (var j=0;j<raw[i].SentCommunications.length;j++) {
 				recipients+= raw[i].SentCommunications[j].User.username + ", ";
 			}
-			raw[i].recipients = recipients;
+			recipients = recipients.replace(/, $/, '');
+			raw[i].dataValues.recipients = recipients;
 			recipients = "";
 		}
 		cb(raw);
