@@ -1,3 +1,9 @@
+/* Public Pages */
+
+/* Home Page | Landing Page */
+.home .main-jumbo {
+}
+
 .my .main-content {
   margin-left: 100px;
 }
@@ -22,11 +28,3 @@
 .main-content h1 {
   text-transform: uppercase;
 }
-
-/* 
-  temp styles to aid visuallizing compoments 
-  remove before pushing live
-*/
-/*.invite-user-container {
-  border: 1px solid black;
-}*/
