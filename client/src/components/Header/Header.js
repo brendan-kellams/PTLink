@@ -16,20 +16,20 @@ class Header extends Component {
   }
 
   componentWillMount = () => {
-    let ourThis = this;
-    API.checkForUser(function(err, response) {
+    API.checkForUser((err, response) => {
       if (err) {
         console.log(err);
       }
       else {
         if (response.status === 200) {
-          ourThis.setState({
+          this.setState({
             userPresent: true,
-            username: response.data.username
+            username: response.data.username,
+            userId: response.data.id
           });
         }
         else if (response.status === 204) {
-          ourThis.setState({
+          this.setState({
             userPresent: false
           });
         }
@@ -47,18 +47,17 @@ class Header extends Component {
 
   handleLogin = event => {
     event.preventDefault();
-    let ourThis = this;
     let userData = {
       email: this.state.loginEmail,
       password: this.state.loginPassword
     };
-    API.signInUser(userData, function(err, response) {
+    API.signInUser(userData, (err, response) => {
       if (err) {
         console.log(err);
       }
       else {
         if (response.status === 200) {
-          ourThis.setState({
+          this.setState({
             showModal: false,
             userPresent: true,
             username: response.data.username
