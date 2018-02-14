@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { MyMainNav, MyMainContent, InviteUser } from '../../components';
+import {ClassDiv, Header, MyMainNav, MyMainContent, InviteUser } from '../../components';
 
 import './My.css';
 
@@ -28,6 +28,7 @@ class My extends Component {
   render() {
     return (
       <div className={"container-fluid my " + this.state.navStateClass}>
+        <Header />
         <MyMainNav 
           onToggle={(isOpen) => this.handleNavToggle(isOpen)}
         />
@@ -42,6 +43,9 @@ class My extends Component {
               <li>TODO: notification?</li>
             </ul>
           </div>
+          <ClassDiv
+            ClassTitle="Mr.Johnson's Math class"
+            description="Algebra I" />
 
         </MyMainContent>
       </div>
