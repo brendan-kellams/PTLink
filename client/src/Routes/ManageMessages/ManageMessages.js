@@ -74,14 +74,10 @@ class ManageMessages extends Component {
             <nav>
               <Tabs defaultActiveKey={1}>
                 <Tab eventKey={1} title="Inbox">
-                  <Inbox
-                    userId={this.state.userId}
-                  />
+                  <Inbox/>
                 </Tab>
                 <Tab eventKey={2} title="Outbox">
-                  <Outbox
-                    userId={this.state.userId}
-                  />
+                  <Outbox/>
                 </Tab>
               </Tabs>
             </nav>
