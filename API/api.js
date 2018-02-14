@@ -217,19 +217,35 @@ router.get('/classroombyuser/:userId', function(req, res, next) {
     }
   });
 });
-/** Get all classes by instructor with the participants */
+/** Get all classes by instructor */
 router.get('/instructorclasses/:instructorId', function(req, res, next) {
   db.User.findById(req.params.instructorId)
   .then(function(instructor) {
-    instructor.getClassrooms({
-      include: [
-        {
-          model: db.Participant
-        }
-      ]
-    })
+    instructor.getClassrooms()
     .then(function(classrooms) {
       res.status(200).send(classrooms).end();
+    })
+    .catch(function(err) {
+      if (err) {
+        res.status(500).end();
+        throw err;
+      }
+    });
+  })
+  .catch(function(err) {
+    if (err) {
+      res.status(500).end();
+      throw err;
+    }
+  });
+});
+/** Get all participants in a class */
+router.get('/participants/:classroomId', function(req, res, next) {
+  db.Classroom.findById(req.params.classroomId)
+  .then(function(classroom) {
+    classroom.getParticipants()
+    .then(function(participants) {
+      res.status(200).send(participants).end();
     })
     .catch(function(err) {
       if (err) {
