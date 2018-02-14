@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 
-<<<<<<< HEAD
 import {ClassDiv, Header, MyMainNav, MyMainContent, InviteUser } from '../../components';
-=======
-import { MyMainNav, MyMainContent, InviteUser } from '../../components';
-import { API } from '../../Utils';
->>>>>>> 6229fe192d14ae1879bcfc36791fce6bd3896fe0
-
+import {API} from '../../Utils'
 import './My.css';
 
 class My extends Component {

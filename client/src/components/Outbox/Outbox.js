@@ -76,12 +76,7 @@ class Outbox extends Component {
                 key = {index}
                 viewMsg = {(event, msgID) => this.handleViewMessage(event, msgID)} 
                 messageID = {message.id}
-<<<<<<< HEAD
                 title = {message.title}
-=======
-                title = {message.subject}
-                toUserID = {message.toUserID}
->>>>>>> 6229fe192d14ae1879bcfc36791fce6bd3896fe0
                 toUser = {message.toUser}
                 msgDT = {message.createdAt}
                 msgBody = {message.body}

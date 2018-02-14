@@ -25,7 +25,6 @@ const MessageRow = (props) => {
               <a href="#" onClick={(event) => props.viewMsg(event, {
                 id : props.messageID,
                 title : props.title,
-                toUserID : props.toUserID,
                 toUser : props.toUser,
                 dateTime : props.msgDT,
                 msgBody   : props.msgBody,
@@ -37,14 +36,13 @@ const MessageRow = (props) => {
           {
               props.isReceived ? 
               <div className="col-md-3 message-from">
-                {props.fromUser} - (User ID: {props.fromUserID})
+                {props.fromUser}
               </div> :
               <div className="col-md-3 message-from">
-                {props.toUser} - (User ID: {props.toUserID})
-              </div>
+                {props.toUser}               </div>
           }
           <div className="col-md-2 message-is-read">
-            {props.isRead}
+            {props.isRead} {/*needs a conditional statement*/}
           </div>
           <div className="col-md-2 message-dt">
           {props.msgDT}
