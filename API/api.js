@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../models');
+var {outboxFormatter} = require('../util/formatter');
+
 const Op = db.Sequelize.Op;
 
 /* GET home page. */
@@ -68,7 +70,10 @@ router.get('/outbox/:userId', function(req, res, next) {
       ]
     })
     .then(function(communications) {
-      res.status(200).send(communications).end();
+      outboxFormatter(communications,function (formattedCommunications){
+        // console.log(formattedCommunications);
+        res.status(200).send(formattedCommunications).end();
+      });
     })
     .catch(function(err) {
       if (err) {

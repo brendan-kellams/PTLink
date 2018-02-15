@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Jumbotron } from 'react-bootstrap';
 
-import { BasicBtn, Header } from '../../components';
+import { BasicBtn, Header, Footer } from '../../components';
 
 class Home extends Component {
 
@@ -23,6 +24,22 @@ class Home extends Component {
         <Header 
           isUser={this.state.userID}
         />
+
+        <Jumbotron
+        className="main-jumbo">
+          
+          <h1>Hello, world!</h1>
+          <p>
+            This is a simple hero unit, a simple jumbotron-style component for calling
+            extra attention to featured content or information.
+          </p>
+          <p>
+            
+          </p>
+        </Jumbotron>
+
+        <div className="test-bkg"></div>
+
         <h1>HOME PAGE</h1>
 
         <section className="info">
@@ -41,6 +58,9 @@ class Home extends Component {
             btnTxt="Sign Up"
           />
         </section>
+        <Footer>
+          <i class="fa fa-copyright"></i> 2018 The Gorilla Gang
+        </Footer>
       </div>
     )
   }
