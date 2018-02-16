@@ -95,6 +95,7 @@ class Header extends Component {
     return (
       <div className="header">
         <LoginModal 
+          classes="login-modal"
           show={this.state.showModal} 
           handleClose={this.handleClose} >
           <LoginForm
@@ -107,7 +108,7 @@ class Header extends Component {
         
         <div className="main-image">
           <Parallax
-            offsetYMax={80}
+            offsetYMax={100}
             offsetYMin={-20}
           >
             <Link className="goHome" to="/">

@@ -3,7 +3,9 @@ import {Modal, Button} from 'react-bootstrap';
 
 const LoginModal = props => {
   return (
-    <Modal show={props.show} onHide={props.handleClose}>
+    <Modal 
+    className={props.classes}
+    show={props.show} onHide={props.handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Login To Your Account</Modal.Title>
       </Modal.Header>

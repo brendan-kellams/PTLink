@@ -9,7 +9,7 @@ const LoginForm = props => {
       <Col componentClass={ControlLabel} md={2}>
         Email
       </Col>
-      <Col md={10}>
+      <Col mdOffset={1} md={10} >
         <FormControl 
           type="email" 
           placeholder="Email"
@@ -21,7 +21,7 @@ const LoginForm = props => {
       <Col componentClass={ControlLabel} md={2}>
         Password
       </Col>
-      <Col md={10}>
+      <Col mdOffset={1} md={10}>
         <FormControl 
           type="password" 
           placeholder="Password"
@@ -30,8 +30,9 @@ const LoginForm = props => {
       </Col>
     </FormGroup>
     <FormGroup>
-      <Col mdOffset={2} md={10}>
+      <Col mdOffset={1} md={10}>
         <Button 
+          className="login-btn"
           type="submit"
           bsStyle="primary"
         >
