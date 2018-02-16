@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Header, SignUpInput, BasicBtn, Radio } from '../../components';
+import { Header, SignUpInput, BasicBtn, Radio, Footer } from '../../components';
 import {API} from '../../Utils';
 
 class Signup extends Component {
@@ -11,6 +11,7 @@ class Signup extends Component {
       userID: '',
       username: '',
       email: '',
+      school: '',
       password: '',
       role: false
     };
@@ -23,14 +24,17 @@ class Signup extends Component {
   handleChange(label, value) {
     this.setState({ [label]: value });
   }
+  
   handleSubmit(event) {
     event.preventDefault();
     let user = {
       username: this.state.username,
       password: this.state.password,
       email: this.state.email,
+      school: this.state.school,
       isTeacher: (this.state.role === 'Teacher')
     }
+
     API.signUpUser(user, (err, status) => {
       if (err) {
         alert("There has been an error with status: " + status);
@@ -47,47 +51,74 @@ class Signup extends Component {
 
   render() {
     return (
-      <div className='container-fluid home'>
+      <div className='container-fluid signup'>
         <Header
           isUser={this.state.userID}
         />
-        <h1>This is the signup page yo!</h1>
+        <div className="container main-content">
+          <div className="row app-info">
         
-        <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
 
-          <SignUpInput 
-            label='Username' 
-            value={this.state.username} 
-            handleChange={this.handleChange.bind(this,'username')} />
+            <SignUpInput 
+              label='Username' 
+              value={this.state.username} 
+              handleChange={this.handleChange.bind(this,'username')} 
+              placeholder='Username'
+            />
 
-          <SignUpInput 
-            label='Email Address' 
-            handleChange={this.handleChange.bind(this, 'email')} 
-            value={this.state.email}/>
+            <SignUpInput 
+              label='Email Address' 
+              handleChange={this.handleChange.bind(this, 'email')} 
+              value={this.state.email}
+              placeholder='Email Address'
+            />
 
-          <SignUpInput 
-            label='Password' 
-            handleChange={this.handleChange.bind(this,'password')} 
-            value={this.state.password} />
+            <SignUpInput 
+              label='Password' 
+              handleChange={this.handleChange.bind(this,'password')} 
+              value={this.state.password} 
+              placeholder='Password'
+              type="password"
+            />
 
-          <Radio 
-            name='Parent'  
-            label='Parent' 
-            handleChange={this.handleChange.bind(this, 'role')}
-            value={this.state.role==='Parent'}/>
+            <SignUpInput 
+              label='School' 
+              handleChange={this.handleChange.bind(this,'school')} 
+              value={this.state.school} 
+              placeholder='School'
+            />
 
-          <Radio 
-            name='Teacher'  
-            label='Teacher' 
-            handleChange={this.handleChange.bind(this, 'role')}
-            value={this.state.role==='Teacher'}/>
+            <Radio 
+              name='Parent'  
+              label='Parent' 
+              handleChange={this.handleChange.bind(this, 'role')}
+              value={this.state.role==='Parent'}
+            />
 
-          <BasicBtn 
-            classes='btn-primary' 
-            btnTxt='Sign Up' type='submit'/>
+            <Radio 
+              name='Teacher'  
+              label='Teacher' 
+              handleChange={this.handleChange.bind(this, 'role')}
+              value={this.state.role==='Teacher'}
+              />
 
-        </form>
+            <BasicBtn 
+              classes='btn-primary' 
+              btnTxt='Sign Up' type='submit'/>
+          </form>
+        </div>
       </div>
+
+      <Footer>
+          <div className="footer-wrapper">
+            <div className="shareRow">
+            <a href="//facebook.com/PT-Link-148731259172020/" target="_blank"><i className="fa fa-facebook-square"></i></a> 
+            <a href="//twitter.com/afGroff" target="_blank"><i className="fa fa-twitter-square"></i></a></div>
+            <div className="copyright"><i className="fa fa-copyright"></i> 2018 The Gorilla Gang</div>
+          </div>
+        </Footer>
+    </div>
     )
   }
 }

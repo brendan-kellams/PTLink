@@ -114,7 +114,6 @@ class Header extends Component {
           {(this.state.userPresent) ?
             <Button
               className="logoutBtn"
-              bsStyle="btn-outline-success"
               onClick={this.handleLogout}
             >
               Log Out
@@ -122,7 +121,6 @@ class Header extends Component {
             :
             <Button
               className="loginBtn"
-              bsStyle="btn-outline-success"
               onClick={this.handleShow}
             >
               Login
