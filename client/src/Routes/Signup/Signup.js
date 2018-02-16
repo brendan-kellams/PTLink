@@ -17,6 +17,8 @@ class Signup extends Component {
       password: '',
       role: false,
       disableEmail: false,
+      errorMsg    : 'hidden',
+      emailErr    : 'hidden',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -31,22 +33,41 @@ class Signup extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    let user = {
-      username: this.state.username,
-      password: this.state.password,
-      email: this.state.email,
-      school: this.state.school,
-      isTeacher: (this.state.role === 'Teacher')
-    }
 
-    API.signUpUser(user, (err, status) => {
-      if (err) {
-        alert("There has been an error with status: " + status);
+    this.setState({
+      errorMsg    : 'hidden',
+      emailErr    : 'hidden',
+    });
+
+    if (!Helper.propIsEmpty(this.state.username) &&
+        !Helper.propIsEmpty(this.state.email) &&
+        !Helper.propIsEmpty(this.state.password) &&
+        !Helper.propIsEmpty(this.state.school)) {
+      
+      if (Helper.validateEmail(this.state.email)) {
+        let user = {
+          username: this.state.username,
+          password: this.state.password,
+          email: this.state.email,
+          school: this.state.school,
+          isTeacher: (this.state.role === 'Teacher')
+        }
+          API.signUpUser(user, (err, status) => {
+            if (err) {
+              alert("There has been an error with status: " + status);
+            }
+            else {
+              alert("Profile Created!");
+            }
+          });
       }
       else {
-        alert("Profile Created!");
+        this.setState({emailErr : ''})
       }
-    });
+    }
+    else {
+      this.setState({errorMsg : ''})
+    }    
   }
 
   componentDidMount() {
@@ -67,7 +88,6 @@ class Signup extends Component {
         role: role
       });
     }
-    
   }
 
   render() {
@@ -84,7 +104,8 @@ class Signup extends Component {
           <div className="row app-info">
         
           <form onSubmit={this.handleSubmit}>
-
+            <span className={this.state.errorMsg + ' error error-message'}>Please fill in all the fields</span>
+            <span className={this.state.emailErr + ' error error-message'}>Please enter your email address</span>
             <SignUpInput 
               label='Username' 
               value={this.state.username} 
