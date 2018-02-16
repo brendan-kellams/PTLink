@@ -15,7 +15,7 @@ class Class extends Component {
       link: '',
       homework: '',
       duedate: '',
-      classroomID: 2,
+      ClassroomId: 2,
       users: []
     };
     this.handleChange = this.handleChange.bind(this);
@@ -29,6 +29,16 @@ class Class extends Component {
     alert('Class has been Updated');
     event.preventDefault();
     console.log(this.state);
+    // posting assignment
+    let requestObj = {
+      lessondate: this.state.lessondate,
+      topics: this.state.topics,
+      link: this.state.link,
+      homework: this.state.homework,
+      duedate: this.state.duedate,
+      ClassroomId: this.state.ClassroomId
+    }
+    console.log(requestObj);
   }
   componentDidMount() {
     API.getMyUsers((users) => {
@@ -96,7 +106,7 @@ class Class extends Component {
               value={this.state.homework}
             />
           </form>
-          <hr/>
+          <hr />
           <form onSubmit={this.handleSubmit}>
             <LessonSection
               SectionTitle='Lesson Plan'
@@ -116,7 +126,7 @@ class Class extends Component {
               value={this.state.homework}
             />
           </form>
-          <hr/>
+          <hr />
           <form onSubmit={this.handleSubmit}>
             <LessonSection
               SectionTitle='Lesson Plan'
@@ -137,7 +147,7 @@ class Class extends Component {
               value={this.state.homework}
             />
           </form>
-          <hr/>
+          <hr />
           <form onSubmit={this.handleSubmit}>
             <LessonSection
               SectionTitle='Lesson Plan'
@@ -166,7 +176,6 @@ class Class extends Component {
             handleClick={this.handleShow}
           />
         </Footer>
-        />
       </div>
     )
   }
