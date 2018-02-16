@@ -12,14 +12,34 @@ class ManageClasses extends Component {
   }
 
   componentDidMount() {
-    // call API to get userID (or null)
-    API.getMyClasses((classes) => {
-      this.setState({
-        classes : classes
-      });
+
+    API.checkForUser((err,response) => {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        if (response.status === 200) {
+          this.setState({
+            userPresent :true,
+            userId:response.data.id,
+            username : response.data.username,
+            isTeacher:response.data.isTeacher
+          });
+            // call API to get userID (or null)
+          API.getMyClasses(response.data.id, (err, res) => {
+              this.setState({
+                classes : res.data
+              });
+            });
+          }
+        else if (response.status === 204) {
+          this.setState({
+            userPresent : false
+          });
+        }
+      }
     });
   }
-
   handleNavToggle(isOpen) {
     if (isOpen) {
       this.setState({navStateClass : 'main-nav-opened'})  

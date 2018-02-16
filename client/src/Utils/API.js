@@ -73,39 +73,67 @@ export default {
       callback();
     }
   },
-  getMyClasses: function(callback) {
+  getInstructorClasses: function(id, callback) {
+    axios.get('/api/instructorclasses/'+id)
+    .then(function(classrooms) {
+      if (typeof callback === 'function') {
+        callback(null, classrooms);
+      }
+    })
+    .catch(function(err) {
+      if (typeof callback === 'function') {
+        callback(err, err.response.status);
+      }
+    });
+  },
+  getMyClasses: function(id, callback) {
     console.log('calling API to classes I have access to');
 
-    const yourClasses = [
-      {
-        classID : 0,
-        period    : 1,
-        name      : 'Math 101',
-        school    : 'Murray Manor Elementry',
-        term      : 'Winter',
-        year      : '2018',
-      },
-      {
-        classID : 1,
-        period    : 6,
-        name      : 'English 1A',
-        school    : 'University of California, San Diego',
-        term      : 'Fall',
-        year      : '2017',
-      },
-      {
-        classID : 2,
-        period    : 2,
-        name      : 'Rocket Science 202B',
-        school    : 'Murray Manor Elementry',
-        term      : 'Summer',
-        year      : '2017',
-      },
-    ];
+    axios.get('/api/instructorclasses/'+id)
+    .then(function(response) {
+      console.log(response);
+      if (typeof callback === 'function') {
+        callback(null, response);
+      }      
+    })
+    .catch(function(err) {
+      if (typeof callback === 'function') {
+        callback(err, err.response.status);
+      }
+    });
 
-    if (typeof callback === 'function') {
-      callback(yourClasses);
-    }
+    // console.log('calling API to classes I have access to');
+
+    // const yourClasses = [
+    //   {
+    //     classID : 0,
+    //     period    : 1,
+    //     name      : 'Math 101',
+    //     school    : 'Murray Manor Elementry',
+    //     term      : 'Winter',
+    //     year      : '2018',
+    //   },
+    //   {
+    //     classID : 1,
+    //     period    : 6,
+    //     name      : 'English 1A',
+    //     school    : 'University of California, San Diego',
+    //     term      : 'Fall',
+    //     year      : '2017',
+    //   },
+    //   {
+    //     classID : 2,
+    //     period    : 2,
+    //     name      : 'Rocket Science 202B',
+    //     school    : 'Murray Manor Elementry',
+    //     term      : 'Summer',
+    //     year      : '2017',
+    //   },
+    // ];
+
+    // if (typeof callback === 'function') {
+    //   callback(yourClasses);
+    // }
   },
   setMessageRead: function(msgID, callback) {
     console.log('calling API to mark a message as READ');

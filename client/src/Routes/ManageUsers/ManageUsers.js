@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { MyMainNav, MyMainContent, InviteUser, UsersList} from '../../components';
+import { MyMainNav, MyMainContent, InviteUser, UsersList, ClassPanel} from '../../components';
 import { Helper, API } from '../../Utils';
 
 
@@ -9,15 +9,43 @@ class ManageUsers extends Component {
   state = {
     navStateClass   : '',
     users           : [],
+    classrooms      : []
   }
 
   componentDidMount() {
     // call API to get userID (or null)
     // if valid userID: call API to get a list of all user accessible by this teacher
-    API.getMyUsers((users) => {
-      this.setState({
-        users : users
-      });
+    API.checkForUser((err, response) => {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        if (response.status === 200) {
+          this.setState({
+            userPresent: true,
+            userId: response.data.id,
+            username: response.data.username,
+            isTeacher: response.data.isTeacher
+          });
+            API.getInstructorClasses(this.state.userId, (err, response) => {
+              if (err) {
+                console.log(err);
+              }
+              else {
+                if (response.status === 200) {
+                  this.setState({
+                    classrooms: response.data
+                  });
+                }
+              }
+            });
+        }
+        else if (response.status === 204) {
+          this.setState({
+            userPresent: false
+          });
+        }
+      }
     });
   }
 
@@ -46,19 +74,10 @@ class ManageUsers extends Component {
         <MyMainContent
           title="manage users"
           contentClasses ='manage-users'>
-        
-          <div className="user-container">
-            <InviteUser />
-            This is the manage user page, teacher access ONLY<br/>
 
-            <hr/>
-            
-            <h3>Users in your classes</h3>
-            <UsersList
-              users = {this.state.users}
-              doDelete = {(event, userID) => this.handleDeleteUser(event, userID)}
-            />
-          </div>
+          {this.state.classrooms.map(classroom => {
+            return <ClassPanel/>
+          })}
 
         </MyMainContent>
       </div>
