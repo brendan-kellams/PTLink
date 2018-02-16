@@ -27,7 +27,6 @@ class ManageUsers extends Component {
             username: response.data.username,
             isTeacher: response.data.isTeacher
           });
-          if (isTeacher) {
             API.getInstructorClasses(this.state.userId, (err, response) => {
               if (err) {
                 console.log(err);
@@ -40,7 +39,6 @@ class ManageUsers extends Component {
                 }
               }
             });
-          }
         }
         else if (response.status === 204) {
           this.setState({
