@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { Header, SignUpInput, BasicBtn, Radio, Footer } from '../../components';
-import {API} from '../../Utils';
+import { API, Helper } from '../../Utils';
 
 class Signup extends Component {
   constructor(props) {
