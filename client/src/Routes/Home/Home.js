@@ -12,9 +12,9 @@ class Home extends Component {
     // call API to get userID (or null)
   }
 
-  handleSignup (event) {
+  handleSignup (event, role) {
     event.preventDefault();
-    this.props.history.push('/signup');
+    this.props.history.push('/signup?role=' + role);
   }
 
   render() {
@@ -41,7 +41,7 @@ class Home extends Component {
               </div>
               <BasicBtn 
                 classes="btn-success signupBtn" 
-                handleClick={event => this.handleSignup(event)} 
+                handleClick={event => this.handleSignup(event, 'Teacher')} 
                 btnTxt="Sign Up"
               />  
             </div>
@@ -52,7 +52,7 @@ class Home extends Component {
               </div>
               <BasicBtn 
                 classes="btn-info signupBtn" 
-                handleClick={event => this.handleSignup(event)} 
+                handleClick={event => this.handleSignup(event, 'Parent')} 
                 btnTxt="Sign Up"
               />  
             </div>

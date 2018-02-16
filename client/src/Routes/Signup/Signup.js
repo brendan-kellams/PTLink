@@ -6,7 +6,9 @@ import { API, Helper } from '../../Utils';
 
 class Signup extends Component {
   constructor(props) {
+
     super(props);
+
     this.state = { 
       userID: '',
       username: '',
@@ -24,6 +26,7 @@ class Signup extends Component {
 
   handleChange(label, value) {
     this.setState({ [label]: value });
+    console.log('gyasdf', label, value);
   }
 
   handleSubmit(event) {
@@ -48,12 +51,21 @@ class Signup extends Component {
 
   componentDidMount() {
     // call API to get userID (or null)
-    let email = Helper.getGETVariable('e');
+    let email = Helper.getGETVariable('e'),
+        role  = Helper.getGETVariable('role');
+
     if (Helper.validateEmail(email)) {
       this.setState({
         email: email,
-        disableEmail : true
+        disableEmail: true
       });  
+    }
+    if (typeof role !== 'undefined' && 
+        role.trim() === 'Teacher' || 
+        role.trim() === 'Parent') {
+      this.setState({
+        role: role
+      });
     }
     
   }
