@@ -62,7 +62,10 @@ class Class extends Component {
           handleClose={this.handleClose}
         >
           <LessonForm
-            handleChange={this.handleChange}
+            label="link"
+            handleChange={this.handleChange.bind(this)}
+            handleSubmit={this.handleSubmit}
+            value={this.state}
           />
         </LessonModal>
         <MyMainNav
@@ -97,8 +100,7 @@ class Class extends Component {
           <form onSubmit={this.handleSubmit}>
             <LessonSection
               SectionTitle='Lesson Plan'
-              label='link'
-              handleChange={this.handleChange.bind(this, 'link')}
+              handleChange={this.handleChange.bind(this, 'link', 'homework')}
               value={this.state.link}
             />
             <LessonSection

@@ -3,7 +3,7 @@ import React from 'react';
 
 const Radio = (props) => {
   return (
-    <div>
+    <div className="radio-wrapper">
       <label className='radio-inline'>
         <input
           type='radio'
