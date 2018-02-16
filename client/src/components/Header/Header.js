@@ -92,33 +92,42 @@ class Header extends Component {
 
   render() {
     return (
-      <div>
+      <div className="header">
         <LoginModal 
           show={this.state.showModal} 
-          handleClose={this.handleClose}
-        >
+          handleClose={this.handleClose} >
           <LoginForm
             handleLogin={this.handleLogin}
             handleChange={this.handleChange}
           />
         </LoginModal>
-        <nav className="navbar navbar-light bg-light">
-          <Link to="/" className="navbar-brand">PT-Link</Link>
-            {(this.state.userPresent) ?
-              <Button
-                bsStyle="danger"
-                onClick={this.handleLogout}
-              >
-                Log Out
-              </Button>
-              :
-              <Button
-                bsStyle="success"
-                onClick={this.handleShow}
-              >
-                Login
-              </Button>
-            }
+        
+        <div className="main-image">
+          <h1 className="brand-font site-title">
+            <img className="site-logo" src="/images/pt-link-152.png"/>
+            <span className="title">PT-Link</span>
+          </h1>
+          <h3 className="brand-font site-title-2">Connecting teachers and parents</h3>
+        </div>
+
+        <nav className="navbar navbar-light bg-light navbar-fixed-top">
+          {(this.state.userPresent) ?
+            <Button
+              className="logoutBtn"
+              bsStyle="btn-outline-success"
+              onClick={this.handleLogout}
+            >
+              Log Out
+            </Button>
+            :
+            <Button
+              className="loginBtn"
+              bsStyle="btn-outline-success"
+              onClick={this.handleShow}
+            >
+              Login
+            </Button>
+          }
         </nav>
       </div>
     );
