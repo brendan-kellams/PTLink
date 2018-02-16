@@ -15,7 +15,7 @@ class Class extends Component {
       link: '',
       homework: '',
       duedate: '',
-      ClassroomId: 2,
+      classroomId: 2,
       users: []
     };
     this.handleChange = this.handleChange.bind(this);
@@ -36,9 +36,18 @@ class Class extends Component {
       link: this.state.link,
       homework: this.state.homework,
       duedate: this.state.duedate,
-      ClassroomId: this.state.ClassroomId
+      classroomId: this.state.classroomId
     }
-    console.log(requestObj);
+    API.addAssignment(requestObj, (err,response) => {
+      if(err) {
+        console.log(err);
+      }
+      else {
+        if(response.status === 200) {
+          alert('post added');
+        }
+      }
+    })
   }
   componentDidMount() {
     API.getMyUsers((users) => {
