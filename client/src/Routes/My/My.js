@@ -47,7 +47,6 @@ class My extends Component {
   render() {
     return (
       <div className={"container-fluid my " + this.state.navStateClass}>
-        <Header />
         <MyMainNav 
           onToggle={(isOpen) => this.handleNavToggle(isOpen)}
         />
