@@ -1,25 +1,209 @@
+/***********************/
+/* Site-Wise Variables */
+.brand-font {
+  /*font-family: 'IM Fell English SC', serif;  */
+  font-family: 'Krona One', sans-serif;
+}
+.zoom {
+  transition: transform .2s; /* Animation */
+}
+.zoom:hover {
+    transform: scale(1.1); 
+}
+
+
+/****************/
 /* Public Pages */
 
 /* Home Page | Landing Page */
-.home .main-jumbo {
-  background-image: url('/images/class.jpg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 100%;
-  border: 1px solid black; 
+.home.container-fluid {
+  padding: 0;
+}
+.home .site-title {
+  font-size: 40px;
+  background: #5DADE2;
+  padding: 5px 10px;
+  color: #212F3D;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 6px -6px black;
 }
 
-.home .test-bkg {
+@media (min-width: 768px) {
+  .home .site-title {
+    font-size: 50px;
+  }
+}
+
+.home .site-title .site-logo {
+  width: 80px;
+  opacity: 0.7;
+  margin-right: 5px;
+}
+
+.home .site-title-2 {
+  background: #5DADE2;
+  padding: 10px 10px 5px;
+  color: #212F3D;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 15px;
+  text-align: center;
+  box-shadow: 0 8px 6px -6px black;
+}
+@media (min-width: 768px) {
+  .home .site-title-2 {
+    font-size: 20px;
+  }
+}
+.home .main-image {
+  background-image: url('/images/anime_school.jpg');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.home .app-info {
+  text-align: center;
+  padding: 10px;
+}
+
+.home .row {
+  margin: 25px 0;
+}
+
+.home .zoom-wrapper {
+  position: relative;
+  border: 1px solid #2E86C1;  
+  max-width: 100%;
+  width: 350px;
+  height: 350px;
+  overflow: hidden;
+}
+.home .signup-img::before {
+  content: ' ';
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 40px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  transition: all .2s; /* Animation */
+}
+.home .signup-img:hover::before{
+  opacity: 0.1;
+}
+.home .teacher-signup .signup-img::before {
+  content: 'Teachers';
+}
+.home .parents-signup .signup-img::before {
+  content: 'Parents';
+}
+
+.home .signup-img {
+  width: 350px;
+  height: 350px;
+}
+.home .signup-block {
+  display: flex;
+  justify-content: center;
+}
+
+.home .teacher-signup .signup-img {
   background-image: url('/images/teacher.jpg');
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size: 100%;
-  border: 1px solid black;  
-  width: 400px;
-  height: 400px;
 }
+.home .parents-signup .signup-img {
+  background-image: url('/images/parent.jpg');
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 100%;
+}
+
+.home h1 {
+  margin-top: 0;
+}
+
+.home footer {
+  text-align: center;
+  min-height: 120px;
+  background: #85C1E9;
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  border-top: 1px solid #2E86C1;
+}
+
+.home footer .fa-facebook-square,
+.home footer .fa-twitter-square {
+  font-size: 35px;
+  margin: 0 5px;
+}
+
+.home footer .footer-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home footer a {
+  color: #154360;
+}
+.home footer a:hover {
+  color: white;
+}
+
+.home footer .footer-wrapper .shareRow {
+  margin: 10px 0;
+}
+.home footer .footer-wrapper .copyright {
+  font-weight: bold;
+}
+
+.home .header .navbar {
+  text-align: right;
+  padding: 10px 20px;
+}
+
+.home .header .navbar button {
+  width: 150px;
+}
+
+.home .header .navbar .loginBtn {
+  border-color: #5cb85c;
+  color: #5cb85c;
+  font-weight: bold;
+  background-color: transparent;
+  transition: all .2s; /* Animation */
+}
+.home .header .navbar .loginBtn:hover {
+  color: white;
+  background-color: #5cb85c;
+}
+
+.home .header .navbar-fixed-top {
+  position: absolute;
+}
+
+/************/
+/* My Pages */
 .my .main-content {
   margin-left: 100px;
+  padding: 20px 0;
 }
 .my.main-nav-opened .main-content {
   margin-left: 240px;
@@ -31,13 +215,8 @@
   color: red;
   font-weight: bold;
 }
-
 .navbar-primary-menu .nav-label {
   padding-left: 10px;
-}
-
-.main-content {
-  padding: 20px 0;
 }
 .main-content h1 {
   text-transform: uppercase;
