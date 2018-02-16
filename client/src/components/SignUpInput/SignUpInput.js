@@ -10,6 +10,7 @@ const SignUpInput = (props) => {
                 value={props.value}
                 placeholder={props.placeholder}
                 type={props.type ? props.type : 'text'}
+                disabled={props.isDisabled}
             />
         </div>
     )

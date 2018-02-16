@@ -13,7 +13,8 @@ class Signup extends Component {
       email: '',
       school: '',
       password: '',
-      role: false
+      role: false,
+      disableEmail: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -47,6 +48,14 @@ class Signup extends Component {
 
   componentDidMount() {
     // call API to get userID (or null)
+    let email = Helper.getGETVariable('e');
+    if (Helper.validateEmail(email)) {
+      this.setState({
+        email: email,
+        disableEmail : true
+      });  
+    }
+    
   }
 
   render() {
@@ -76,6 +85,7 @@ class Signup extends Component {
               handleChange={this.handleChange.bind(this, 'email')} 
               value={this.state.email}
               placeholder='Email Address'
+              isDisabled={this.state.disableEmail}
             />
 
             <SignUpInput 
