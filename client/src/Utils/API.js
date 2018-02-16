@@ -86,7 +86,7 @@ export default {
       }
     });
   },
-  getMyClasses: function(callback) {
+  getMyClasses: function(id, callback) {
     console.log('calling API to classes I have access to');
 
     axios.get('/api/instructorclasses/'+id)
