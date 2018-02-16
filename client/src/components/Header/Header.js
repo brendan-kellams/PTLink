@@ -103,10 +103,12 @@ class Header extends Component {
         </LoginModal>
         
         <div className="main-image">
-          <h1 className="brand-font site-title">
-            <img className="site-logo" src="/images/pt-link-152.png"/>
-            <span className="title">PT-Link</span>
-          </h1>
+          <a className="goHome" href="/">
+            <h1 className="brand-font site-title">
+              <img className="site-logo" src="/images/pt-link-152.png"/>
+              <span className="title">PT-Link</span>
+            </h1>
+          </a>
           <h3 className="brand-font site-title-2">Connecting teachers and parents</h3>
         </div>
 

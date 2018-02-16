@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Jumbotron } from 'react-bootstrap';
 
 import { BasicBtn, Header, Footer } from '../../components';
 

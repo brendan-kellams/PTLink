@@ -24,7 +24,7 @@ class Signup extends Component {
   handleChange(label, value) {
     this.setState({ [label]: value });
   }
-  
+
   handleSubmit(event) {
     event.preventDefault();
     let user = {
@@ -56,6 +56,10 @@ class Signup extends Component {
           isUser={this.state.userID}
         />
         <div className="container main-content">
+          <h3 className="brand-font signup-instruction">
+            Fill out the form below to join us!
+          </h3>
+
           <div className="row app-info">
         
           <form onSubmit={this.handleSubmit}>
@@ -89,22 +93,24 @@ class Signup extends Component {
               placeholder='School'
             />
 
-            <Radio 
-              name='Parent'  
-              label='Parent' 
-              handleChange={this.handleChange.bind(this, 'role')}
-              value={this.state.role==='Parent'}
-            />
-
-            <Radio 
-              name='Teacher'  
-              label='Teacher' 
-              handleChange={this.handleChange.bind(this, 'role')}
-              value={this.state.role==='Teacher'}
+            <div className="radio-row">
+              <Radio 
+                name='Parent'  
+                label='Parent' 
+                handleChange={this.handleChange.bind(this, 'role')}
+                value={this.state.role==='Parent'}
               />
 
+              <Radio 
+                name='Teacher'  
+                label='Teacher' 
+                handleChange={this.handleChange.bind(this, 'role')}
+                value={this.state.role==='Teacher'}
+              />
+            </div>
+
             <BasicBtn 
-              classes='btn-primary' 
+              classes='btn-primary signupBtn' 
               btnTxt='Sign Up' type='submit'/>
           </form>
         </div>
