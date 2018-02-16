@@ -13,8 +13,8 @@ const LessonForm = props => {
                     <FormControl
                         type="link"
                         placeholder="Lesson Plan"
-                        onChange={event => props.handleChange(event.target.value)}
-                        value={props.value}/>
+                        onChange={event => props.handleChange('link', event.target.value)}
+                        value={props.value.link}/>
                 </Col>
             </FormGroup>
             <FormGroup controlId="topics">
@@ -25,8 +25,8 @@ const LessonForm = props => {
                     <FormControl
                         type="topics"
                         placeholder="Topics"
-                        onChange={event => props.handleChange(event.target.value)}
-                        value={props.value}/>
+                        onChange={event => props.handleChange('topics', event.target.value)}
+                        value={props.value.topics}/>
                 </Col>
             </FormGroup>
             <FormGroup controlId="homework">
@@ -37,8 +37,8 @@ const LessonForm = props => {
                     <FormControl
                         type="homework"
                         placeholder="Homework"
-                        onChange={event => props.handleChange(event.target.value)}
-                        value={props.value}/>
+                        onChange={event => props.handleChange('homework', event.target.value)}
+                        value={props.value.homework}/>
                 </Col>
             </FormGroup>
             <FormGroup controlId="duedate">
@@ -47,10 +47,10 @@ const LessonForm = props => {
                 </Col>
                 <Col md={10}>
                     <FormControl
-                        type="duedate"
+                        type="date"
                         placeholder="Due Date"
-                        onChange={event => props.handleChange(event.target.value)}
-                        value={props.value}/>
+                        onChange={event => props.handleChange('duedate', event.target.value)}
+                        value={props.value.duedate}/>
                 </Col>
             </FormGroup>
             <FormGroup>
