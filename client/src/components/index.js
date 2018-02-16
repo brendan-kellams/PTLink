@@ -22,3 +22,4 @@ export {default as ComposeMessage} from './ComposeMessage';
 export {default as LoginModal} from './LoginModal';
 export {default as LoginForm} from './LoginForm';
 export {default as ClassDiv} from './ClassDiv';
+export {default as ClassPanel} from './ClassPanel';

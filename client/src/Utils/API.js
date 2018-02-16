@@ -60,6 +60,19 @@ export default {
       callback();
     }
   },
+  getInstructorClasses: function(id, callback) {
+    axios.get('/api/instructorclasses/'+id)
+    .then(function(classrooms) {
+      if (typeof callback === 'function') {
+        callback(null, classrooms);
+      }
+    })
+    .catch(function(err) {
+      if (typeof callback === 'function') {
+        callback(err, err.response.status);
+      }
+    });
+  },
   getMyClasses: function(callback) {
     console.log('calling API to classes I have access to');
 
