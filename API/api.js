@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../models');
-var {outboxFormatter} = require('../util/formatter');
+var {outboxFormatter, inboxFormatter} = require('../util/formatter');
 
 const Op = db.Sequelize.Op;
 
@@ -71,7 +71,6 @@ router.get('/outbox/:userId', function(req, res, next) {
     })
     .then(function(communications) {
       outboxFormatter(communications,function (formattedCommunications){
-        // console.log(formattedCommunications);
         res.status(200).send(formattedCommunications).end();
       });
     })
@@ -99,11 +98,12 @@ router.get('/inbox/:userId', function(req, res, next) {
     ],
     where: {
       recipientId: req.params.userId
-      
     }
   })
   .then(function(results) {
-    res.status(200).send(results).end();
+    inboxFormatter(results, function(formattedResults) {
+      res.status(200).send(formattedResults).end();
+    });
   })
   .catch(function(err) {
     if (err) {
@@ -112,7 +112,7 @@ router.get('/inbox/:userId', function(req, res, next) {
     }
   });
 });
-
+/** Creates class and sets instructor id */
 router.post('/classroom', function(req, res, next) {
   // Create the classroom
   db.Classroom.create({
@@ -142,7 +142,7 @@ router.post('/classroom', function(req, res, next) {
     }
   });
 });
-
+/** Gets classroom by id and includes the instructor */
 router.get('/classroom/:classId', function(req, res, next) {
   db.Classroom.findById(req.params.classId, {
     include: [
@@ -163,7 +163,7 @@ router.get('/classroom/:classId', function(req, res, next) {
     }
   });
 });
-
+/** Teacher invites parent by classroomId and email */
 router.post('/addparticipant', function(req, res, next) {
   db.Participant.create({
     userEmail: req.body.userEmail,
@@ -179,7 +179,7 @@ router.post('/addparticipant', function(req, res, next) {
     }
   });
 });
-
+/** Gets all classrooms user is invited to. */
 router.get('/classroombyuser/:userId', function(req, res, next) {
   db.User.findById(req.params.userId)
   .then(function(user) {
@@ -202,6 +202,50 @@ router.get('/classroombyuser/:userId', function(req, res, next) {
     })
     .then(function(classrooms) {
       res.status(200).send(classrooms).end();
+    })
+    .catch(function(err) {
+      if (err) {
+        res.status(500).end();
+        throw err;
+      }
+    });
+  })
+  .catch(function(err) {
+    if (err) {
+      res.status(500).end();
+      throw err;
+    }
+  });
+});
+/** Get all classes by instructor */
+router.get('/instructorclasses/:instructorId', function(req, res, next) {
+  db.User.findById(req.params.instructorId)
+  .then(function(instructor) {
+    instructor.getClassrooms()
+    .then(function(classrooms) {
+      res.status(200).send(classrooms).end();
+    })
+    .catch(function(err) {
+      if (err) {
+        res.status(500).end();
+        throw err;
+      }
+    });
+  })
+  .catch(function(err) {
+    if (err) {
+      res.status(500).end();
+      throw err;
+    }
+  });
+});
+/** Get all participants in a class */
+router.get('/participants/:classroomId', function(req, res, next) {
+  db.Classroom.findById(req.params.classroomId)
+  .then(function(classroom) {
+    classroom.getParticipants()
+    .then(function(participants) {
+      res.status(200).send(participants).end();
     })
     .catch(function(err) {
       if (err) {

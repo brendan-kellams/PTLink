@@ -13,11 +13,42 @@ class Inbox extends Component {
 
   componentDidMount() {
     // get messages received
-    API.getMessagesReceived((messages) => {
-      this.setState({
-        received : messages
-      });
+    API.checkForUser((err, userResponse) => {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        if (userResponse.status === 200) {
+          this.setState({
+            userPresent: true,
+            username: userResponse.data.username,
+            userId: userResponse.data.id
+          });
+          API.getMessagesReceived(userResponse.data.id, (err, messageResponse) => {
+            if (err) {
+              console.log(err);
+            }
+            else {
+              if (messageResponse.status === 200) {
+                this.setState({
+                  received: messageResponse.data
+                });
+              }
+            }
+          });
+        }
+        else if (userResponse.status === 204) {
+          this.setState({
+            userPresent: false
+          });
+        }
+      }
     });
+    // API.getMessagesReceived((messages) => {
+    //   this.setState({
+    //     received : messages
+    //   });
+    // });
   }
 
   handleDeleteMessage(event, msgID) {
@@ -48,12 +79,12 @@ class Inbox extends Component {
                 isReceived = {true}
                 viewMsg = {(event, msgID) => this.handleViewMessage(event, msgID)} 
                 messageID = {message.id}
-                title = {message.title}
-                fromUserID = {message.fromUserID}
-                fromUser = {message.fromUser}
-                isRead = {message.isRead}
-                msgDT = {message.dateTime}
-                msgBody = {message.msgBody}
+                title = {message.subject}
+                fromUserID = {message.senderId}
+                fromUser = {message.sender}
+                isRead = {message.unread}
+                msgDT = {message.createdAt}
+                msgBody = {message.body}
                 handleDelete = {(event, msgObj) => this.handleDeleteMessage(event, msgObj)}
               />
             );

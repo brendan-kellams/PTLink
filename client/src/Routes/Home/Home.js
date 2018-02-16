@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Jumbotron } from 'react-bootstrap';
 
 import { BasicBtn, Header, Footer } from '../../components';
 
@@ -64,9 +63,9 @@ class Home extends Component {
         <Footer>
           <div className="footer-wrapper">
             <div className="shareRow">
-            <a href="//facebook.com/PT-Link-148731259172020/" target="_blank"><i class="fa fa-facebook-square"></i></a> 
-            <a href="//twitter.com/afGroff" target="_blank"><i class="fa fa-twitter-square"></i></a></div>
-            <div className="copyright"><i class="fa fa-copyright"></i> 2018 The Gorilla Gang</div>
+            <a href="//facebook.com/PT-Link-148731259172020/" target="_blank"><i className="fa fa-facebook-square"></i></a> 
+            <a href="//twitter.com/afGroff" target="_blank"><i className="fa fa-twitter-square"></i></a></div>
+            <div className="copyright"><i className="fa fa-copyright"></i> 2018 The Gorilla Gang</div>
           </div>
         </Footer>
       </div>

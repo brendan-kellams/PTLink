@@ -10,6 +10,20 @@ const formatter = {
 			recipients = "";
 		}
 		cb(raw);
+	},
+	inboxFormatter(raw, cb) {
+		let responseObj = [];
+		for(let i = 0; i < raw.length; i++) {
+			responseObj.push({});
+			responseObj[i].id = raw[i].Communication.id;
+			responseObj[i].unread = raw[i].unread;
+			responseObj[i].createdAt = raw[i].createdAt;
+			responseObj[i].subject = raw[i].Communication.subject;
+			responseObj[i].body = raw[i].Communication.body;
+			responseObj[i].senderId = raw[i].Communication.senderId;
+			responseObj[i].sender = raw[i].Communication.User.username;
+		}
+		cb(responseObj);
 	}
 
 };

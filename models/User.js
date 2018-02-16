@@ -33,7 +33,9 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: 'senderId',
       constraints: false
     });
-
+    User.hasMany(model.Classroom, {
+      foreignKey: 'instructorId'
+    });
   }
 
 

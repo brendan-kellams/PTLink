@@ -24,12 +24,19 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1]
       }
-    }   
+    },
+    schoolName: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [1]
+      }
+    }
   });
 
   Classroom.associate = function(model) {
     Classroom.belongsTo(model.User, {as: 'instructor'});
     Classroom.hasMany(model.Assignment);
+    Classroom.hasMany(model.Participant);
   }
 
   return Classroom;
