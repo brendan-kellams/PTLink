@@ -226,6 +226,20 @@
   background: #5cb85c;
 }
 
+.home .header .navbar .logoutBtn,
+.signup .header .navbar .logoutBtn {
+  border-color: #dc3545;
+  color: #dc3545; 
+  font-weight: bold;
+  background: transparent;
+  transition: all .2s; /* Animation */
+}
+.home .header .navbar .logoutBtn:hover,
+.signup .header .navbar .logoutBtn:hover {
+  color: black;
+  background: #dc3545;
+}
+
 .home .header .navbar-fixed-top,
 .signup .header .navbar-fixed-top {
   position: absolute;
