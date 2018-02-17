@@ -19,10 +19,11 @@ const LessonForm = props => {
             </FormGroup>
             <FormGroup controlId="link">
                 <Col componentClass={ControlLabel} md={2}>
-                    Plan
+                    Lesson Plan
                 </Col>
                 <Col md={10}>
                     <FormControl
+                        componentClass='textarea'
                         type="link"
                         placeholder="Lesson Plan"
                         onChange={event => props.handleChange('link', event.target.value)}
@@ -35,6 +36,7 @@ const LessonForm = props => {
                 </Col>
                 <Col md={10}>
                     <FormControl
+                        componentClass='textarea'
                         type="topics"
                         placeholder="Topics"
                         onChange={event => props.handleChange('topics', event.target.value)}
@@ -47,6 +49,7 @@ const LessonForm = props => {
                 </Col>
                 <Col md={10}>
                     <FormControl
+                        componentClass='textarea'
                         type="homework"
                         placeholder="Homework"
                         onChange={event => props.handleChange('homework', event.target.value)}
