@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { LessonForm, LessonModal, LessonSection, Footer, MyMainNav, MyMainContent, BasicBtn } from '../../components';
+import { LessonForm, LessonModal, Footer, SectionForm } from '../../components';
+import { MyMainNav, MyMainContent, BasicBtn } from '../../components';
+
 import { API } from '../../Utils';
+
+import './Class.css';
 
 class Class extends Component {
   constructor(props) {
@@ -16,7 +20,21 @@ class Class extends Component {
       homework: '',
       duedate: '',
       classroomId: 2,
-      users: []
+      users: [],
+      classObj: {
+        id: 0,
+        name: "Mr. Kellams' Math 101",
+      },
+      classNotes: [
+        {
+          id: 0,
+          date: '02/28/2018',
+        },
+        {
+          id: 1,
+          date: '01/22/2018',
+        }
+      ]
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -63,7 +81,6 @@ class Class extends Component {
     this.setState({ showModal: true });
   }
 
-
   handleNavToggle(isOpen) {
     if (isOpen) {
       this.setState({ navStateClass: 'main-nav-opened' });
@@ -75,11 +92,10 @@ class Class extends Component {
 
   render() {
     return (
-      <div className={'container-fluid my ' + this.state.navStateClass}>
+      <div className={'container-fluid my my-class ' + this.state.navStateClass}>
         <LessonModal
           show={this.state.showModal}
-          handleClose={this.handleClose}
-        >
+          handleClose={this.handleClose}>
           <LessonForm
             label="link"
             handleChange={this.handleChange.bind(this)}
@@ -87,100 +103,30 @@ class Class extends Component {
             value={this.state}
           />
         </LessonModal>
+
         <MyMainNav
           onToggle={(isOpen) => this.handleNavToggle(isOpen)}
         />
         <MyMainContent
-          title='Welcome!'
+          title={this.state.classObj.name}
           contentClasses='class-details'>
-          <h1>Mrs. Simpson's 7th Grade Math Class</h1>
-
-          <form onSubmit={this.handleSubmit}>
-            <LessonSection
-              SectionTitle='Lesson Plan'
-              label='link'
-              handleChange={this.handleChange.bind(this, 'link')}
-              value={this.state.link}
-            />
-            <LessonSection
-              SectionTitle='Covered In Class'
-              label='topics'
-              handleChange={this.handleChange.bind(this, 'topics')}
-              value={this.state.topics}
-            />
-            <LessonSection
-              SectionTitle='Homework'
-              label="homework"
-              handleChange={this.handleChange.bind(this, 'homework')}
-              value={this.state.homework}
-            />
-          </form>
-          <hr />
-          <form onSubmit={this.handleSubmit}>
-            <LessonSection
-              SectionTitle='Lesson Plan'
-              handleChange={this.handleChange.bind(this, 'link', 'homework')}
-              value={this.state.link}
-            />
-            <LessonSection
-              SectionTitle='Covered In Class'
-              label='topics'
-              handleChange={this.handleChange.bind(this, 'topics')}
-              value={this.state.topics}
-            />
-            <LessonSection
-              SectionTitle='Homework'
-              label="homework"
-              handleChange={this.handleChange.bind(this, 'homework')}
-              value={this.state.homework}
-            />
-          </form>
-          <hr />
-          <form onSubmit={this.handleSubmit}>
-            <LessonSection
-              SectionTitle='Lesson Plan'
-              label='link'
-              handleChange={this.handleChange.bind(this, 'link')}
-              value={this.state.link}
-            />
-            <LessonSection
-              SectionTitle='Covered In Class'
-              label='topics'
-              handleChange={this.handleChange.bind(this, 'topics')}
-              value={this.state.topics}
-            />
-            <LessonSection
-              SectionTitle='Homework'
-              label="homework"
-              handleChange={this.handleChange.bind(this, 'homework')}
-              value={this.state.homework}
-            />
-          </form>
-          <hr />
-          <form onSubmit={this.handleSubmit}>
-            <LessonSection
-              SectionTitle='Lesson Plan'
-              label='link'
-              handleChange={this.handleChange.bind(this, 'link')}
-              value={this.state.link}
-            />
-            <LessonSection
-              SectionTitle='Covered In Class'
-              label='topics'
-              handleChange={this.handleChange.bind(this, 'topics')}
-              value={this.state.topics}
-            />
-            <LessonSection
-              SectionTitle='Homework'
-              label="homework"
-              handleChange={this.handleChange.bind(this, 'homework')}
-              value={this.state.homework}
-            />
-          </form>
+          {
+            this.state.classNotes.map((classNote, index) => {
+              return (
+                <SectionForm
+                  key={index}
+                  date={classNote.date}
+                  classes={"section-form-" + classNote.id}
+                  handleSubmit={(event) => this.handleSubmit(event)}
+                />
+              );
+            })
+          }
         </MyMainContent>
+
         <Footer>
           <BasicBtn
-            classes='btn-primary'
+            classes='btn-primary addDayBtn'
             btnTxt='Add New Day'
             handleClick={this.handleShow}
           />

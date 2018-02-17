@@ -1,0 +1,26 @@
+.section-date {
+  text-align: center;
+}
+
+.section-form {
+  position: relative;
+  background: #89bbb8;
+  border-radius: .4em;
+  padding: 20px;
+  margin: 0 0 40px 0;
+}
+
+.section-form:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-top-color: #89bbb8;
+  border-bottom: 0;
+  border-left: 0;
+  margin-left: -10px;
+  margin-bottom: -20px;
+}

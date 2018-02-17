@@ -4,7 +4,7 @@ import {Panel} from 'react-bootstrap';
 const LessonSection = (props) => {
     return (
         <div>
-            <Panel>
+            <Panel bsStyle={props.bsClass}>
                 <Panel.Heading>
                     <Panel.Title componentClass="h1">{props.SectionTitle}</Panel.Title>
                 </Panel.Heading>
