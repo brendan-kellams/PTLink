@@ -285,6 +285,6 @@
   text-transform: uppercase;
 }
 
-.my-class .modal-footer {
+.lesson-modal .modal-footer {
   display: none;
 }

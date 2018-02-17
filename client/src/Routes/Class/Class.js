@@ -43,10 +43,11 @@ class Class extends Component {
   handleChange(label, value) {
     this.setState({ [label]: value });
   }
+
   handleSubmit(event) {
-    alert('Class has been Updated');
     event.preventDefault();
-    console.log(this.state);
+    console.log('Adding Day', this.state);
+
     // posting assignment
     let requestObj = {
       lessondate: this.state.lessondate,
@@ -56,13 +57,14 @@ class Class extends Component {
       duedate: this.state.duedate,
       classroomId: this.state.classroomId
     }
+
     API.addAssignment(requestObj, (err,response) => {
       if(err) {
-        console.log(err);
+        console.log('Error Adding Day', err);
       }
       else {
         if(response.status === 200) {
-          alert('post added');
+          console.log('post added');
         }
       }
     });
@@ -93,7 +95,9 @@ class Class extends Component {
   render() {
     return (
       <div className={'container-fluid my my-class ' + this.state.navStateClass}>
+
         <LessonModal
+          classes="lesson-modal"
           show={this.state.showModal}
           handleClose={this.handleClose}>
           <LessonForm

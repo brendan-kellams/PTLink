@@ -4,6 +4,7 @@ import { MyMainNav, MyMainContent, MessageRow, Inbox, Outbox} from '../../compon
 import { Helper, API } from '../../Utils';
 import { Tabs, Tab } from 'react-bootstrap';
 
+import './ManageMessages.css';
 
 class ManageMessages extends Component {
 

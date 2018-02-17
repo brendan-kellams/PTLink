@@ -67,6 +67,7 @@ class Outbox extends Component {
         <h3>Outbox</h3>
         <div className="outbox">
         {
+          this.state.sent.length > 0 ? 
           this.state.sent.map((message, index) => {
             return (
               <MessageRow
@@ -80,7 +81,8 @@ class Outbox extends Component {
                 handleDelete = {(event, msgID) => this.handleDeleteMessage(event, msgID)}
               />
             );
-          })
+          }) :
+          <p className="empty-outbox">Your outbox is empty</p>
         }
         </div>
 
