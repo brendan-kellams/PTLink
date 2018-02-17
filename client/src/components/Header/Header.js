@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 
 import {LoginModal, LoginForm} from '../../components';
@@ -64,6 +64,7 @@ class Header extends Component {
             username: response.data.username
           });
         }
+        this.props.history.push('/my');
       }
     });
   }
@@ -105,23 +106,32 @@ class Header extends Component {
         </LoginModal>
         
         <ParallaxProvider>
-        
-        <div className="main-image">
-          <Parallax
-            offsetYMax={100}
-            offsetYMin={-20}
-          >
-            <Link className="goHome" to="/">
-              <h1 className="brand-font site-title">
-                <img className="site-logo" src="/images/pt-link-152.png"/>
-                <span className="title">PT-Link</span>
-              </h1>
-            </Link>
 
-            <h3 className="brand-font site-title-2">Connecting teachers and parents</h3>
-            
-          </Parallax>
+          <div className="main-image-wrapper">
+            <Parallax
+              offsetYMax={40}
+              offsetYMin={0}
+            >
+              <div className="main-image">
+                <Parallax
+                  offsetYMax={100}
+                  offsetYMin={-20}
+                >
+                  <Link className="goHome" to="/">
+                    <h1 className="brand-font site-title">
+                      <img className="site-logo" src="/images/pt-link-152.png"/>
+                      <span className="title">PT-Link</span>
+                    </h1>
+                  </Link>
+
+                  <h3 className="brand-font site-title-2">Connecting teachers and parents</h3>
+                  
+                </Parallax>
+              </div>
+            </Parallax>
           </div>
+
+        
         
         </ParallaxProvider>
 

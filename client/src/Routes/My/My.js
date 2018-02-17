@@ -10,24 +10,37 @@ class My extends Component {
     navStateClass   : '',
     mainContentPath : '',
     contentClass    : 'dashboard',
+    classes         : []
   }
 
   componentDidMount() {
-    let ourThis = this;
-    API.checkForUser(function(err, response) {
+    API.checkForUser((err, response) => {
       if (err) {
         console.log(err);
       }
       else {
         if (response.status === 200) {
-          ourThis.setState({
+          this.setState({
             userPresent: true,
             username: response.data.username,
-            userId: response.data.id
+            userId: response.data.id,
+            isTeacher: response.data.isTeacher
+          });
+          API.getMyClasses(response.data.id, (err, response) => {
+            if (err) {
+              console.log(err);
+            }
+            else {
+              if (response.status === 200) {
+                this.setState({
+                  classes: response.data
+                });
+              }
+            }
           });
         }
         else if (response.status === 204) {
-          ourThis.setState({
+          this.setState({
             userPresent: false
           });
         }
@@ -49,6 +62,7 @@ class My extends Component {
       <div className={"container-fluid my " + this.state.navStateClass}>
         <MyMainNav 
           onToggle={(isOpen) => this.handleNavToggle(isOpen)}
+          history={this.props.history}
         />
         <MyMainContent
           contentClasses ='dashboard'
@@ -61,9 +75,15 @@ class My extends Component {
               <li>TODO: notification?</li>
             </ul>
           </div>
-          <ClassDiv
-            ClassTitle="Mr.Johnson's Math class"
-            description="Algebra I" />
+          {this.state.classes.map(classroom => {
+            return (
+              <ClassDiv
+                ClassTitle={`${classroom.Classroom.instructor.username}'s ${classroom.Classroom.subject} class`}
+                description={`${classroom.Classroom.period} hour`}
+                classInfo={classroom.Classroom}
+              />
+            )
+          })}
 
         </MyMainContent>
       </div>

@@ -66,6 +66,7 @@ class ManageMessages extends Component {
       <div className={"container-fluid my " + this.state.navStateClass}>
         <MyMainNav 
           onToggle={(isOpen) => this.handleNavToggle(isOpen)}
+          history={this.props.history}
         />
         <MyMainContent
           title="messages"
