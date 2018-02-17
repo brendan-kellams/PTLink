@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { Helper, API } from '../../Utils';
 
+import './CreateClass.css';
 
 // for use with public pages ONLY
 class CreateClass extends Component {
@@ -87,6 +88,7 @@ class CreateClass extends Component {
             onChange={(event) => this.handleUserInput(event, 'year')}
             placeholder="Year" />
           <input 
+            className="btn btn-primary create-class-btn"
             type="submit" 
             value="Create" 
           />

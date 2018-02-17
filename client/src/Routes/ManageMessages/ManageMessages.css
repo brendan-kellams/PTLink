@@ -1,10 +1,10 @@
 .manage-messages .compose-msg input {
-  width: 100%;
+  width: 80%;
   margin: 5px 0;
   padding: 5px 10px;
 }
 .manage-messages .compose-msg textarea {
-  width: 100%;
+  width: 80%;
   margin: 5px 0;
   height: 150px;
 }

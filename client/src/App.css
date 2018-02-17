@@ -271,6 +271,9 @@
 .my.main-nav-opened .main-content {
   margin-left: 240px;
 }
+.my .navbar-primary {
+  position: fixed;
+}
 .hidden {
   display: none!important;
 }

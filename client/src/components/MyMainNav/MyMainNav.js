@@ -85,8 +85,7 @@ class MyMainNav extends Component {
             </Link>
 
             <a className="logout" href="#"
-               onClick={event => this.handleLogout(event)}
-            >
+               onClick={event => this.handleLogout(event)}>
               <i className="fa fa-sign-out"></i>
               <span className="nav-label">Logout</span>
             </a>
