@@ -3,7 +3,11 @@ import {Modal, Button} from 'react-bootstrap';
 
 const LessonModal = (props) => {
     return (
-        <Modal show={props.show} onHide={props.handleClose}>
+        <Modal 
+            show={props.show} 
+            onHide={props.handleClose}
+            className={props.classes}>
+            
             <Modal.Header closeButton>
                 <Modal.Title>New Lesson</Modal.Title>
             </Modal.Header>

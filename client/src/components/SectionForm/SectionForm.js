@@ -49,7 +49,7 @@ class SectionForm extends Component {
   render() {
     return (
       <div className="section-form-wrapper">
-        <h2 className="section-date"><i class="fa fa-calendar"></i> {this.props.date} </h2>
+        <h2 className="section-date"><i className="fa fa-calendar"></i> {this.props.date} </h2>
         <div className={this.props.classes + ' section-form'}>
           <form
             onSubmit={(event) => this.props.handleSubmit(event)}>

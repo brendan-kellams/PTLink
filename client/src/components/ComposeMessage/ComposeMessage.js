@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { MessageRow } from '../../components';
 import { Helper, API } from '../../Utils';
 
+import './ComposeMessage.css';
 
 class ComposeMessage extends Component {
 
@@ -59,7 +60,7 @@ class ComposeMessage extends Component {
           <div className="compose-msg">
             <form className="send-msg-form" onSubmit={(event) => this.handleSendMessage(event)} >
               <input  type="text" 
-                      className="message-to-user" placeholder="User Name" 
+                      className="message-to-user" placeholder="To: User Name" 
                       value={this.state.userName}
                       onChange={(event, name) => this.updateState(event, 'userName')}
               />

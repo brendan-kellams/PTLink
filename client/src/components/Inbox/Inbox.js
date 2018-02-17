@@ -44,11 +44,6 @@ class Inbox extends Component {
         }
       }
     });
-    // API.getMessagesReceived((messages) => {
-    //   this.setState({
-    //     received : messages
-    //   });
-    // });
   }
 
   handleDeleteMessage(event, msgID) {
@@ -72,6 +67,7 @@ class Inbox extends Component {
         <h3>Inbox</h3>
         <div className="inbox">
         {
+          this.state.received.length > 0 ? 
           this.state.received.map((message, index) => {
             return (
               <MessageRow
@@ -88,7 +84,8 @@ class Inbox extends Component {
                 handleDelete = {(event, msgObj) => this.handleDeleteMessage(event, msgObj)}
               />
             );
-          })
+          }) : 
+          <p className="empty-inbox">Your inbox is empty</p>
         }
         </div>
 
