@@ -7,12 +7,12 @@ const ClassesList = (props) => {
       return (
         <ClassRow
           key = {index}
-          classID = {classObj.classID}
-          name = {classObj.name}
+          classID = {classObj.id}
+          name = {classObj.subject}
           period = {classObj.period}
-          school = {classObj.school}
-          term = {classObj.term}
-          year = {classObj.year}
+          school = {classObj.schoolName}
+          term = {classObj.grade}
+          year = {classObj.schoolyear}
           handleDelete = {(event, classID) => props.doDelete(event, classID)}
           handleEdit = {(event, classID) => props.doEdit(event, classID)}
         />
