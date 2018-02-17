@@ -28,10 +28,10 @@ class Home extends Component {
 
         <div className="container main-content">
           <div className="row app-info">
-            <h2 className="brand-font">Take charge in your kids' success</h2>
-            <p>Spy on your kids to make sure they are not just bullshiting you about how their teachers not giving them no homework.</p>
-            <p>Call them out if you catch them bullshitting so they might have a chance to become a decent human being!</p>
-            <p>Stop your kids from TPing their teachers' houses! Transfer those bail bonds to college fund!!</p>
+            <h2 className="brand-font">Get involved with your kids' educational success</h2>
+            <p>Create and establish solid communication between parent and teacher about your child's progress.</p>
+            <p>Check daily postings regarding subjects covered in class, teacher's thought process, and homework assigned.</p>
+            <p>Don't get blind-sided by not knowing what your child is being taught!</p>
             <p>Click one of the buttons below to join us!</p>
           </div>
           

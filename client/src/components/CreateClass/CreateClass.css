@@ -1,0 +1,15 @@
+.create-class-container input {
+  display: block;
+  width: 100%;
+  margin: 5px 0;
+  padding: 5px 10px;
+}
+.create-class-container .create-class-btn {
+  height: 40px;
+}
+
+@media (min-width: 768px) {
+  .create-class-container input {
+    width: 80%;
+  }
+}

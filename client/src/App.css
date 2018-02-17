@@ -268,8 +268,14 @@
   margin-left: 100px;
   padding: 20px 0;
 }
+.my .navbar-primary-menu .fa-home {
+  font-size: 17px;
+}
 .my.main-nav-opened .main-content {
   margin-left: 240px;
+}
+.my .navbar-primary {
+  position: fixed;
 }
 .hidden {
   display: none!important;

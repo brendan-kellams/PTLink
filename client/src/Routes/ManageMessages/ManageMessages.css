@@ -8,3 +8,11 @@
   margin: 5px 0;
   height: 150px;
 }
+@media (min-width: 768px) {
+  .manage-messages .compose-msg input {
+    width: 80%;
+  }
+  .manage-messages .compose-msg textarea {
+    width: 80%;
+  } 
+}
