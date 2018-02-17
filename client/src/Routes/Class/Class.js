@@ -47,7 +47,7 @@ class Class extends Component {
           alert('post added');
         }
       }
-    })
+    });
   }
   componentDidMount() {
     API.getMyUsers((users) => {
