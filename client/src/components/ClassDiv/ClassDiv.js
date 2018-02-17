@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import { Row } from 'react-bootstrap';
+<<<<<<< HEAD
 import { Glyphicon, Button } from 'react-bootstrap';
+=======
+
+import './ClassDiv.css';
+>>>>>>> c7ba4c51deadd33bb3bae87ef56bb90e14843932
 
 class ClassDiv extends Component {
 
@@ -16,6 +21,7 @@ class ClassDiv extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <div className='row'>
         <div className='col-sm-6 col-md-4 col-lg-3'>
           <div className='thumbnail'>
@@ -31,12 +37,27 @@ class ClassDiv extends Component {
               >
                 Enter Class
               </Button>
+=======
+        <div className='class-div col-sm-6 col-md-4 col-lg-3'>
+            <div className='thumbnail'>
+                    <div className='caption'>
+                        <h3 className="class-title">{props.ClassTitle}</h3>
+                        <p>{props.description}</p>
+                        <p><a href={props.link} className='btn btn-primary' role='button'>Enter Class</a></p>
+                    </div>
+>>>>>>> c7ba4c51deadd33bb3bae87ef56bb90e14843932
             </div>
           </div>
         </div>
+<<<<<<< HEAD
       </div>
     )
   }
 }
 
+=======
+    )
+}
+                    
+>>>>>>> c7ba4c51deadd33bb3bae87ef56bb90e14843932
 export default ClassDiv;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import './MyMainNav.css';
 
+import { API } from '../../Utils';
 
 // for use with public pages ONLY
 class MyMainNav extends Component {
@@ -27,6 +28,9 @@ class MyMainNav extends Component {
     event.preventDefault();
     // call API to logout
     console.log('logging out');
+    API.signOutUser(() => {
+      this.props.history.push('/');  
+    });
   }
 
   handleToggleNav(event) {

@@ -71,11 +71,17 @@
   background-image: url('/images/anime_school.jpg');
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  height: 60vh;
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-size: cover;
+}
+
+.home .main-image-wrapper,
+.signup .main-image-wrapper {
+  overflow: hidden;
 }
 
 .home .app-info,
@@ -97,28 +103,32 @@
   height: 350px;
   overflow: hidden;
 }
-.home .signup-img::before {
-  content: ' ';
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 40px;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  transition: all .2s; /* Animation */
+
+@media (min-width: 768px) {
+  .home .signup-img::before {
+    content: ' ';
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    transition: all .2s; /* Animation */
+  }
+  .home .signup-img:hover::before{
+    opacity: 0.1;
+  }
+  .home .teacher-signup .signup-img::before {
+    content: 'Teachers';
+  }
+  .home .parents-signup .signup-img::before {
+    content: 'Parents';
+  }  
 }
-.home .signup-img:hover::before{
-  opacity: 0.1;
-}
-.home .teacher-signup .signup-img::before {
-  content: 'Teachers';
-}
-.home .parents-signup .signup-img::before {
-  content: 'Parents';
-}
+
 
 .home .signup-img {
   width: 350px;
@@ -127,6 +137,18 @@
 .home .signup-block {
   display: flex;
   justify-content: center;
+  margin-bottom: 15px;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+@media (min-width: 992px) {
+  .home .signup-block.teacher-signup {
+    align-items: flex-end;
+  }
+  .home .signup-block.parent-signup {
+    align-items: flex-start;
+  }
 }
 
 .home .teacher-signup .signup-img {
@@ -161,8 +183,10 @@
 
 .home footer .fa-facebook-square,
 .home footer .fa-twitter-square,
+.home footer .fa-github-square,
 .signup footer .fa-facebook-square,
-.signup footer .fa-twitter-square {
+.signup footer .fa-twitter-square,
+.signup footer .fa-github-square {
   font-size: 35px;
   margin: 0 5px;
 }
@@ -218,6 +242,20 @@
   background: #5cb85c;
 }
 
+.home .header .navbar .logoutBtn,
+.signup .header .navbar .logoutBtn {
+  border-color: #dc3545;
+  color: #dc3545; 
+  font-weight: bold;
+  background: transparent;
+  transition: all .2s; /* Animation */
+}
+.home .header .navbar .logoutBtn:hover,
+.signup .header .navbar .logoutBtn:hover {
+  color: black;
+  background: #dc3545;
+}
+
 .home .header .navbar-fixed-top,
 .signup .header .navbar-fixed-top {
   position: absolute;
@@ -245,6 +283,9 @@
   text-decoration: none;
 }
 
+.home .signupBtn{
+  width: 350px;
+}
 /* Signin Modal */
 .login-modal .control-label {
   display: none;
@@ -272,7 +313,10 @@
   font-size: 17px;
 }
 .my.main-nav-opened .main-content {
-  margin-left: 240px;
+  /*margin-left: 240px;*/
+}
+.my.main-nav-opened .navbar-primary {
+  background: rgba(0, 0, 0, 0.7);
 }
 .my .navbar-primary {
   position: fixed;
