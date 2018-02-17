@@ -76,6 +76,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-size: cover;
+}
+
+.home .main-image-wrapper,
+.signup .main-image-wrapper {
+  overflow: hidden;
 }
 
 .home .app-info,
