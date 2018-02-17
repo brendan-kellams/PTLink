@@ -70,6 +70,12 @@ class Class extends Component {
     });
   }
   componentDidMount() {
+    // Set classInfo to the current class
+    this.setState({
+      classInfo: this.props.history.location.state
+    });
+    // Call API to get assignments for this class id @classInfo.id
+    // API.getAssignments for class which calls /api/assignmentsbyclass/:classroomId
     API.getMyUsers((users) => {
       this.setState({
         users: users

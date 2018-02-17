@@ -80,6 +80,7 @@ class My extends Component {
                 ClassTitle={`${classroom.Classroom.instructor.username}'s ${classroom.Classroom.subject} class`}
                 description={`${classroom.Classroom.period} hour`}
                 classInfo={classroom.Classroom}
+                history={this.props.history}
               />
             )
           })}

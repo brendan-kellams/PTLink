@@ -8,13 +8,13 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     link: {
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
     },
     topics: {
       type: DataTypes.STRING
     },    
     homework: {
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
     },    
     duedate: {
       type: DataTypes.STRING
