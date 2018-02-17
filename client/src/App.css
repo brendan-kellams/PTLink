@@ -71,7 +71,7 @@
   background-image: url('/images/anime_school.jpg');
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  height: 60vh;
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -313,7 +313,10 @@
   font-size: 17px;
 }
 .my.main-nav-opened .main-content {
-  margin-left: 240px;
+  /*margin-left: 240px;*/
+}
+.my.main-nav-opened .navbar-primary {
+  background: rgba(0, 0, 0, 0.7);
 }
 .my .navbar-primary {
   position: fixed;

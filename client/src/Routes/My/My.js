@@ -69,22 +69,16 @@ class My extends Component {
           title = "dashboard"
           >
           <div className="dashboard-container">
-            This is the Dashboard page, all user have access to this.<br/>
-            <ul>
-              <li>TODO: (optional) insights such as how many classes and users from classes</li>
-              <li>TODO: notification?</li>
-            </ul>
+            {this.state.classes.map(classroom => {
+              return (
+                <ClassDiv
+                  ClassTitle={`${classroom.Classroom.instructor.username}'s ${classroom.Classroom.subject} class`}
+                  description={`${classroom.Classroom.period} period`}
+                  classInfo={classroom.Classroom}
+                />
+              )
+            })}  
           </div>
-          {this.state.classes.map(classroom => {
-            return (
-              <ClassDiv
-                ClassTitle={`${classroom.Classroom.instructor.username}'s ${classroom.Classroom.subject} class`}
-                description={`${classroom.Classroom.period} hour`}
-                classInfo={classroom.Classroom}
-              />
-            )
-          })}
-
         </MyMainContent>
       </div>
     )
