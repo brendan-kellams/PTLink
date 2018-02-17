@@ -23,6 +23,7 @@ class Home extends Component {
       
         <Header 
           isUser={this.state.userID}
+          history={this.props.history}
         />
 
         <div className="container main-content">

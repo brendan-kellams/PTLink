@@ -89,7 +89,7 @@ export default {
   getMyClasses: function(id, callback) {
     console.log('calling API to classes I have access to');
 
-    axios.get('/api/instructorclasses/'+id)
+    axios.get('/api/classroombyuser/'+id)
     .then(function(response) {
       console.log(response);
       if (typeof callback === 'function') {

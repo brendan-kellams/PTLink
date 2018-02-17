@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 
 import {LoginModal, LoginForm} from '../../components';
@@ -64,6 +64,7 @@ class Header extends Component {
             username: response.data.username
           });
         }
+        this.props.history.push('/my');
       }
     });
   }
