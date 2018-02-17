@@ -284,3 +284,7 @@
 .main-content h1 {
   text-transform: uppercase;
 }
+
+.my-class .modal-footer {
+  display: none;
+}
