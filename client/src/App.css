@@ -167,8 +167,10 @@
 
 .home footer .fa-facebook-square,
 .home footer .fa-twitter-square,
+.home footer .fa-github-square,
 .signup footer .fa-facebook-square,
-.signup footer .fa-twitter-square {
+.signup footer .fa-twitter-square,
+.signup footer .fa-github-square {
   font-size: 35px;
   margin: 0 5px;
 }
