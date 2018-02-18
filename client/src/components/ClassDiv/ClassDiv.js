@@ -1,24 +1,39 @@
-import React from 'react';
-import { Row } from 'react-bootstrap';
-import {Glyphicon} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Row, Button } from 'react-bootstrap';
 
-const ClassDiv = (props) => {
+import './ClassDiv.css';
+
+class ClassDiv extends Component {
+
+  componentDidMount() {
+
+  }
+
+  handleEnterClass(e, classInfo) {
+    console.log(e.target);
+    console.log("Entering class:" + classInfo.id);
+    this.props.history.push('/my/class', classInfo);
+  }
+
+  render() {
     return (
-        <div className='row'>
-            <div className='col-sm-6 col-md-4 col-lg-3'>
-                <div className='thumbnail'>
-                        <div className='caption'>
-                            <h3>{props.ClassTitle}</h3>
-                            <p>{props.description}</p>
-                            <div>
-                                <span className='glyphicon glyphicon-book'></span>
-                            </div>
-                            <p><a href={props.link} className='btn btn-primary' role='button'>Enter Class</a></p>
-                        </div>
-                </div>
-            </div>
+      <div className='class-div col-sm-6 col-md-4 col-lg-3'>
+        <div className='thumbnail'>
+          <div className='caption'>
+            <h3 className="class-title">{this.props.ClassTitle}</h3>
+            <p>{this.props.description}</p>
+            <Button
+              onClick={(e) => this.handleEnterClass(e, this.props.classInfo)}
+              bsStyle="primary"
+            >
+              Enter Class
+            </Button>
+          </div>
         </div>
-            )
-        }
-                    
+      </div>
+    )
+  }
+
+}
+
 export default ClassDiv;

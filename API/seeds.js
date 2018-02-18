@@ -4,7 +4,12 @@ var db = require('../models');
 
 var { hashPassword } = require('../util/passwordHandler');
 
-var {classrooms, users, participants} = require('../lib');
+var {
+  classrooms, 
+  users, 
+  participants, 
+  assignments
+} = require('../lib');
 
 router.post('/create-seed-data', function(req, res, next) {
   // Create the users
@@ -22,11 +27,24 @@ router.post('/create-seed-data', function(req, res, next) {
             participants.addParticipants(function(participants) {
               db.Participant.bulkCreate(participants)
               .then(function(participants){
-                res.status(200).end();
+                // Add Asignments to classrooms
+                assignments.createAssignments(function(assignments) {
+                  db.Assignment.bulkCreate(assignments)
+                  .then(function(assignments){
+                    res.status(200).end();
+                  })
+                })
                 
                 
 
               })
+              .catch(function(err) {
+                if (err) {
+                  console.log(err);
+                  res.status(500).end();
+                }
+              });
+
             })
           })
         .catch(function(err) {
