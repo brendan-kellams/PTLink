@@ -27,6 +27,8 @@ class ClassDiv extends Component {
             </div>
           </div>
     )
+  }
+
 }
                     
 export default ClassDiv;
