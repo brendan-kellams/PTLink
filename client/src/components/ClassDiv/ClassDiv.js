@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import { Row } from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Row, Button } from 'react-bootstrap';
 
 import './ClassDiv.css';
 
@@ -17,18 +17,23 @@ class ClassDiv extends Component {
 
   render() {
     return (
-        <div className='class-div col-sm-6 col-md-4 col-lg-3'>
-            <div className='thumbnail'>
-                    <div className='caption'>
-                        <h3 className="class-title">{props.ClassTitle}</h3>
-                        <p>{props.description}</p>
-                        <p><a href={props.link} className='btn btn-primary' role='button'>Enter Class</a></p>
-                    </div>
-            </div>
+      <div className='class-div col-sm-6 col-md-4 col-lg-3'>
+        <div className='thumbnail'>
+          <div className='caption'>
+            <h3 className="class-title">{this.props.ClassTitle}</h3>
+            <p>{this.props.description}</p>
+            <Button
+              onClick={(e) => this.handleEnterClass(e, this.props.classInfo)}
+              bsStyle="primary"
+            >
+              Enter Class
+            </Button>
           </div>
+        </div>
+      </div>
     )
   }
 
 }
-                    
+
 export default ClassDiv;
