@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import { LessonForm, LessonModal, Footer, SectionForm } from '../../components';
 import { MyMainNav, MyMainContent, BasicBtn } from '../../components';
@@ -100,6 +100,7 @@ class Class extends Component {
 
   render() {
     return (
+      this.state.userPresent === true ? 
       <div className={'container-fluid my my-class ' + this.state.navStateClass}>
 
         <LessonModal
@@ -115,7 +116,8 @@ class Class extends Component {
         </LessonModal>
 
         <MyMainNav
-          onToggle={(isOpen) => this.handleNavToggle(isOpen)}
+          onToggle={(isOpen) => this.handleNavToggle(isOpen)} 
+          isTeacher={this.state.isTeacher}
         />
         <MyMainContent
           title={this.state.classObj.name}
@@ -141,6 +143,15 @@ class Class extends Component {
             handleClick={this.handleShow}
           />
         </Footer>
+      </div>  :
+      this.state.userPresent !== false ? 
+      <div className="page-loading">
+        <i className="fa fa-spinner fa-spin"></i>
+      </div> :
+      <div className="login-error">
+        <div className="meh-face"><i className="fa fa-eye-slash"></i></div>
+        <div><p className="error">Sorry, you are not authorized to view this content. Please login.</p></div>
+        <div><Link to="/">HOME</Link></div>
       </div>
     )
   }

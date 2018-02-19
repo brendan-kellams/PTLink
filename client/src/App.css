@@ -338,3 +338,21 @@
 .lesson-modal .modal-footer {
   display: none;
 }
+
+.page-loading,
+.login-error {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.login-error .fa-eye-slash {
+  font-size: 80px;
+  margin-bottom: 10px;
+}
+.page-loading .fa-spinner {
+  font-size: 70px;
+  color: #5DADE2;
+}

@@ -10,25 +10,28 @@ class ClassDiv extends Component {
   }
 
   handleEnterClass(e, classInfo) {
-    console.log(e.target);
-    console.log("Entering class:" + classInfo.id);
+    // console.log(e.target);
+    // console.log("Entering class:" + classInfo.id);
     this.props.history.push('/my/class', classInfo);
   }
 
   render() {
     return (
-      <div className='class-div col-sm-6 col-md-4 col-lg-3'>
+      <div className='class-div col-sm-3'>
         <div className='thumbnail'>
-          <div className='caption'>
-            <h3 className="class-title">{this.props.ClassTitle}</h3>
-            <p>{this.props.description}</p>
-            <Button
-              onClick={(e) => this.handleEnterClass(e, this.props.classInfo)}
-              bsStyle="primary"
-            >
-              Enter Class
-            </Button>
+          <div className="class-icon"><i class="fa fa-book"></i></div>
+          <h3 className="class-title">{this.props.ClassTitle}</h3>
+          <div className="class-info">
+            <span className="class-subject label label-success">{this.props.classSubject}</span>
+            <span className="class-period label label-warning">{this.props.description}</span>
           </div>
+          <Button
+            onClick={(e) => this.handleEnterClass(e, this.props.classInfo)}
+            bsStyle="info"
+            className="manageClassBtn"
+          >
+            Enter Class
+          </Button>
         </div>
       </div>
     )

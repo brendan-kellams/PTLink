@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import { MyMainNav, MyMainContent, InviteUser, CreateClass, ClassesList } from '../../components';
 
@@ -15,6 +16,9 @@ class ManageClasses extends Component {
 
     API.checkForUser((err,response) => {
       if (err) {
+        this.setState({
+          userPresent: false,
+        });
         console.log(err);
       }
       else {
@@ -66,10 +70,12 @@ class ManageClasses extends Component {
 
   render() {
     return (
+      this.state.userPresent === true ? 
       <div className={"container-fluid my " + this.state.navStateClass}>
         <MyMainNav 
           onToggle={(isOpen) => this.handleNavToggle(isOpen)}
-          history={this.props.history}
+          history={this.props.history} 
+          isTeacher={this.state.isTeacher}
         />
         <MyMainContent
           title="manage classes"
@@ -95,6 +101,15 @@ class ManageClasses extends Component {
           </div>
 
         </MyMainContent>
+      </div> :
+      this.state.userPresent !== false ? 
+      <div className="page-loading">
+        <i className="fa fa-spinner fa-spin"></i>
+      </div> :
+      <div className="login-error">
+        <div className="meh-face"><i className="fa fa-eye-slash"></i></div>
+        <div><p className="error">Sorry, you are not authorized to view this content. Please login.</p></div>
+        <div><Link to="/">HOME</Link></div>
       </div>
     )
   }
