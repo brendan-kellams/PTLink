@@ -80,7 +80,8 @@ class My extends Component {
                 return (
                   <ClassDiv
                   ClassTitle={`${classroom.Classroom.instructor.username}'s ${classroom.Classroom.subject} class`}
-                  description={`${classroom.Classroom.period} period`}
+                  classSubject={classroom.Classroom.subject}
+                  description={`period ${classroom.Classroom.period}`}
                   classInfo={classroom.Classroom}
                   history={this.props.history}
                 />
