@@ -12,7 +12,11 @@ class MyMainNav extends Component {
     navState  : 0,
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.setState({
+      isTeacher : this.props.isTeacher,
+    })
+  }
 
   handleLogout(event) {
     event.preventDefault();
