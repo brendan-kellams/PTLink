@@ -26,6 +26,7 @@ class My extends Component {
             userId: response.data.id,
             isTeacher: response.data.isTeacher
           });
+
           API.getMyClasses(response.data.id, (err, response) => {
             if (err) {
               console.log(err);
@@ -59,28 +60,34 @@ class My extends Component {
 
   render() {
     return (
+      this.state.userPresent ? 
       <div className={"container-fluid my " + this.state.navStateClass}>
         <MyMainNav 
           onToggle={(isOpen) => this.handleNavToggle(isOpen)}
           history={this.props.history}
+          isTeacher={this.state.isTeacher}
         />
         <MyMainContent
           contentClasses ='dashboard'
           title = "dashboard"
           >
-          <div className="dashboard-container">
-            {this.state.classes.map(classroom => {
-              return (
-                <ClassDiv
-                ClassTitle={`${classroom.Classroom.instructor.username}'s ${classroom.Classroom.subject} class`}
-                description={`${classroom.Classroom.period} period`}
-                classInfo={classroom.Classroom}
-                history={this.props.history}
-              />
-              )
-            })}  
-          </div>
+            <div className="dashboard-container">
+              {this.state.classes.map(classroom => {
+                return (
+                  <ClassDiv
+                  ClassTitle={`${classroom.Classroom.instructor.username}'s ${classroom.Classroom.subject} class`}
+                  description={`${classroom.Classroom.period} period`}
+                  classInfo={classroom.Classroom}
+                  history={this.props.history}
+                />
+                )
+              })}  
+            </div> 
         </MyMainContent>
+
+      </div> :
+      <div className="page-loading">
+        <i className="fa fa-spinner fa-spin"></i>
       </div>
     )
   }

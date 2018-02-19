@@ -8,26 +8,15 @@ import { API } from '../../Utils';
 class MyMainNav extends Component {
 
   state = {
-    userID    : -1,
-    userType  : '' 
+    isTeacher : false,
+    navState  : 0,
   }
 
-  componentDidMount() {
-    // call API to get userID (or null)
-    // make sure to get user Type
-
-    // for now, assume userType 0 is teacher and userType 1 is parent
-    this.setState({
-      userID    : 1,
-      userType  : 1,
-      navState  : 0,
-    });
-  }
+  componentDidMount() {}
 
   handleLogout(event) {
     event.preventDefault();
     // call API to logout
-    console.log('logging out');
     API.signOutUser(() => {
       this.props.history.push('/');  
     });
@@ -65,39 +54,67 @@ class MyMainNav extends Component {
            onClick={ event => this.handleToggleNav(event) }>
           { this.renderChevron() }
         </a>
-        <ul className="navbar-primary-menu">
-          <li>
-            <Link className="public" to="/">
-              <i className="fa fa-home"></i>
-              <span className="nav-label">Home</span>
-            </Link>
-            <Link className="dash-board" to="/my">
-              <i className="fa fa-clipboard"></i>
-              <span className="nav-label">Dashboard</span>
-            </Link>
 
-            <Link className="user-manage" to="/my/manage-users">
-              <i className="fa fa-users"></i>
-              <span className="nav-label">Manage Users</span>
-            </Link>
+        {
+          this.state.isTeacher ?
+          <ul className="navbar-primary-menu">
+            <li>
+              <Link className="public" to="/">
+                <i className="fa fa-home"></i>
+                <span className="nav-label">Home</span>
+              </Link>
+              <Link className="dash-board" to="/my">
+                <i className="fa fa-clipboard"></i>
+                <span className="nav-label">Dashboard</span>
+              </Link>
 
-            <Link className="class-manage" to="/my/manage-classes">
-              <i className="fa fa-briefcase"></i>
-              <span className="nav-label">Manage Classes</span>
-            </Link>
+              <Link className="user-manage" to="/my/manage-users">
+                <i className="fa fa-users"></i>
+                <span className="nav-label">Manage Users</span>
+              </Link>
 
-            <Link className="messages" to="/my/messages">
-              <i className="fa fa-envelope"></i>
-              <span className="nav-label">Messages</span>
-            </Link>
+              <Link className="class-manage" to="/my/manage-classes">
+                <i className="fa fa-briefcase"></i>
+                <span className="nav-label">Manage Classes</span>
+              </Link>
 
-            <a className="logout" href="#"
-               onClick={event => this.handleLogout(event)}>
-              <i className="fa fa-sign-out"></i>
-              <span className="nav-label">Logout</span>
-            </a>
-          </li>
-        </ul>
+              <Link className="messages" to="/my/messages">
+                <i className="fa fa-envelope"></i>
+                <span className="nav-label">Messages</span>
+              </Link>
+
+              <a className="logout" href="#"
+                 onClick={event => this.handleLogout(event)}>
+                <i className="fa fa-sign-out"></i>
+                <span className="nav-label">Logout</span>
+              </a>
+            </li>
+          </ul> :
+          <ul className="navbar-primary-menu">
+            <li>
+              <Link className="public" to="/">
+                <i className="fa fa-home"></i>
+                <span className="nav-label">Home</span>
+              </Link>
+              <Link className="dash-board" to="/my">
+                <i className="fa fa-clipboard"></i>
+                <span className="nav-label">Dashboard</span>
+              </Link>
+
+              <Link className="messages" to="/my/messages">
+                <i className="fa fa-envelope"></i>
+                <span className="nav-label">Messages</span>
+              </Link>
+
+              <a className="logout" href="#"
+                 onClick={event => this.handleLogout(event)}>
+                <i className="fa fa-sign-out"></i>
+                <span className="nav-label">Logout</span>
+              </a>
+            </li>
+          </ul>
+        }
+        
       </nav>
     );
   }
