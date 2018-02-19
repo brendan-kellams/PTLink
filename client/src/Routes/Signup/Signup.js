@@ -105,7 +105,7 @@ class Signup extends Component {
         
           <form onSubmit={this.handleSubmit}>
             <span className={this.state.errorMsg + ' error error-message'}>Please fill in all the fields</span>
-            <span className={this.state.emailErr + ' error error-message'}>Please enter your email address</span>
+            <span className={this.state.emailErr + ' error error-message'}>Please enter a valid email address</span>
             <SignUpInput 
               label='Username' 
               value={this.state.username} 
