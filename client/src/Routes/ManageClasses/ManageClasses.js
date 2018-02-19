@@ -36,6 +36,7 @@ class ManageClasses extends Component {
           this.setState({
             userPresent : false
           });
+          this.props.history.push('/');
         }
       }
     });
