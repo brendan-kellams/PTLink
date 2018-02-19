@@ -13,16 +13,16 @@
 .section-form:after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 50%;
+  left: 0;
+  top: 50%;
   width: 0;
   height: 0;
   border: 20px solid transparent;
-  border-top-color: #89bbb8;
-  border-bottom: 0;
+  border-right-color: #89bbb8;
   border-left: 0;
-  margin-left: -10px;
-  margin-bottom: -20px;
+  border-bottom: 0;
+  margin-top: -10px;
+  margin-left: -20px;
 }
 
 .section-form .panel {

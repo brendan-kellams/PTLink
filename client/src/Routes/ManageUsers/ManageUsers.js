@@ -44,6 +44,8 @@ class ManageUsers extends Component {
           this.setState({
             userPresent: false
           });
+          // redirect them back to the homepage
+          this.props.history.push('/');
         }
       }
     });
