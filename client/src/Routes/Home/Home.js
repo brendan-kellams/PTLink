@@ -28,7 +28,7 @@ class Home extends Component {
 
         <div className="container main-content">
           <div className="row app-info">
-            <h2 className="brand-font">Get involved with your kids' educational success</h2>
+            <h2 className="brand-font">Get involved with your kids' success</h2>
             <p>Create and establish solid communication between parent and teacher about your child's progress.</p>
             <p>Check daily postings regarding subjects covered in class, teacher's thought process, and homework assigned.</p>
             <p>Don't get blind-sided by not knowing what your child is being taught!</p>
@@ -67,7 +67,7 @@ class Home extends Component {
             <a href="//facebook.com/PT-Link-148731259172020/" target="_blank"><i className="fa fa-facebook-square"></i></a> 
             <a href="//twitter.com/afGroff" target="_blank"><i className="fa fa-twitter-square"></i></a>
             <a href="//github.com/amcnulty/PTLink" target="_blank"><i className="fa fa-github-square"></i></a></div>
-            <div className="copyright"><i className="fa fa-copyright"></i> 2018 The Gorilla Gang</div>
+            <div className="copyright brand-font"><i className="fa fa-copyright"></i> 2018 The Gorilla Gang</div>
           </div>
         </Footer>
       </div>

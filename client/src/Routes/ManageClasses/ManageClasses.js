@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { MyMainNav, MyMainContent, InviteUser, CreateClass, ClassesList } from '../../components';
+import { MyMainNav, MyMainContent, InviteUser, CreateClass, ClassesList, ClassDiv } from '../../components';
 
 import { Helper, API } from '../../Utils';
 
@@ -98,11 +98,31 @@ class ManageClasses extends Component {
             <hr />
 
             <h3>Your classes</h3>
-            <ClassesList
+            {/* 
+              <ClassesList
               classL = {this.state.classes}
               doDelete = {(event, classID) => this.handleDeleteClass(event, classID)}
               doEdit = {(event, classID) => this.handleEditClass(event, classID)}
             />
+            */}
+            
+
+            <div className="dashboard-container">
+            {
+              this.state.classes.map(classroom => {
+                return (
+                  <ClassDiv
+                    ClassTitle={`${this.state.username}'s ${classroom.subject} class`}
+                    classSubject={classroom.subject}
+                    description={`period ${classroom.period}`}
+                    classInfo={classroom}
+                    history={this.props.history}
+                  />
+                )
+              })
+            }  
+            </div> 
+
           </div>
 
         </MyMainContent>
