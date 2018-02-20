@@ -31,18 +31,33 @@ class My extends Component {
             isTeacher: response.data.isTeacher
           });
 
-          API.getMyClasses(response.data.id, (err, response) => {
-            if (err) {
-              console.log(err);
-            }
-            else {
-              if (response.status === 200) {
-                this.setState({
-                  classes: response.data
-                });
+          if (response.data.isTeacher) {
+            API.getInstructorClasses(response.data.id, (err, res) => {
+              if (err) {
+                console.log(err);
               }
-            }
-          });
+              else {
+                this.setState({
+                  classes : res.data
+                });  
+              }
+            });
+          }
+          else {
+            API.getMyClasses(response.data.id, (err, response) => {
+              console.log('return value from getInstructorClasses', response);
+              if (err) {
+                console.log(err);
+              }
+              else {
+                if (response.status === 200) {
+                  this.setState({
+                    classes: response.data
+                  });
+                }
+              }
+            });
+          }
         }
         else if (response.status === 204) {
           this.setState({
@@ -77,17 +92,27 @@ class My extends Component {
           title = "dashboard"
           >
             <div className="dashboard-container">
-              {this.state.classes.map(classroom => {
+            {
+              this.state.classes.map(classroom => {
                 return (
+                  this.state.isTeacher ?
                   <ClassDiv
-                  ClassTitle={`${classroom.Classroom.instructor.username}'s ${classroom.Classroom.subject} class`}
-                  classSubject={classroom.Classroom.subject}
-                  description={`period ${classroom.Classroom.period}`}
-                  classInfo={classroom.Classroom}
-                  history={this.props.history}
-                />
+                    ClassTitle={`${this.state.username}'s ${classroom.subject} class`}
+                    classSubject={classroom.subject}
+                    description={`period ${classroom.period}`}
+                    classInfo={classroom}
+                    history={this.props.history}
+                  /> :
+                  <ClassDiv
+                    ClassTitle={`${classroom.Classroom.instructor.username}'s ${classroom.Classroom.subject} class`}
+                    classSubject={classroom.Classroom.subject}
+                    description={`period ${classroom.Classroom.period}`}
+                    classInfo={classroom.Classroom}
+                    history={this.props.history}
+                  />
                 )
-              })}  
+              })
+            }  
             </div> 
         </MyMainContent>
 

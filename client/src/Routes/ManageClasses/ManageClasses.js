@@ -10,6 +10,7 @@ class ManageClasses extends Component {
   state = {
     navStateClass   : '',
     classes : [],
+    isTeacher: false,
   }
 
   componentDidMount() {
@@ -25,17 +26,28 @@ class ManageClasses extends Component {
         if (response.status === 200) {
           this.setState({
             userPresent :true,
-            userId:response.data.id,
+            userId: response.data.id,
             username : response.data.username,
-            isTeacher:response.data.isTeacher
+            isTeacher: response.data.isTeacher
           });
-            // call API to get userID (or null)
-          API.getMyClasses(response.data.id, (err, res) => {
+
+          // get classes
+          if (response.data.isTeacher) {
+            API.getInstructorClasses(response.data.id, (err, res) => {
               this.setState({
                 classes : res.data
               });
             });
           }
+          else {
+            // call API to get userID (or null)
+            API.getMyClasses(response.data.id, (err, res) => {
+              this.setState({
+                classes : res.data
+              });
+            });
+          }
+        }
         else if (response.status === 204) {
           this.setState({
             userPresent : false
@@ -64,8 +76,6 @@ class ManageClasses extends Component {
   handleEditClass(event, classID) {
     event.preventDefault();
     console.log('editing class', classID);
-    
-    //API.editClass(classObj);
   }
 
   render() {
@@ -93,11 +103,6 @@ class ManageClasses extends Component {
               doDelete = {(event, classID) => this.handleDeleteClass(event, classID)}
               doEdit = {(event, classID) => this.handleEditClass(event, classID)}
             />
-
-            This is the manage class page, teacher access ONLY<br/>
-            <ul>
-              <li>TODO: add links to edit, archieve (optional) classes</li>
-            </ul>
           </div>
 
         </MyMainContent>

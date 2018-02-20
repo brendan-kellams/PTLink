@@ -63,10 +63,6 @@ class MyMainNav extends Component {
           this.state.isTeacher ?
           <ul className="navbar-primary-menu">
             <li>
-              <Link className="public" to="/">
-                <i className="fa fa-home"></i>
-                <span className="nav-label">Home</span>
-              </Link>
               <Link className="dash-board" to="/my">
                 <i className="fa fa-clipboard"></i>
                 <span className="nav-label">Dashboard</span>
@@ -87,6 +83,11 @@ class MyMainNav extends Component {
                 <span className="nav-label">Messages</span>
               </Link>
 
+              <Link className="public" to="/">
+                <i className="fa fa-home"></i>
+                <span className="nav-label">Home</span>
+              </Link>
+              
               <a className="logout" href="#"
                  onClick={event => this.handleLogout(event)}>
                 <i className="fa fa-sign-out"></i>
@@ -96,10 +97,6 @@ class MyMainNav extends Component {
           </ul> :
           <ul className="navbar-primary-menu">
             <li>
-              <Link className="public" to="/">
-                <i className="fa fa-home"></i>
-                <span className="nav-label">Home</span>
-              </Link>
               <Link className="dash-board" to="/my">
                 <i className="fa fa-clipboard"></i>
                 <span className="nav-label">Dashboard</span>
@@ -108,6 +105,11 @@ class MyMainNav extends Component {
               <Link className="messages" to="/my/messages">
                 <i className="fa fa-envelope"></i>
                 <span className="nav-label">Messages</span>
+              </Link>
+
+              <Link className="public" to="/">
+                <i className="fa fa-home"></i>
+                <span className="nav-label">Home</span>
               </Link>
 
               <a className="logout" href="#"

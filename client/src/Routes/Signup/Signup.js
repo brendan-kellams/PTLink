@@ -28,7 +28,6 @@ class Signup extends Component {
 
   handleChange(label, value) {
     this.setState({ [label]: value });
-    console.log('gyasdf', label, value);
   }
 
   handleSubmit(event) {
@@ -52,14 +51,29 @@ class Signup extends Component {
           school: this.state.school,
           isTeacher: (this.state.role === 'Teacher')
         }
-          API.signUpUser(user, (err, status) => {
-            if (err) {
-              alert("There has been an error with status: " + status);
-            }
-            else {
-              alert("Profile Created!");
-            }
-          });
+        API.signUpUser(user, (err, status) => {
+          if (err) {
+            console.log("There has been an error with status: " + status);
+          }
+          else {
+
+            let userData = {
+              email: this.state.email,
+              password: this.state.password
+            };
+
+            API.signInUser(userData, (err, response) => {
+              if (err) {
+                console.log('signin error', err);
+              }
+              else {
+                if (response.status === 200) {
+                  this.props.history.push('/my');
+                }
+              }
+            });
+          }
+        });
       }
       else {
         this.setState({emailErr : ''})

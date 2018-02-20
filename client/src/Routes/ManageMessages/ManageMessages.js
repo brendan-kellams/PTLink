@@ -29,7 +29,8 @@ class ManageMessages extends Component {
           this.setState({
             userPresent: true,
             username: response.data.username,
-            userId: response.data.id
+            userId: response.data.id,
+            isTeacher: response.data.isTeacher
           });
         }
         else if (response.status === 204) {

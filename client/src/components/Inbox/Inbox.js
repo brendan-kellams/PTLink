@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { MessageRow, MessageArea, ComposeMessage } from '../../components';
 import { Helper, API } from '../../Utils';
 
+import './Inbox.css';
+
 
 class Inbox extends Component {
 

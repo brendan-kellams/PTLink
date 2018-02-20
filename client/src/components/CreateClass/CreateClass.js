@@ -30,7 +30,6 @@ class CreateClass extends Component {
       !Helper.propIsEmpty(this.state.school) &&
       !Helper.propIsEmpty(this.state.term) &&
       !Helper.propIsEmpty(this.state.year)) {
-      console.log('all good you shit');
 
       this.setState({
         successMsg : ''
@@ -66,7 +65,7 @@ class CreateClass extends Component {
             type="text" 
             value={this.state.email} 
             onChange={(event) => this.handleUserInput(event, 'name')}
-            placeholder="Email" />
+            placeholder="Name of Class" />
           <input 
             type="text" 
             value={this.state.period} 
