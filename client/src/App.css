@@ -2,7 +2,8 @@
 /* Site-Wise Variables */
 .brand-font {
   /*font-family: 'IM Fell English SC', serif;  */
-  font-family: 'Krona One', sans-serif;
+  /*font-family: 'Krona One', sans-serif;*/
+  font-family: 'Walter Turncoat', cursive;
 }
 .zoom {
   transition: transform .2s; /* Animation */
@@ -298,7 +299,7 @@
   height: 45px;
 }
 .login-modal .modal-title {
-  font-family: 'Krona One', sans-serif;
+  font-family: 'Walter Turncoat', cursive;
   text-transform: uppercase;
   text-align: center;
 }
@@ -337,4 +338,22 @@
 
 .lesson-modal .modal-footer {
   display: none;
+}
+
+.page-loading,
+.login-error {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.login-error .fa-eye-slash {
+  font-size: 80px;
+  margin-bottom: 10px;
+}
+.page-loading .fa-spinner {
+  font-size: 70px;
+  color: #5DADE2;
 }

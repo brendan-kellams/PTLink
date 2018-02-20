@@ -111,7 +111,7 @@ class Header extends Component {
 
           <div className="main-image-wrapper">
             <Parallax
-              offsetYMax={40}
+              offsetYMax={30}
               offsetYMin={0}
             >
               <div className="main-image">
