@@ -5,7 +5,7 @@ import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import {LoginModal, LoginForm} from '../../components';
 import {Button} from 'react-bootstrap';
 
-import { API } from '../../Utils';
+import { API, Helper } from '../../Utils';
 
 // for use with public pages ONLY
 class Header extends Component {
@@ -13,7 +13,8 @@ class Header extends Component {
   state = {
     showModal: false,
     userPresent: false,
-    username: ''
+    username: '',
+    errorClasses: 'hidden'
   }
 
   componentWillMount = () => {
@@ -100,6 +101,7 @@ class Header extends Component {
           show={this.state.showModal} 
           handleClose={this.handleClose} >
           <LoginForm
+            errorClasses={this.state.errorClasses}
             handleLogin={this.handleLogin}
             handleChange={this.handleChange}
           />
