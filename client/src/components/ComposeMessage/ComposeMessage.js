@@ -62,7 +62,7 @@ class ComposeMessage extends Component {
     return (
       <div className="message-outbox">
       
-        <h3>Compose Message</h3>
+        <h3 className="sub-title">Compose Message</h3>
 
         <div className={this.state.errorMsg + ' error error-message'}>Please enter all required fields</div>
         <div className={this.state.successMsg + ' message-success'}>Message Sent</div>

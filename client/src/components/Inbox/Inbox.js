@@ -36,6 +36,7 @@ class Inbox extends Component {
                   received: messageResponse.data
                 });
               }
+              console.log('heyaf', this.state.received);
             }
           });
         }
@@ -66,7 +67,7 @@ class Inbox extends Component {
   render() {
     return (
       <div className="message-inbox">
-        <h3>Inbox</h3>
+        <h3 className="sub-title">Inbox</h3>
         <div className="inbox">
         {
           this.state.received.length > 0 ? 
@@ -80,8 +81,8 @@ class Inbox extends Component {
                 title = {message.subject}
                 fromUserID = {message.senderId}
                 fromUser = {message.sender}
-                isRead = {message.unread}
-                msgDT = {message.createdAt}
+                isRead = {!message.unread}
+                msgDT = {Helper.parseISOString(message.createdAt)}
                 msgBody = {message.body}
                 handleDelete = {(event, msgObj) => this.handleDeleteMessage(event, msgObj)}
               />
