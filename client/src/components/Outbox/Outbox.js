@@ -64,7 +64,7 @@ class Outbox extends Component {
   render() {
     return (
       <div className="message-outbox">
-        <h3>Outbox</h3>
+        <h3 className="sub-title">Outbox</h3>
         <div className="outbox">
         {
           this.state.sent.length > 0 ? 
@@ -76,7 +76,7 @@ class Outbox extends Component {
                 messageID = {message.id}
                 title = {message.subject}
                 toUser = {message.recipients}
-                msgDT = {message.createdAt}
+                msgDT = {Helper.parseISOString(message.createdAt)}
                 msgBody = {message.body}
                 handleDelete = {(event, msgID) => this.handleDeleteMessage(event, msgID)}
               />
