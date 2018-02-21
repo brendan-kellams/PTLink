@@ -189,20 +189,20 @@ export default {
   deleteUser: function(userID) {
     console.log('deleting user', userID);
   },
-  deleteClass: function(classID) {
+  deleteClass: function(classID, callback) {
     console.log('deleting class', classID);
 
-    // axios.delete('/classroom/' + classID)
-    // .then(function(response) {
-    //   if (typeof callback === 'function') {
-    //     callback(null, response);
-    //   }
-    // })
-    // .catch(function(err) {
-    //   if (typeof callback === 'function') {
-    //     callback(err, err.response.status);
-    //   }
-    // });
+    axios.delete('/classroom/' + classID)
+    .then(function(response) {
+      if (typeof callback === 'function') {
+        callback(response);
+      }
+    })
+    .catch(function(err) {
+      if (typeof callback === 'function') {
+        callback(response);
+      }
+    });
   },
   deleteMsg: function(msgID) {
     console.log('deleting message', msgID);
@@ -210,6 +210,5 @@ export default {
   sendMessage: function(messageObj) {
     console.log('sending message', messageObj);
   }
-
 
 };

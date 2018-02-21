@@ -10,6 +10,10 @@
   height: 280px;
 }
 
+.isTeacher.class-div {
+  height: 250px; 
+}
+
 .class-div .thumbnail {
   border: 0;
 }

@@ -21,7 +21,7 @@ class ClassDiv extends Component {
 
   render() {
     return (
-      <div className='class-div col-sm-3'>
+      <div className={this.props.isTeacher ? 'isTeacher class-div col-sm-3' : 'class-div col-sm-3'}>
         <div className='thumbnail'>
           <div className="class-icon"><i class="fa fa-book"></i></div>
           <h3 className="class-title">{this.props.ClassTitle}</h3>
@@ -39,7 +39,7 @@ class ClassDiv extends Component {
           {
             this.props.isTeacher ?
             <Button
-              onClick={(e) => this.handleDeleteClass(e, tthis.props.classInfo.id)}
+              onClick={(e) => this.handleDeleteClass(e, this.props.classInfo.id)}
               bsStyle="danger"
               className="deleteClassBtn"
             >
