@@ -49,35 +49,37 @@ class Header extends Component {
 
   handleLogin = event => {
     event.preventDefault();
+
+    this.setState({errorClasses: 'hidden'});
+
     let userData = {
       email: this.state.loginEmail,
       password: this.state.loginPassword
     };
-    if (!Helper.propIsEmpty(this.state.errorClasses)) {
+
+    if (Helper.propIsEmpty(this.state.loginEmail) || 
+        Helper.propIsEmpty(this.state.loginPassword)) {
       this.setState({
         errorClasses: ''
       });
     }
     else {
-      this.setState({
-        errorClasses: 'hidden'
+      API.signInUser(userData, (err, response) => {
+        if (err) {
+          console.log(err);
+        }
+        else {
+          if (response.status === 200) {
+            this.setState({
+              showModal: false,
+              userPresent: true,
+              username: response.data.username
+            });
+          }
+          this.props.history.push('/my');
+        }
       });
     }
-    API.signInUser(userData, (err, response) => {
-      if (err) {
-        console.log(err);
-      }
-      else {
-        if (response.status === 200) {
-          this.setState({
-            showModal: false,
-            userPresent: true,
-            username: response.data.username
-          });
-        }
-        this.props.history.push('/my');
-      }
-    });
   }
 
   handleLogout = event => {

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Row, Button } from 'react-bootstrap';
 
+import { API } from '../../Utils';
+
 import './ClassDiv.css';
 
 class ClassDiv extends Component {
@@ -16,7 +18,9 @@ class ClassDiv extends Component {
   }
 
   handleDeleteClass(e, classID) {
-    console.log('prop.classroom', this.props);
+    e.preventDefault();
+
+    API.deleteClass(classID);
   }
 
   render() {

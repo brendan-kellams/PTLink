@@ -184,9 +184,9 @@ router.delete('/classroom/:classId', function (req, res, next) {
             id: req.params.classId
         }
     })
-        .then(function (results) {
-            res.status(200).end();
-        });
+    .then(function (results) {
+        res.status(200).end();
+    });
 });
 /** Teacher invites parent by classroomId and email */
 router.post('/addparticipant', function(req, res, next) {

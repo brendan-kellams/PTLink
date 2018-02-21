@@ -7,11 +7,11 @@
   border: 1px solid #196486;
   border-radius: 5px;
   margin: 10px 5px;
-  height: 280px;
+  height: 250px;
 }
 
 .isTeacher.class-div {
-  height: 250px; 
+  height: 280px; 
 }
 
 .class-div .thumbnail {

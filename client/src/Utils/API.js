@@ -120,30 +120,6 @@ export default {
         callback(err, err.response.status);
       }
     });
-    
-    // const messages = [
-    //   {
-    //     id          : 0,
-    //     title       : 'This is a message I received 001',
-    //     fromUserID  : 2,
-    //     fromUser    : "DTrump",
-    //     dateTime    : "01/02/2018 00:00:00",
-    //     isRead      : false,
-    //     msgBody     : 'haha good',
-    //   },
-    //   {
-    //     id          : 1,
-    //     title       : 'This is a message I received 002',
-    //     fromUserID  : 3,
-    //     fromUser    : "VPutin",
-    //     dateTime    : "01/04/2018 08:12:22",
-    //     isRead      : true,
-    //     msgBody     : 'haha bad',
-    //   },
-    // ];
-    // if (typeof callback === 'function') {
-    //   callback(messages);
-    // }
   },
   getMessagesSent: function(userId, callback) {
     axios.get('/api/outbox/' + userId)
@@ -192,7 +168,7 @@ export default {
   deleteClass: function(classID, callback) {
     console.log('deleting class', classID);
 
-    axios.delete('/classroom/' + classID)
+    axios.delete('/api/classroom/' + classID)
     .then(function(response) {
       if (typeof callback === 'function') {
         callback(response);
@@ -200,7 +176,7 @@ export default {
     })
     .catch(function(err) {
       if (typeof callback === 'function') {
-        callback(response);
+        callback(err);
       }
     });
   },
