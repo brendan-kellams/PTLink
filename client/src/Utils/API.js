@@ -93,11 +93,18 @@ export default {
       }
     }); 
   },
-  sendEmailInvite: function(email, callback) {
-    console.log('sending email....');
-    if (typeof callback === 'function') {
-      callback();
-    }
+  sendEmailInvite: function(data, callback) {
+    axios.post('/api/addparticipant', data)
+    .then(function(response) {
+      if (typeof callback === 'function') {
+        callback(null, response);
+      }
+    })
+    .catch(function(err) {
+      if (typeof callback === 'function') {
+        callback(err, err.response.status);
+      }
+    }); 
   },
   getInstructorClasses: function(id, callback) {
     axios.get('/api/instructorclasses/'+id)
@@ -187,6 +194,19 @@ export default {
     if (typeof callback === 'function') {
       callback(yourUsers);
     }
+  },
+  getParticipants: function(classroomId, callback) {
+    axios.get('/api/participants/' + classroomId)
+    .then(function(response) {
+      if (typeof callback === 'function') {
+        callback(null, response);
+      }
+    })
+    .catch(function(err) {
+      if (typeof callback === 'function') {
+        callback(err, err.response.status);
+      }
+    });
   },
   deleteUser: function(userID) {
     console.log('deleting user', userID);

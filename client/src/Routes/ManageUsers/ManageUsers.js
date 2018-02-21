@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { MyMainNav, MyMainContent, InviteUser, UsersList, ClassPanel} from '../../components';
+import { Button } from 'react-bootstrap';
 import { Helper, API } from '../../Utils';
 
 
@@ -9,8 +10,13 @@ class ManageUsers extends Component {
 
   state = {
     navStateClass   : '',
+    showingClass    : false,
     users           : [],
-    classrooms      : []
+    participants    : [],
+    classrooms      : [],
+    successMsg      : 'hidden',
+    errorMsg        : 'hidden',
+    currentClassId  : -1
   }
 
   componentDidMount() {
@@ -70,9 +76,59 @@ class ManageUsers extends Component {
     API.deleteUser(userID);
   }
 
-  handleManageClass(e, classroomId) {
+  handleManageClass = (e, classroomId) => {
     e.preventDefault();
-    console.log("Managing class with ID: " + classroomId);
+    this.setState({
+      currentClassId: classroomId
+    });
+    API.getParticipants(classroomId, (err, response) => {
+      if (err) console.log(err);
+      else if (response.status === 200) {
+        console.log(response.data);
+        this.setState({
+          participants: response.data
+        })
+      }
+    });
+    this.setState({
+      showingClass: true
+    })
+  }
+
+  handleBackClick = (e) => {
+    e.preventDefault();
+    this.setState({
+      showingClass: false,
+      currentClassId: -1
+    })
+  }
+
+  handleInviteUser = (e, email) => {
+    e.preventDefault();
+
+    this.setState({
+      successMsg  : 'hidden',
+      errorMsg    : 'hidden'
+    });
+
+    if (Helper.validateEmail(email)) {
+      // call API to send them an email
+      let userInfo = {
+        userEmail: email,
+        classroomId: this.state.currentClassId
+      }
+      API.sendEmailInvite(userInfo, (err, response) => {
+        // callback: after that, display success message
+        if (err) console.log(err);
+        else if (response.status === 200) {
+          this.setState({successMsg: ''})
+        }
+      });
+    }
+    else {
+      this.setState({errorMsg : ''})
+    }
+
   }
 
   render() {
@@ -88,7 +144,31 @@ class ManageUsers extends Component {
           title="manage users"
           contentClasses ='manage-users'>
 
-          {this.state.classrooms.map(classroom => {
+          {this.state.showingClass ?
+
+          <div>
+            <Button
+              onClick={this.handleBackClick}
+            >
+              Back
+            </Button>
+            <InviteUser
+              onSubmit={this.handleInviteUser}
+              successMsg={this.state.successMsg}
+              errorMsg={this.state.errorMsg}
+            />
+            {this.state.participants.map(parent => {
+              return (
+                <div>
+                  <span>UserId: {parent.id}</span>
+                  <span> Email: {parent.userEmail} - </span>
+                  <i class="fa fa-close"></i>
+                </div>
+              )
+            })}
+          </div>
+          :
+          this.state.classrooms.map(classroom => {
             return (
               <ClassPanel
                 subject={classroom.subject}
@@ -100,7 +180,8 @@ class ManageUsers extends Component {
                 handleClick={this.handleManageClass}
               />
             )
-          })}
+          })
+        }
 
         </MyMainContent>
       </div> :
