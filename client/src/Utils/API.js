@@ -28,6 +28,19 @@ export default {
       }
     });
   },
+  getUserByEmail: function(email, callback) {
+    axios.get('/api/getuserinfo/' + email)
+    .then(function(response) {
+      if (typeof callback === 'function') {
+        callback(response);
+      }
+    })
+    .catch(function(err) {
+      if (typeof callback === 'function') {
+        callback(err);
+      }
+    });
+  },
   signOutUser: function(callback) {
     axios.post('/user/signout')
     .then(function(response) {
@@ -196,8 +209,33 @@ export default {
   deleteMsg: function(msgID) {
     console.log('deleting message', msgID);
   },
-  sendMessage: function(messageObj) {
+  sendMessage: function(messageObj, callback) {
     console.log('sending message', messageObj);
+    axios.post('/api/communication', messageObj)
+    .then(function(response) {
+      console.log('pushed new message', response);
+
+      let recipientId = [messageObj.recipientId],
+          communicationID = response.data.id,
+          sendObj = {
+            communicationId : communicationID,
+            recipients : recipientId,
+          };
+
+      axios.post('/api/sendcommunication', sendObj)
+      .then(function(response) {
+        if (typeof callback === 'function') {
+          callback(response);
+        }
+      })
+      .catch(function(errB) {
+        console.log('sendcommunication Err', errB);
+      });
+
+    })
+    .catch(function(err) {
+      console.log('sendMessage Err', err);
+    });
   }
 
 };

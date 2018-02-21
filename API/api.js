@@ -18,7 +18,7 @@ router.post('/communication', function(req, res, next) {
     senderId: req.body.senderId
   })
   .then(function(newCommunciation) {
-    res.status(200).end();
+    res.status(200).send(newCommunciation).end();
   })
   .catch(function(err) {
     if (err) {
@@ -64,6 +64,24 @@ router.put('/updateread', function (req, res, next) {
         .then(function (results) {
             res.status(200).end();
         });
+});
+
+// get userID with email
+router.get('/getuserinfo/:email', function(req, res, next) {
+  let email = req.params.email;
+  
+  db.User.findOne({
+    where: {
+      email: email
+    }
+  }).then(function(user) {
+    if (typeof user === 'undefined' || user == null) {
+      res.status(404).end();
+    }
+    else {
+      res.status(200).send(user).end();
+    }
+  });
 });
 
 router.get('/outbox/:userId', function(req, res, next) {

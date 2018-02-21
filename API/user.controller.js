@@ -58,6 +58,7 @@ router.post('/signin', function(req, res, next) {
     }
   });
 });
+
 /** Signs a user out and ends the session. */
 router.post('/signout', function(req, res, next) {
   req.session.destroy();

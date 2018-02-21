@@ -8,7 +8,7 @@ import './ComposeMessage.css';
 class ComposeMessage extends Component {
 
   state = {
-    userName  : '',
+    userEmail : '',
     title     : '',
     body      : '',
     errorMsg  : 'hidden',
@@ -33,15 +33,25 @@ class ComposeMessage extends Component {
       successMsg  : 'hidden',
     });
 
-    if (!Helper.propIsEmpty(this.state.userName) &&
+    if (!Helper.propIsEmpty(this.state.userEmail) &&
         !Helper.propIsEmpty(this.state.title) &&
         !Helper.propIsEmpty(this.state.body)) {
-      API.sendMessage({
-        userName : this.state.userName,
-        title : this.state.title,
-        body : this.state.body,
+      API.getUserByEmail(this.state.userEmail, (userObj) => {
+        console.log('got the userObj', userObj);
+        let toUserID = userObj.data.id,
+            senderId = this.props.currentUserId;
+
+        API.sendMessage({
+          subject   : this.state.title,
+          body      : this.state.body,
+          senderId  : senderId,
+          recipientId : toUserID,
+        }, () => {
+          this.setState({successMsg : ''});  
+        });
+        
       });
-      this.setState({successMsg : ''});
+      
     }
     else {
       this.setState({errorMsg : ''});
@@ -60,9 +70,9 @@ class ComposeMessage extends Component {
           <div className="compose-msg">
             <form className="send-msg-form" onSubmit={(event) => this.handleSendMessage(event)} >
               <input  type="text" 
-                      className="message-to-user" placeholder="To: User Name" 
-                      value={this.state.userName}
-                      onChange={(event, name) => this.updateState(event, 'userName')}
+                      className="message-to-user" placeholder="To: User Email" 
+                      value={this.state.userEmail}
+                      onChange={(event, name) => this.updateState(event, 'userEmail')}
               />
               <input  type="text" 
                       className="message-title" placeholder="Title" 

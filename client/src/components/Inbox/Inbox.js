@@ -99,7 +99,9 @@ class Inbox extends Component {
 
         <hr/>
         
-        <ComposeMessage />
+        <ComposeMessage 
+          currentUserId={this.props.currentUserId}
+        />
 
       </div>
     )
