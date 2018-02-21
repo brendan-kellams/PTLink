@@ -253,7 +253,7 @@
 }
 .home .header .navbar .logoutBtn:hover,
 .signup .header .navbar .logoutBtn:hover {
-  color: black;
+  color: white;
   background: #dc3545;
 }
 
@@ -282,6 +282,22 @@
 .home .header a.goHome,
 .signup .header a.goHome {
   text-decoration: none;
+}
+
+.home .header .dashboardBtn,
+.signup .header .dashboardBtn {
+  left: 0;
+  float: left;
+  color: #0275d8;
+  background: transparent;
+  border-color: #0275d8;
+  transition: all .2s; /* Animation */
+}
+
+.home .header .dashboardBtn:hover,
+.signup .header .dashboardBtn:hover {
+  background: #0275d8;
+  color: white;
 }
 
 .home .signupBtn{
