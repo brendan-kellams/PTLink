@@ -57,16 +57,19 @@ class SectionForm extends Component {
               SectionTitle='Lesson Plan'
               bsClass='info'
               label='link'
+              text={this.props.content.link}
             />
             <LessonSection
               SectionTitle='Covered In Class'
               bsClass='success'
               label='topics'
+              text={this.props.content.topics}
             />
             <LessonSection
               SectionTitle='Homework'
               bsClass='warning'
               label="homework"
+              text={this.props.content.homework}
             />
           </form>
         </div>

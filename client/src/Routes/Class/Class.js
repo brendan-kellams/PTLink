@@ -25,6 +25,7 @@ class Class extends Component {
         id: 0,
         name: "Mr. Kellams' Math 101",
       },
+      assignments: [],
       classNotes: [
         {
           id: 0,
@@ -70,10 +71,49 @@ class Class extends Component {
     });
   }
   componentDidMount() {
-    // Set classInfo to the current class
-    this.setState({
-      classInfo: this.props.history.location.state
+    // Check if user is present
+    API.checkForUser((err, response) => {
+      if (err) {
+        this.setState({
+          userPresent: false
+        });
+        console.log(err);
+      }
+      else {
+        if (response.status === 200) {
+          this.setState({
+            userPresent :true,
+            userId: response.data.id,
+            username : response.data.username,
+            isTeacher: response.data.isTeacher
+          });
+          // Set classInfo to the current class
+          this.setState({
+            classInfo: this.props.history.location.state
+          });
+          API.getAssignments(this.state.classInfo.id, (err, response) => {
+            if (err) {
+              console.log(err);
+            }
+            else {
+              if (response.status === 200) {
+                console.log(response.data);
+                this.setState({
+                  assignments: response.data
+                })
+              }
+            }
+          });
+        }
+        else if (response.status === 204) {
+          this.setState({
+            userPresent: false
+          });
+          this.props.history.push('/');
+        }
+      }
     });
+
     // Call API to get assignments for this class id @classInfo.id
     // API.getAssignments for class which calls /api/assignmentsbyclass/:classroomId
     API.getMyUsers((users) => {
@@ -100,7 +140,7 @@ class Class extends Component {
 
   render() {
     return (
-      this.state.userPresent === true ? 
+      this.state.userPresent ? 
       <div className={'container-fluid my my-class ' + this.state.navStateClass}>
 
         <LessonModal
@@ -123,13 +163,14 @@ class Class extends Component {
           title={this.state.classObj.name}
           contentClasses='class-details'>
           {
-            this.state.classNotes.map((classNote, index) => {
+            this.state.assignments.map((assignment, index) => {
               return (
                 <SectionForm
                   key={index}
-                  date={classNote.date}
-                  classes={"section-form-" + classNote.id}
+                  date={assignment.lessondate}
+                  classes={"section-form-" + assignment.id}
                   handleSubmit={(event) => this.handleSubmit(event)}
+                  content={assignment}
                 />
               );
             })
@@ -144,14 +185,8 @@ class Class extends Component {
           />
         </Footer>
       </div>  :
-      this.state.userPresent !== false ? 
       <div className="page-loading">
         <i className="fa fa-spinner fa-spin"></i>
-      </div> :
-      <div className="login-error">
-        <div className="meh-face"><i className="fa fa-eye-slash"></i></div>
-        <div><p className="error">Sorry, you are not authorized to view this content. Please login.</p></div>
-        <div><Link to="/">HOME</Link></div>
       </div>
     )
   }

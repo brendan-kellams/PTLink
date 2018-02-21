@@ -80,6 +80,19 @@ export default {
       }
     }); 
   },
+  getAssignments: function(classroomId, callback) {
+    axios.get('/api/assignmentsbyclass/' + classroomId)
+    .then(function(response) {
+      if (typeof callback === 'function') {
+        callback(null, response);
+      }
+    })
+    .catch(function(err) {
+      if (typeof callback === 'function') {
+        callback(err, err.response.status);
+      }
+    }); 
+  },
   sendEmailInvite: function(email, callback) {
     console.log('sending email....');
     if (typeof callback === 'function') {
