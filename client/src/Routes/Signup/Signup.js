@@ -109,6 +109,7 @@ class Signup extends Component {
       <div className='container-fluid signup'>
         <Header
           isUser={this.state.userID}
+          history={this.props.history}
         />
         <div className="container main-content">
           <h3 className="brand-font signup-instruction">
