@@ -6,29 +6,32 @@ const ClassPanel = props => {
     <div className="col-md-3">
       <Panel>
         <Panel.Heading>
-          English Class
+          {props.subject} Class
         </Panel.Heading>
         <Panel.Body>
           <ListGroup>
             <ListGroupItem>
-              Subject: English
+              Subject: {props.subject}
             </ListGroupItem>
             <ListGroupItem>
-              Period: 4
+              Period: {props.period}
             </ListGroupItem>
             <ListGroupItem>
-              Grade: 7
+              Grade: {props.grade}
             </ListGroupItem>
             <ListGroupItem>
-              School Year: 2017
+              School Year: {props.schoolyear}
             </ListGroupItem>
             <ListGroupItem>
-              School Name: Kearny High
+              School Name: {props.schoolName}
             </ListGroupItem>
           </ListGroup>
         </Panel.Body>
         <Panel.Footer>
-          <Button bsStyle="primary">
+          <Button 
+            bsStyle="primary"
+            onClick={(e) => props.handleClick(e, props.classroomId)}
+          >
             Manage Class
           </Button>
         </Panel.Footer>

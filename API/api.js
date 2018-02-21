@@ -151,7 +151,8 @@ router.post('/classroom', function(req, res, next) {
     subject: req.body.subject,
     period: req.body.period,
     grade: req.body.grade,
-    schoolyear: req.body.schoolyear
+    schoolyear: req.body.schoolyear,
+    schoolName: req.body.schoolName
   })
   .then(function(savedClassroom) {
     // Find user by id
