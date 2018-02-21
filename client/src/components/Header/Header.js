@@ -82,6 +82,11 @@ class Header extends Component {
     }
   }
 
+  goDashboard = event => {
+    event.preventDefault();
+    this.props.history.push('/my');
+  }
+
   handleLogout = event => {
     event.preventDefault();
     let ourThis = this;
@@ -150,6 +155,16 @@ class Header extends Component {
         </ParallaxProvider>
 
         <nav className="navbar navbar-light bg-light navbar-fixed-top">
+          {
+            this.state.userPresent ?
+            <Button
+              className="dashboardBtn"
+              onClick={this.goDashboard}
+            >
+              Dashboard
+            </Button> :
+            ''
+          }
           {(this.state.userPresent) ?
             <Button
               className="logoutBtn"
