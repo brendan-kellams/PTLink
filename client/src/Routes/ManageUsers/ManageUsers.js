@@ -70,6 +70,11 @@ class ManageUsers extends Component {
     API.deleteUser(userID);
   }
 
+  handleManageClass(e, classroomId) {
+    e.preventDefault();
+    console.log("Managing class with ID: " + classroomId);
+  }
+
   render() {
     return (
       this.state.userPresent === true ? 
@@ -84,7 +89,17 @@ class ManageUsers extends Component {
           contentClasses ='manage-users'>
 
           {this.state.classrooms.map(classroom => {
-            return <ClassPanel/>
+            return (
+              <ClassPanel
+                subject={classroom.subject}
+                period={classroom.period}
+                grade={classroom.grade}
+                schoolyear={classroom.schoolyear}
+                schoolName={classroom.schoolName}
+                classroomId={classroom.id}
+                handleClick={this.handleManageClass}
+              />
+            )
           })}
 
         </MyMainContent>

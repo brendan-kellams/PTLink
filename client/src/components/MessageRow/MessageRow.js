@@ -3,12 +3,17 @@ import React from 'react';
 const MessageRow = (props) => {
     return (
         <div className="row message-row">
-          <div className="col-md-1 message-id">
+          <div className="message-id">
           {props.messageID}
           </div>
           {
+            props.isReceived ? 
+            <div className="col-xs-1 inbox"><i class="fa fa-arrow-circle-right"></i></div> :
+            <div className="col-xs-1 outbox"><i class="fa fa-arrow-circle-left"></i></div>
+          }
+          {
             props.isReceived ?  
-            <div className="col-md-3 message-title">
+            <div className="col-md-4 message-title">
               <a href="#" onClick={(event) => props.viewMsg(event, {
                 id : props.messageID,
                 title : props.title,
@@ -21,7 +26,7 @@ const MessageRow = (props) => {
               {props.title}
               </a>
             </div> : 
-            <div className="col-md-3 message-title">
+            <div className="col-md-4 message-title">
               <a href="#" onClick={(event) => props.viewMsg(event, {
                 id : props.messageID,
                 title : props.title,
@@ -38,14 +43,11 @@ const MessageRow = (props) => {
               <div className="col-md-3 message-from">
                 {props.fromUser}
               </div> :
-              <div className="col-md-3 message-from">
+              <div className="col-md-3 message-to">
                 {props.toUser}
               </div>
           }
-          <div className="col-md-2 message-is-read">
-            {props.isRead}
-          </div>
-          <div className="col-md-2 message-dt">
+          <div className="col-md-3 message-dt">
           {props.msgDT}
           </div>
           <div className="col-md-1 message-operation">

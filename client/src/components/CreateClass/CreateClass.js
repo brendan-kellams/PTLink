@@ -36,6 +36,7 @@ class CreateClass extends Component {
         period: this.state.period,
         grade: this.state.grade,
         schoolyear: this.state.year,
+        schoolName: this.state.school,
         teacherId: this.props.teacherID
       }, (newClass) => {
         // reset form

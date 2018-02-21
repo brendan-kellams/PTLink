@@ -8,6 +8,13 @@ export default {
   propIsEmpty: function(value) {
     return typeof(value) === 'undefined' || value.trim() === '';
   },
+  parseISOString: function(string) {
+    let b = string.split(/\D+/),
+        newDate = new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6]));
+
+    return newDate.toLocaleString();
+
+  },
   getGETVariable: function(key) {
     let $_GET = {};
     

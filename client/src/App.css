@@ -362,3 +362,49 @@
   font-size: 70px;
   color: #5DADE2;
 }
+
+.my .message-view {
+  position: relative;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  padding: 20px 15px;
+  width: 95%;
+  margin-top: 30px;
+}
+.my .message-view hr {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+.my .message-view .message-id {
+  display: none;
+}
+.my .message-view .envalope {
+  position: absolute;
+  left: 0;
+  top: -25px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  color: #aaa;
+  font-size: 40px;
+}
+.my .message-view .envalope .fa {
+  background-color: white;
+}
+.my .message-view .message-to-user,
+.my .message-view .message-from-user{
+  font-size: 20px;
+}
+.my .message-view .message-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.my .message-row .message-id {
+  display: none;
+}
+.my .outbox .message-row .message-operation {
+  display: none;
+}
