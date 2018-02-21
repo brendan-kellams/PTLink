@@ -98,7 +98,7 @@ class My extends Component {
                 return (
                   this.state.isTeacher ?
                   <ClassDiv
-                    ClassTitle={`${this.state.username}'s ${classroom.subject} class`}
+                    ClassTitle={`${this.state.username}'s class`}
                     classSubject={classroom.subject}
                     description={`period ${classroom.period}`}
                     classInfo={classroom}
@@ -107,7 +107,7 @@ class My extends Component {
                   <ClassDiv
                     ClassTitle={`${classroom.Classroom.instructor.username}'s ${classroom.Classroom.subject} class`}
                     classSubject={classroom.Classroom.subject}
-                    description={`period ${classroom.Classroom.period}`}
+                    description={`Period ${classroom.Classroom.period}`}
                     classInfo={classroom.Classroom}
                     history={this.props.history}
                   />

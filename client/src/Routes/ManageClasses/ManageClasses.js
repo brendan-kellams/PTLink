@@ -63,8 +63,16 @@ class ManageClasses extends Component {
     }
     else {
       this.setState({navStateClass : ''})  
-   
     }
+  }
+
+  handleAddClass(newClassObj) {
+    let classesArr = this.state.classes;
+    classesArr.push(newClassObj);
+    console.log('from manageClasses, updated classes', classesArr);
+    this.setState({
+      classes : classesArr
+    })
   }
 
   handleEditClass(event, classID) {
@@ -87,18 +95,21 @@ class ManageClasses extends Component {
         
           <div className="user-container">
             
-            <CreateClass />
+            <CreateClass 
+              handleAddClass = {(classObj) => this.handleAddClass(classObj)}
+              teacherID = {this.state.userId}
+            />
 
             <hr />
 
-            <h3>Your classes</h3>
+            <h3 className="sub-title">Your classes</h3>
 
             <div className="dashboard-container">
             {
               this.state.classes.map(classroom => {
                 return (
                   <ClassDiv
-                    ClassTitle={`${this.state.username}'s ${classroom.subject} class`}
+                    ClassTitle={`${this.state.username}'s  class`}
                     classSubject={classroom.subject}
                     description={`period ${classroom.period}`}
                     classInfo={classroom}

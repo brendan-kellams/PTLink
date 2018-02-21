@@ -310,6 +310,10 @@
   margin-left: 100px;
   padding: 20px 0;
 }
+.my .sub-title {
+  text-transform: uppercase;
+  font-family: 'Walter Turncoat', cursive;
+}
 .my .navbar-primary-menu .fa-home {
   font-size: 17px;
 }

@@ -39,6 +39,7 @@ class ClassDiv extends Component {
           <h3 className="class-title">{this.props.ClassTitle}</h3>
           <div className="class-info">
             <span className="class-subject label label-success">{this.props.classSubject}</span>
+            <span className="class-grade label label-grade">Grade {this.props.classInfo.grade}</span>
             <span className="class-period label label-warning">{this.props.description}</span>
           </div>
           <Button

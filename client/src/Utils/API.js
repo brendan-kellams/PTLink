@@ -166,9 +166,22 @@ export default {
     console.log('deleting user', userID);
   },
   deleteClass: function(classID, callback) {
-    console.log('deleting class', classID);
-
     axios.delete('/api/classroom/' + classID)
+    .then(function(response) {
+      if (typeof callback === 'function') {
+        callback(response);
+      }
+    })
+    .catch(function(err) {
+      if (typeof callback === 'function') {
+        callback(err);
+      }
+    });
+  },
+  addClassroom: function(classObj, callback) {
+    console.log('classObj is', classObj);
+
+    axios.post('/api/classroom', classObj)
     .then(function(response) {
       if (typeof callback === 'function') {
         callback(response);

@@ -140,7 +140,7 @@ router.post('/classroom', function(req, res, next) {
     db.User.findById(req.body.teacherId)
     .then(function(user) {
       savedClassroom.setInstructor(user);
-      res.status(200).end();
+      res.status(200).send(savedClassroom).end();
     })
     .catch(function(err) {
       if (err) {

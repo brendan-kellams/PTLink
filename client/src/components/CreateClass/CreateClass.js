@@ -9,10 +9,10 @@ class CreateClass extends Component {
   state = {
     successMsg: 'hidden',
     errorMsg  : 'hidden',
-    name      : '',
+    subject   : '',
     period    : '',
     school    : '',
-    term      : '',
+    grade     : '',
     year      : '',
   };
 
@@ -25,14 +25,30 @@ class CreateClass extends Component {
       errorMsg    : 'hidden'
     });
 
-    if (!Helper.propIsEmpty(this.state.name) &&
+    if (!Helper.propIsEmpty(this.state.subject) &&
       !Helper.propIsEmpty(this.state.period) &&
       !Helper.propIsEmpty(this.state.school) &&
-      !Helper.propIsEmpty(this.state.term) &&
+      !Helper.propIsEmpty(this.state.grade) &&
       !Helper.propIsEmpty(this.state.year)) {
 
-      this.setState({
-        successMsg : ''
+      API.addClassroom({
+        subject: this.state.subject,
+        period: this.state.period,
+        grade: this.state.grade,
+        schoolyear: this.state.year,
+        teacherId: this.props.teacherID
+      }, (newClass) => {
+        // reset form
+        this.setState({
+          subject   : '',
+          period    : '',
+          school    : '',
+          grade     : '',
+          year      : '',
+        });
+        
+        // add new class to result
+        this.props.handleAddClass(newClass.data);
       });
     }
     else {
@@ -54,7 +70,7 @@ class CreateClass extends Component {
   render() {
     return (
       <div className="create-class-container">
-        <h3>Create Class</h3>
+        <h3 className="sub-title">Create Class</h3>
         <span className={this.state.successMsg + ' success-message'}>Your class is created</span>
         <span className={this.state.errorMsg + ' error error-message'}>Please enter all fields</span>
         <form 
@@ -63,9 +79,9 @@ class CreateClass extends Component {
         >
           <input 
             type="text" 
-            value={this.state.email} 
-            onChange={(event) => this.handleUserInput(event, 'name')}
-            placeholder="Name of Class" />
+            value={this.state.subject} 
+            onChange={(event) => this.handleUserInput(event, 'subject')}
+            placeholder="Subject" />
           <input 
             type="text" 
             value={this.state.period} 
@@ -78,9 +94,9 @@ class CreateClass extends Component {
             placeholder="School" />
           <input 
             type="text" 
-            value={this.state.term} 
-            onChange={(event) => this.handleUserInput(event, 'term')}
-            placeholder="Term" />
+            value={this.state.grade} 
+            onChange={(event) => this.handleUserInput(event, 'grade')}
+            placeholder="Grade" />
           <input 
             type="text" 
             value={this.state.year} 
