@@ -152,7 +152,6 @@ class Class extends Component {
           show={this.state.showModal}
           handleClose={this.handleClose}>
           <LessonForm
-            label="link"
             handleChange={this.handleChange.bind(this)}
             handleSubmit={this.handleSubmit}
             value={this.state}
