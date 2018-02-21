@@ -7,9 +7,11 @@ import './ClassDiv.css';
 
 class ClassDiv extends Component {
 
-  componentDidMount() {
-
+  state = {
+    isDeleted : false
   }
+
+  componentDidMount() {}
 
   handleEnterClass(e, classInfo) {
     // console.log(e.target);
@@ -20,12 +22,18 @@ class ClassDiv extends Component {
   handleDeleteClass(e, classID) {
     e.preventDefault();
 
-    API.deleteClass(classID);
+    API.deleteClass(classID, () => {
+      let currentPath = window.location.pathname;
+
+      this.setState({
+        isDeleted : true,
+      })
+    });
   }
 
   render() {
     return (
-      <div className={this.props.isTeacher ? 'isTeacher class-div col-sm-3' : 'class-div col-sm-3'}>
+      <div className={this.state.isDeleted ? 'isDeleted class-div col-sm-3' : 'class-div col-sm-3'}>
         <div className='thumbnail'>
           <div className="class-icon"><i class="fa fa-book"></i></div>
           <h3 className="class-title">{this.props.ClassTitle}</h3>

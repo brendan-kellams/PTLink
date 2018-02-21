@@ -83,7 +83,7 @@ class ManageClasses extends Component {
         />
         <MyMainContent
           title="manage classes"
-          contentClasses ='manage-classes'>
+          contentClasses ={this.state.isTeacher ? 'isTeacher manage-classes' : 'manage-classes'}>
         
           <div className="user-container">
             
