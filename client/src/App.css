@@ -362,3 +362,13 @@
   font-size: 70px;
   color: #5DADE2;
 }
+
+.my .message-view {
+  width: 100%;
+}
+.my .message-view .message-id {
+  display: none;
+}
+.my .message-view .message-title {
+  font-family: 'Walter Turncoat', cursive;
+}
