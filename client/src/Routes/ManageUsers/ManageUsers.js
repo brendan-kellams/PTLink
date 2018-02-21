@@ -81,6 +81,13 @@ class ManageUsers extends Component {
     this.setState({
       currentClassId: classroomId
     });
+    this.getParticipants(classroomId);
+    this.setState({
+      showingClass: true
+    })
+  }
+  
+  getParticipants(classroomId) {
     API.getParticipants(classroomId, (err, response) => {
       if (err) console.log(err);
       else if (response.status === 200) {
@@ -90,9 +97,6 @@ class ManageUsers extends Component {
         })
       }
     });
-    this.setState({
-      showingClass: true
-    })
   }
 
   handleBackClick = (e) => {
@@ -121,7 +125,8 @@ class ManageUsers extends Component {
         // callback: after that, display success message
         if (err) console.log(err);
         else if (response.status === 200) {
-          this.setState({successMsg: ''})
+          this.setState({successMsg: ''});
+          this.getParticipants(this.state.currentClassId);
         }
       });
     }
