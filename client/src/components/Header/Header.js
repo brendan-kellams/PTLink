@@ -53,6 +53,16 @@ class Header extends Component {
       email: this.state.loginEmail,
       password: this.state.loginPassword
     };
+    if (!Helper.propIsEmpty(this.state.errorClasses)) {
+      this.setState({
+        errorClasses: ''
+      });
+    }
+    else {
+      this.setState({
+        errorClasses: 'hidden'
+      });
+    }
     API.signInUser(userData, (err, response) => {
       if (err) {
         console.log(err);

@@ -328,6 +328,7 @@
 .error {
   color: red;
   font-weight: bold;
+  text-align: center;
 }
 .navbar-primary-menu .nav-label {
   padding-left: 10px;

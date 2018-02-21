@@ -4,7 +4,7 @@ import { Form, FormGroup, FormControl, ControlLabel, Col } from 'react-bootstrap
 
 const LoginForm = props => {
   return (
-    <Form horizontal onSubmit={props.handleLogin}>
+    <Form horizontal onSubmit={props.handleLogin} className='error'>
       <span className={props.errorClasses}>Please fill in all the fields</span>
       <FormGroup controlId="loginEmail">
         <Col componentClass={ControlLabel} md={2}>

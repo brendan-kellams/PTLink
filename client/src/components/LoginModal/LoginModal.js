@@ -1,11 +1,11 @@
 import React from 'react';
-import {Modal, Button} from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 
 const LoginModal = props => {
   return (
-    <Modal 
-    className={props.classes}
-    show={props.show} onHide={props.handleClose}>
+    <Modal
+      className={props.classes}
+      show={props.show} onHide={props.handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Login To Your Account</Modal.Title>
       </Modal.Header>
@@ -13,7 +13,7 @@ const LoginModal = props => {
         {props.children}
       </Modal.Body>
       <Modal.Footer>
-        <Button 
+        <Button
           onClick={props.handleClose}
           bsStyle="danger"
         >
