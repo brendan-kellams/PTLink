@@ -425,3 +425,64 @@
 .my h1 {
   margin-bottom: 40px;
 }
+
+/* Manage Users Page */
+.manage-users .back-to-classrooms-btn {
+  border-color: chocolate;
+  color: chocolate;
+  background: transparent;
+  font-weight: bold;
+  text-transform: capitalize;
+  transition: all .2s; /* Animation */
+}
+.manage-users .back-to-classrooms-btn:hover {
+  color: white;
+  background: chocolate;
+}
+.manage-users .inviteBtn {
+  border-color: slateblue;
+  color: slateblue;
+  background: transparent;
+  font-weight: bold;
+  text-transform: capitalize; 
+  transition: all .2s; /* Animation */
+}
+.manage-users .inviteBtn:hover {
+  color: white;
+  background: slateblue;
+}
+.manage-users .users-in-classroom {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid cadetblue;
+  padding: 10px;
+  overflow: hidden;
+  transition: all .2s; /* Animation */
+}
+@media (min-width: 768px) {
+  .manage-users .users-in-classroom {
+    width: 90%;
+  }
+}
+.manage-users .users-in-classroom .user-row:nth-child(2n) {
+  background-color: lightblue;
+}
+.manage-users .label-row {
+  font-size: 18px;
+  border-bottom: 1px solid;
+  border-color: cadetblue;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+.manage-users .invite-user-email {
+  width: 300px;
+  margin-right: 10px;
+  padding: 5px 10px;
+  max-width: 90%;
+}
+.manage-users .empty-classroom {
+  padding: 0;
+}
+.manage-users .delete-user {
+  color: red;
+}

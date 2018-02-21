@@ -153,24 +153,40 @@ class ManageUsers extends Component {
 
           <div>
             <Button
+              bsStyle="primary"
+              className="back-to-classrooms-btn"
               onClick={this.handleBackClick}
             >
-              Back
+              <i class="fa fa-angle-left"></i> Back to classroom list
             </Button>
+
             <InviteUser
               onSubmit={this.handleInviteUser}
               successMsg={this.state.successMsg}
               errorMsg={this.state.errorMsg}
             />
-            {this.state.participants.map(parent => {
-              return (
-                <div>
-                  <span>UserId: {parent.id}</span>
-                  <span> Email: {parent.userEmail} - </span>
-                  <i class="fa fa-close"></i>
-                </div>
-              )
-            })}
+
+            <h3 className="sub-title">Users in Classroom</h3>
+            <div className="users-in-classroom">
+              {
+                this.state.participants.length > 0 ?
+                <div className="row label-row">
+                  <div className="col-xs-2 user-id">User ID</div>
+                  <div className="col-xs-8 user-email">Email Address</div>
+                  <div className="col-xs-2 user-operation"></div>
+                </div> :
+                <p className="empty-classroom">This classroom is empty</p>
+              }
+              {this.state.participants.map(parent => {
+                return (
+                  <div className="row user-row">
+                    <div className="col-xs-2 user-id">{parent.id}</div>
+                    <div className="col-xs-8 user-email">{parent.userEmail}</div>
+                    <div className="col-xs-2 user-operation"><i class="delete-user fa fa-close"></i></div>
+                  </div>
+                )
+              })}
+            </div>
           </div>
           :
           this.state.classrooms.map(classroom => {

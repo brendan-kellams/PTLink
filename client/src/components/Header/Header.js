@@ -158,6 +158,7 @@ class Header extends Component {
           {
             this.state.userPresent ?
             <Button
+              bsStyle="primary"
               className="dashboardBtn"
               onClick={this.goDashboard}
             >
@@ -167,6 +168,7 @@ class Header extends Component {
           }
           {(this.state.userPresent) ?
             <Button
+              bsStyle="primary"
               className="logoutBtn"
               onClick={this.handleLogout}
             >
@@ -174,6 +176,7 @@ class Header extends Component {
             </Button>
             :
             <Button
+              bsStyle="primary"
               className="loginBtn"
               onClick={this.handleShow}
             >
