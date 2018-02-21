@@ -177,7 +177,8 @@ class Signup extends Component {
           <div className="footer-wrapper">
             <div className="shareRow">
             <a href="//facebook.com/PT-Link-148731259172020/" target="_blank"><i className="fa fa-facebook-square"></i></a> 
-            <a href="//twitter.com/afGroff" target="_blank"><i className="fa fa-twitter-square"></i></a></div>
+            <a href="//twitter.com/afGroff" target="_blank"><i className="fa fa-twitter-square"></i></a>
+            <a href="//github.com/amcnulty/PTLink" target="_blank"><i className="fa fa-github-square"></i></a></div>
             <div className="copyright brand-font"><i className="fa fa-copyright"></i> 2018 The Gorilla Gang</div>
           </div>
         </Footer>
