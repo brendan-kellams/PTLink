@@ -33,6 +33,7 @@ class My extends Component {
 
           if (response.data.isTeacher) {
             API.getInstructorClasses(response.data.id, (err, res) => {
+              console.log('return value from getInstructorClasses', res);
               if (err) {
                 console.log(err);
               }
@@ -45,7 +46,7 @@ class My extends Component {
           }
           else {
             API.getMyClasses(response.data.id, (err, response) => {
-              console.log('return value from getInstructorClasses', response);
+              console.log('return value from getMyClasses', response);
               if (err) {
                 console.log(err);
               }

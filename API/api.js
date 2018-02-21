@@ -51,6 +51,20 @@ router.post('/sendcommunication', function(req, res, next) {
     });
   });
 });
+/** Updates the status of a communication to read. */
+router.put('/updateread', function (req, res, next) {
+    db.SentCommunication.update({
+        unread: false
+    },
+        {
+            where: {
+                id: req.body.id
+            }
+        })
+        .then(function (results) {
+            res.status(200).end();
+        });
+});
 
 router.get('/outbox/:userId', function(req, res, next) {
   db.User.findById(req.params.userId)
@@ -162,6 +176,17 @@ router.get('/classroom/:classId', function(req, res, next) {
       throw err;
     }
   });
+});
+/** Delete by classroom by classroomId  */
+router.delete('/classroom/:classId', function (req, res, next) {
+    db.Classroom.destroy({
+        where: {
+            id: req.params.classId
+        }
+    })
+        .then(function (results) {
+            res.status(200).end();
+        });
 });
 /** Teacher invites parent by classroomId and email */
 router.post('/addparticipant', function(req, res, next) {
