@@ -1,0 +1,46 @@
+import React from 'react';
+import {Panel, ListGroup, ListGroupItem, Button} from 'react-bootstrap';
+
+const ClassPanel = props => {
+  return (
+    <div className="classroom col-md-3">
+      <Panel>
+        <Panel.Heading>
+          <i class="fa fa-slideshare"></i> {props.subject} 
+        </Panel.Heading>
+        <Panel.Body>
+          <ListGroup>
+            <ListGroupItem>
+            <span className="class-subject label label-success">{this.props.subject}</span>
+            <span className="class-grade label label-grade">Grade {this.props.grade}</span>
+            <span className="class-period label label-warning">{this.props.period}</span>
+              Subject: {props.subject}
+            </ListGroupItem>
+            <ListGroupItem>
+              Period: {props.period}
+            </ListGroupItem>
+            <ListGroupItem>
+              Grade: {props.grade}
+            </ListGroupItem>
+            <ListGroupItem>
+              School Year: {props.schoolyear}
+            </ListGroupItem>
+            <ListGroupItem>
+              School Name: {props.schoolName}
+            </ListGroupItem>
+          </ListGroup>
+        </Panel.Body>
+        <Panel.Footer>
+          <Button 
+            bsStyle="primary"
+            onClick={(e) => props.handleClick(e, props.classroomId)}
+          >
+            Manage Users In Class
+          </Button>
+        </Panel.Footer>
+      </Panel>
+    </div>
+  )
+}
+
+export default ClassPanel;
