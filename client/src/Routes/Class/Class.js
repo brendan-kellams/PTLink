@@ -56,7 +56,7 @@ class Class extends Component {
       link: this.state.link,
       homework: this.state.homework,
       duedate: this.state.duedate,
-      classroomId: this.state.classroomId
+      classroomId: this.state.classInfo.id
     }
 
     API.addAssignment(requestObj, (err,response) => {
@@ -65,7 +65,9 @@ class Class extends Component {
       }
       else {
         if(response.status === 200) {
-          console.log('post added');
+          // get assignments and close modal
+          this.getAssignments();
+          this.handleClose();
         }
       }
     });
@@ -91,19 +93,8 @@ class Class extends Component {
           this.setState({
             classInfo: this.props.history.location.state
           });
-          API.getAssignments(this.state.classInfo.id, (err, response) => {
-            if (err) {
-              console.log(err);
-            }
-            else {
-              if (response.status === 200) {
-                console.log(response.data);
-                this.setState({
-                  assignments: response.data
-                })
-              }
-            }
-          });
+          // Get assignments
+          this.getAssignments();
         }
         else if (response.status === 204) {
           this.setState({
@@ -113,14 +104,27 @@ class Class extends Component {
         }
       }
     });
-
-    // Call API to get assignments for this class id @classInfo.id
-    // API.getAssignments for class which calls /api/assignmentsbyclass/:classroomId
+    
     API.getMyUsers((users) => {
       this.setState({
         users: users
       });
     })
+  }
+  getAssignments = () => {
+    API.getAssignments(this.state.classInfo.id, (err, response) => {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        if (response.status === 200) {
+          console.log(response.data);
+          this.setState({
+            assignments: response.data.reverse()
+          })
+        }
+      }
+    });
   }
   handleClose = () => {
     this.setState({ showModal: false });
