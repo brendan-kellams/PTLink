@@ -66,12 +66,6 @@ class ManageClasses extends Component {
    
     }
   }
-  handleDeleteClass(event, classID) {
-    event.preventDefault();
-    console.log('deleting class', classID);
-    // call API to delete User
-    API.deleteClass(classID);
-  }
 
   handleEditClass(event, classID) {
     event.preventDefault();
@@ -98,14 +92,6 @@ class ManageClasses extends Component {
             <hr />
 
             <h3>Your classes</h3>
-            {/* 
-              <ClassesList
-              classL = {this.state.classes}
-              doDelete = {(event, classID) => this.handleDeleteClass(event, classID)}
-              doEdit = {(event, classID) => this.handleEditClass(event, classID)}
-            />
-            */}
-            
 
             <div className="dashboard-container">
             {
@@ -117,6 +103,7 @@ class ManageClasses extends Component {
                     description={`period ${classroom.period}`}
                     classInfo={classroom}
                     history={this.props.history}
+                    isTeacher={this.state.isTeacher}
                   />
                 )
               })

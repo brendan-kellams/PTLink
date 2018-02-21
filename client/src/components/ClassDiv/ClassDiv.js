@@ -15,6 +15,10 @@ class ClassDiv extends Component {
     this.props.history.push('/my/class', classInfo);
   }
 
+  handleDeleteClass(e, classID) {
+    console.log('prop.classroom', this.props);
+  }
+
   render() {
     return (
       <div className='class-div col-sm-3'>
@@ -32,6 +36,16 @@ class ClassDiv extends Component {
           >
             Enter Class
           </Button>
+          {
+            this.props.isTeacher ?
+            <Button
+              onClick={(e) => this.handleDeleteClass(e, tthis.props.classInfo.id)}
+              bsStyle="danger"
+              className="deleteClassBtn"
+            >
+              Delete
+            </Button> : ''
+          }
         </div>
       </div>
     )

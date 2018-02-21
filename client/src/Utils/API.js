@@ -157,27 +157,6 @@ export default {
         callback(err, err.response.status);
       }
     });
-    // const messages = [
-    //   {
-    //     id          : 2,
-    //     title       : 'This is a message I sent 001',
-    //     toUserID    : 7,
-    //     toUser      : "DJohnson",
-    //     dateTime    : "01/24/2018 10:05:10",
-    //     msgBody     : 'kaka good',
-    //   },
-    //   {
-    //     id          : 8,
-    //     title       : 'This is a message I sent 002',
-    //     toUserID    : 10,
-    //     toUser      : "BObama",
-    //     dateTime    : "02/01/2018 09:12:22",
-    //     msgBody     : 'kaka bad',
-    //   },
-    // ];
-    // if (typeof callback === 'function') {
-    //   callback(messages);
-    // }
   },
   getMyUsers: function(callback) {
     console.log('calling API to get users I have access to');
@@ -212,6 +191,18 @@ export default {
   },
   deleteClass: function(classID) {
     console.log('deleting class', classID);
+
+    // axios.delete('/classroom/' + classID)
+    // .then(function(response) {
+    //   if (typeof callback === 'function') {
+    //     callback(null, response);
+    //   }
+    // })
+    // .catch(function(err) {
+    //   if (typeof callback === 'function') {
+    //     callback(err, err.response.status);
+    //   }
+    // });
   },
   deleteMsg: function(msgID) {
     console.log('deleting message', msgID);
