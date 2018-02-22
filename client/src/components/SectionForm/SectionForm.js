@@ -7,8 +7,7 @@ import './SectionForm.css';
 
 class SectionForm extends Component {
 
-  state = {
-  }
+  state = {}
 
   componentDidMount() {
     API.checkForUser((err, response) => {
@@ -22,20 +21,6 @@ class SectionForm extends Component {
             username: response.data.username,
             userId: response.data.id
           });
-
-          // API.getMessagesSent(response.data.id, (err, response) => {
-          //   if (err) {
-          //     console.log(err);
-          //   }
-          //   else {
-          //     if (response.status === 200) {
-          //       this.setState({
-          //         sent : response.data
-          //       });
-          //     }
-          //   }
-          // });
-
         }
         else if (response.status === 204) {
           this.setState({
@@ -46,10 +31,20 @@ class SectionForm extends Component {
     });
   }
 
+  formatDate(date) {
+    let printDate = new Date(date);
+    if (isNaN(printDate.getTime())) {
+      return 'N/A';
+    }
+    else {
+      return printDate.toLocaleDateString("en-US");  
+    }
+  }
+
   render() {
     return (
       <div className="section-form-wrapper">
-        <h2 className="section-date"><i className="fa fa-calendar"></i> {this.props.date} </h2>
+        <h2 className="section-date"><i className="fa fa-calendar"></i> {this.formatDate(this.props.date)} </h2>
         <div className={this.props.classes + ' section-form'}>
           <form
             onSubmit={(event) => this.props.handleSubmit(event)}>

@@ -69,7 +69,7 @@ class ManageClasses extends Component {
   handleAddClass(newClassObj) {
     let classesArr = this.state.classes;
     classesArr.push(newClassObj);
-    console.log('from manageClasses, updated classes', classesArr);
+    // console.log('from manageClasses, updated classes', classesArr);
     this.setState({
       classes : classesArr
     })
@@ -77,7 +77,7 @@ class ManageClasses extends Component {
 
   handleEditClass(event, classID) {
     event.preventDefault();
-    console.log('editing class', classID);
+    // console.log('editing class', classID);
   }
 
   render() {
@@ -103,7 +103,11 @@ class ManageClasses extends Component {
             <hr />
 
             <h3 className="sub-title">Your classes</h3>
-
+            {
+              this.state.classes.length === 0 ?
+              <p>You don't have access to any classes</p> :
+              ''
+            }
             <div className="dashboard-container">
             {
               this.state.classes.map(classroom => {

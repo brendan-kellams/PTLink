@@ -48,7 +48,7 @@ class Outbox extends Component {
 
   handleDeleteMessage(event, msgID) {
     event.preventDefault();
-    console.log('deleting message', msgID);;
+    // console.log('deleting message', msgID);;
     // call API to delete User
     API.deleteMsg(msgID);
   }
@@ -67,8 +67,8 @@ class Outbox extends Component {
         <h3 className="sub-title">Outbox</h3>
         <div className="outbox">
         {
-          this.state.sent.length > 0 ? 
-          this.state.sent.map((message, index) => {
+          this.props.sent.length > 0 ? 
+          this.props.sent.map((message, index) => {
             return (
               <MessageRow
                 key = {index}

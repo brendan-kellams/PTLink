@@ -138,7 +138,7 @@ class Header extends Component {
                 >
                   <Link className="goHome" to="/">
                     <h1 className="brand-font site-title">
-                      <img className="site-logo" src="/images/pt-link-152.png"/>
+                      <img className="site-logo" src="/images/pt-link-152.png" alt="site logo" />
                       <span className="title">PT-Link</span>
                     </h1>
                   </Link>

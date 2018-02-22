@@ -4,10 +4,10 @@
 
 .section-form {
   position: relative;
-  background: #5cb85c;
+  background: cadetblue;
   border-radius: .4em;
-  padding: 20px;
-  margin: 0 0 40px 0;
+  padding: 20px 20px 2px 20px;
+  margin: 0 0 50px 0;
 }
 
 .section-form:after {
@@ -18,7 +18,7 @@
   width: 0;
   height: 0;
   border: 20px solid transparent;
-  border-right-color: #5cb85c;
+  border-right-color: cadetblue;
   border-left: 0;
   border-bottom: 0;
   margin-top: -10px;

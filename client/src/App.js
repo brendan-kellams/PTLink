@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Redirect, BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './Routes/Home';
 import Signup from './Routes/Signup';
 import My from './Routes/My';
 import ManageUsers from './Routes/ManageUsers';
 import ManageClasses from './Routes/ManageClasses';
 import ManageMessages from './Routes/ManageMessages';
+import GenericNotFound from './Routes/GenericNotFound';
 import Class from './Routes/Class';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -50,6 +50,13 @@ class App extends Component {
             path="/my/class" 
             component={Class}
           />
+          <Route
+            exact
+            path="/404"
+            component={GenericNotFound}
+          />
+          <Redirect to="/404" />
+
         </Switch>
       </BrowserRouter>
     )

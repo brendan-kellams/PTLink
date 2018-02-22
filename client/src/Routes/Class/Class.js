@@ -21,10 +21,6 @@ class Class extends Component {
       duedate: '',
       classroomId: 2,
       users: [],
-      classObj: {
-        id: 0,
-        name: "Mr. Kellams' Math 101",
-      },
       classTitle: '',
       assignments: [],
       classNotes: [
@@ -48,7 +44,7 @@ class Class extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('Adding Day', this.state);
+    // console.log('Adding Day', this.state);
 
     // posting assignment
     let requestObj = {
@@ -98,7 +94,7 @@ class Class extends Component {
           });
           // Get assignments
           this.getAssignments();
-          console.log(this.state.classInfo);
+          // console.log(this.state.classInfo);
         }
         else if (response.status === 204) {
           this.setState({
@@ -122,7 +118,7 @@ class Class extends Component {
       }
       else {
         if (response.status === 200) {
-          console.log(response.data);
+          // console.log(response.data);
           this.setState({
             assignments: response.data.reverse()
           })

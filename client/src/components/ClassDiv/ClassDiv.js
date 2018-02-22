@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 import { API } from '../../Utils';
 
@@ -23,8 +23,6 @@ class ClassDiv extends Component {
     e.preventDefault();
 
     API.deleteClass(classID, () => {
-      let currentPath = window.location.pathname;
-
       this.setState({
         isDeleted : true,
       })

@@ -14,21 +14,11 @@ class InviteUser extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    this.setState({
-      successMsg  : 'hidden',
-      errorMsg    : 'hidden'
-    });
+    this.props.onSubmit(event, this.state.email);
 
-    if (Helper.validateEmail(this.state.email)) {
-      // call API to send them an email
-      API.sendEmailInvite(this.state.email, () => {
-        // callback: after that, display success message
-        this.setState({successMsg: ''})
-      });
-    }
-    else {
-      this.setState({errorMsg : ''})
-    }
+    this.setState({
+      email : ''
+    });
   }
 
   handleUserInput(event) {
@@ -43,11 +33,11 @@ class InviteUser extends Component {
     return (
       <div className="invite-user-container">
         <h3 className="sub-title">Invite User</h3>
-        <span className={this.props.successMsg + ' success-message'}>Your invite has been sent</span>
+        <span className={this.props.successMsg + ' success-message'}>Added user to class</span>
         <span className={this.props.errorMsg + ' error error-message'}>Please enter a valid email address</span>
         <form 
           className="invite-user-form"
-          onSubmit={(event) => this.props.onSubmit(event, this.state.email)}
+          onSubmit={(event) => this.handleSubmit(event)}
         >
           <input 
             type="text" 

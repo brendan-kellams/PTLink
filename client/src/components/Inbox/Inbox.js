@@ -101,6 +101,7 @@ class Inbox extends Component {
         
         <ComposeMessage 
           currentUserId={this.props.currentUserId}
+          updateSent={this.props.updateSent}
         />
 
       </div>

@@ -16,12 +16,14 @@
 
 /* Home Page | Landing Page */
 .home.container-fluid,
-.signup.container-fluid {
+.signup.container-fluid,
+.not-found-404.container-fluid {
   padding: 0;
 }
 
 .home .site-title,
-.signup .site-title {
+.signup .site-title,
+.not-found-404 .site-title {
   font-size: 40px;
   background: #5DADE2;
   padding: 5px 10px;
@@ -36,20 +38,23 @@
 
 @media (min-width: 768px) {
   .home .site-title,
-  .signup .site-title {
+  .signup .site-title,
+  .not-found-404 .site-title {
     font-size: 50px;
   }
 }
 
 .home .site-title .site-logo,
-.signup .site-title .site-logo {
+.signup .site-title .site-logo,
+.not-found-404 .site-title .site-logo {
   width: 80px;
   opacity: 0.7;
   margin-right: 5px;
 }
 
 .home .site-title-2,
-.signup .site-title-2 {
+.signup .site-title-2,
+.not-found-404 .site-title-2 {
   background: #5DADE2;
   padding: 10px 10px 5px;
   color: #212F3D;
@@ -61,12 +66,14 @@
 }
 @media (min-width: 768px) {
   .home .site-title-2,
-  .signup .site-title-2 {
+  .signup .site-title-2,
+  .not-found-404 .site-title-2 {
     font-size: 20px;
   }
 }
 .home .main-image,
-.signup .main-image {
+.signup .main-image,
+.not-found-404 .main-image {
   background-image: url('/images/anime_school.jpg');
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -79,18 +86,21 @@
 }
 
 .home .main-image-wrapper,
-.signup .main-image-wrapper {
+.signup .main-image-wrapper,
+.not-found-404 .main-image-wrapper {
   overflow: hidden;
 }
 
 .home .app-info,
-.signup .app-info {
+.signup .app-info,
+.not-found-404 .app-info {
   text-align: center;
   padding: 10px;
 }
 
 .home .row,
-.signup .row {
+.signup .row,
+.not-found-404 .row {
   margin: 25px 0;
 }
 
@@ -164,20 +174,55 @@
 }
 
 .home h1, 
-.signup h1 {
+.signup h1,
+.not-found-404 h1 {
   margin-top: 0;
 }
 
 .home footer,
-.signup footer {
+.signup footer,
+.not-found-404 footer {
   text-align: center;
   min-height: 120px;
-  background: #85C1E9;
-  margin-top: 60px;
+  background-color: white;
+  margin-top: 0;
   display: flex;
   align-items: center;
   text-transform: uppercase;
-  border-top: 1px solid #2E86C1;
+  position: relative;
+}
+
+.home footer img.footer-chars,
+.signup footer img.footer-chars,
+.not-found-404 footer img.footer-chars {
+  position: relative;
+  left: 0;
+  width: 100vw;
+  z-index: 0;
+  display: none;
+}
+@media (min-width: 576px) {
+  .home footer img.footer-chars,
+  .signup footer img.footer-chars,
+  .not-found-404 footer img.footer-chars {
+    display: block;
+  }
+}
+.home footer img.mobile-footer-chars,
+.signup footer img.mobile-footer-chars,
+.not-found-404 footer img.mobile-footer-chars {
+  position: relative;
+  left: 0;
+  width: 100vw;
+  z-index: 0; 
+  display: block;
+}
+@media (min-width: 576px) {
+  .home footer img.mobile-footer-chars,
+  .signup footer img.mobile-footer-chars,
+  .not-found-404 footer img.mobile-footer-chars {
+    display: none;
+  }
 }
 
 .home footer .fa-facebook-square,
@@ -185,45 +230,97 @@
 .home footer .fa-github-square,
 .signup footer .fa-facebook-square,
 .signup footer .fa-twitter-square,
-.signup footer .fa-github-square {
+.signup footer .fa-github-square,
+.not-found-404 footer .fa-facebook-square,
+.not-found-404 footer .fa-twitter-square,
+.not-found-404 footer .fa-github-square {
   font-size: 35px;
   margin: 0 5px;
 }
+@media (min-width: 1200px) {
+  .home footer .fa-facebook-square,
+  .home footer .fa-twitter-square,
+  .home footer .fa-github-square,
+  .signup footer .fa-facebook-square,
+  .signup footer .fa-twitter-square,
+  .signup footer .fa-github-square,
+  .not-found-404 footer .fa-facebook-square,
+  .not-found-404 footer .fa-twitter-square,
+  .not-found-404 footer .fa-github-square {
+    font-size: 45px;
+    margin: 0 5px;
+  }
+}
+
+.home footer .contact-info,
+.signup footer .contact-info,
+.not-found-404 footer .contact-info {
+  position: absolute;
+  width: 100vw;
+  top: 0;
+  bottom: auto;
+}
+@media (min-width: 992px) {
+  .home footer .contact-info,
+  .signup footer .contact-info,
+  .not-found-404 footer .contact-info {
+    top: 20px
+  }
+}
 
 .home footer .footer-wrapper,
-.signup footer .footer-wrapper {
+.signup footer .footer-wrapper,
+.not-found-404 footer .footer-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .home footer a,
-.signup footer a {
+.signup footer a,
+.not-found-404 footer a {
   color: #154360;
+  transition: all .2s; /* Animation */
+  box-shadow: 0 8px 6px -7px black;
 }
 .home footer a:hover,
-.signup footer a:hover {
-  color: white;
+.home footer a:focus,
+.signup footer a:hover,
+.signup footer a:focus {
+  color: chocolate;
 }
 
 .home footer .footer-wrapper .shareRow,
-.signup footer .footer-wrapper .shareRow {
+.signup footer .footer-wrapper .shareRow,
+.not-found-404 footer .footer-wrapper .shareRow {
   margin: 10px 0;
 }
 .home footer .footer-wrapper .copyright,
-.signup footer .footer-wrapper .copyright {
+.signup footer .footer-wrapper .copyright,
+.not-found-404 footer .footer-wrapper .copyright {
   font-weight: bold;
+}
+@media (min-width: 1200px) {
+  .home footer .footer-wrapper .copyright,
+  .signup footer .footer-wrapper .copyright,
+  .not-found-404 footer .footer-wrapper .copyright {
+    font-size: 20px;
+  }
 }
 
 .home .header .navbar,
-.signup .header .navbar {
+.signup .header .navbar,
+.not-found-404 .header .navbar {
   text-align: right;
   padding: 10px 20px;
 }
 
 .home .header .navbar button,
-.signup .header .navbar button {
+.signup .header .navbar button,
+.not-found-404 .header .navbar button {
   width: 150px;
 }
 
@@ -236,7 +333,11 @@
   transition: all .2s; /* Animation */
 }
 .home .header .navbar .loginBtn:hover,
-.signup .header .navbar .loginBtn:hover {
+.home .header .navbar .loginBtn:focus,
+.home .header .navbar .loginBtn:active,
+.signup .header .navbar .loginBtn:hover,
+.signup .header .navbar .loginBtn:focus,
+.signup .header .navbar .loginBtn:active {
   color: white;
   background: #5cb85c;
 }
@@ -250,7 +351,11 @@
   transition: all .2s; /* Animation */
 }
 .home .header .navbar .logoutBtn:hover,
-.signup .header .navbar .logoutBtn:hover {
+.home .header .navbar .logoutBtn:focus,
+.home .header .navbar .logoutBtn:active,
+.signup .header .navbar .logoutBtn:hover,
+.signup .header .navbar .logoutBtn:focus,
+.signup .header .navbar .logoutBtn:active {
   color: white;
   background: #dc3545;
 }
@@ -278,12 +383,14 @@
   margin: 40px 0;
 }
 .home .header a.goHome,
-.signup .header a.goHome {
+.signup .header a.goHome,
+.not-found-404 .header a.goHome {
   text-decoration: none;
 }
 
 .home .header .dashboardBtn,
-.signup .header .dashboardBtn {
+.signup .header .dashboardBtn,
+.not-found-404 .header .dashboardBtn {
   left: 0;
   float: left;
   color: #0275d8;
@@ -293,7 +400,11 @@
 }
 
 .home .header .dashboardBtn:hover,
-.signup .header .dashboardBtn:hover {
+.home .header .dashboardBtn:active,
+.home .header .dashboardBtn:focus,
+.signup .header .dashboardBtn:hover,
+.signup .header .dashboardBtn:active,
+.signup .header .dashboardBtn:focus {
   background: #0275d8;
   color: white;
 }
@@ -310,7 +421,9 @@
   background: transparent;
   border-color: #419641;
 }
-.home .parents-signup .signupBtn:hover{
+.home .parents-signup .signupBtn:hover,
+.home .parents-signup .signupBtn:active,
+.home .parents-signup .signupBtn:focus {
   color: #2aabd2;
   background: transparent;
   border-color: #2aabd2;  
@@ -332,6 +445,51 @@
   text-align: center;
 }
 
+.not-found-404.container-fluid {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  max-width: 100%;
+  overflow: hidden;
+}
+.not-found-404 .main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+@media(min-width: 992px) {
+   .not-found-404 .main-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  } 
+}
+.not-found-404 .error-text {
+  text-align: center;
+  margin: 0;
+}
+@media (min-width: 992px) {
+  .not-found-404 .error-text {
+    text-align: left;
+    margin: 20px;
+  }
+}
+.not-found-404 .main-content p{
+  font-size: 18px;
+}
+.not-found-404 .main-content .error-image {
+  width: 400px;
+  height: 50vh;
+  background-image: url('/images/monkeyman.jpg');
+  background-position: 50% 0;
+  background-size: 100%;
+}
 /************/
 /* My Pages */
 .my .main-content {
@@ -361,6 +519,10 @@
   color: red;
   font-weight: bold;
   text-align: center;
+}
+.success-message {
+  color: green;
+  font-weight: bold;
 }
 .navbar-primary-menu .nav-label {
   padding-left: 10px;
@@ -452,7 +614,9 @@
   text-transform: capitalize;
   transition: all .2s; /* Animation */
 }
-.manage-users .back-to-classrooms-btn:hover {
+.manage-users .back-to-classrooms-btn:hover, 
+.manage-users .back-to-classrooms-btn:active,
+.manage-users .back-to-classrooms-btn:focus {
   color: white;
   background: chocolate;
 }
@@ -464,7 +628,9 @@
   text-transform: capitalize; 
   transition: all .2s; /* Animation */
 }
-.manage-users .inviteBtn:hover {
+.manage-users .inviteBtn:hover,
+.manage-users .inviteBtn:active,
+.manage-users .inviteBtn:focus {
   color: white;
   background: slateblue;
 }
@@ -502,4 +668,78 @@
 }
 .manage-users .delete-user {
   color: red;
+}
+
+/* /my/class page */
+.my.my-class .panel-heading h1 {
+  margin-bottom: 0;
+  font-family: 'Walter Turncoat', cursive;
+}
+.my .section-form {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .my .section-form {
+    width: 90%;
+  }
+}
+@media (min-width: 992px) {
+  .my .section-form {
+    width: 85%;
+  }
+}
+.my .section-form-wrapper {
+  position: relative;
+}
+.my .section-form-wrapper .section-date {
+  position: absolute;
+  top: -50px;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  display: inline;
+  background: orchid;
+  font-size: 17px;
+  width: 150px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px 5px 0 0;
+}
+.my .section-form-wrapper .panel-body p {
+  margin: 0;
+}
+.lesson-modal .modal-title {
+  font-family: 'Walter Turncoat', cursive;
+  font-size: 20px;
+}
+.lesson-modal .control-label {
+  text-align: left;
+  margin: 0 0 5px 1px;
+}
+.lesson-modal .add-new-day {
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+}
+.lesson-modal .form-group {
+  margin-bottom: 0;
+}
+
+.my .new-user {
+  font-size: 18px;
+}
+.my .new-user .clippy {
+  width: 50px;
+  height: 100px;
+  background-image: url('/images/clippy.png');
+  background-position: 0 50%;
+  background-size: cover;
+  margin-bottom: 20px;
+}
+.my .message-inbox .message-success {
+  font-weight: bold;
+  color: green;
+}
+.my .message-inbox .error {
+  text-align: left;
 }

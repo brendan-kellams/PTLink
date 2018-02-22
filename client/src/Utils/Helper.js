@@ -15,6 +15,37 @@ export default {
     return newDate.toLocaleString();
 
   },
+  printGorilla: function() {
+
+    console.log(`%c                 ,.-" "-.,
+                /   ===   \\
+               /  =======  \\
+            __|  (o)   (0)  |__      
+           / _|    .---.    |_ \\         
+          | /.----/ O O \----.\ |       
+           \/     |     |     \/        
+           |                   |            
+           |                   |           
+           |                   |          
+           _\   -.,_____,.-   /_         
+       ,.-"  "-.,_________,.-"  "-.,
+      /          |       |          \\  
+     |           l.     .l           | 
+     |            |     |            |
+     l.           |     |           .l             
+      |           l.   .l           | \\,     
+      l.           |   |           .l   \\,    
+       |           |   |           |      \\,  
+       l.          |   |          .l        |
+        |          |   |          |         |
+        |          |---|          |         |
+        |          |   |          |         |
+        /"-.,__,.-"\\   /"-.,__,.-"\\"-.,_,.-"\\
+       |            \\ /            |         |
+       |             |             |         |
+        \__|__|__|__/ \__|__|__|__/ \_|__|__/ 
+              %s`, "font-family:monospace; color: #D232DA", "The Gorilla Gang");
+  },
   getGETVariable: function(key) {
     let $_GET = {};
     
