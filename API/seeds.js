@@ -8,7 +8,8 @@ var {
   classrooms, 
   users, 
   participants, 
-  assignments
+  assignments,
+  messages
 } = require('../lib');
 
 router.post('/create-seed-data', function(req, res, next) {
@@ -31,12 +32,17 @@ router.post('/create-seed-data', function(req, res, next) {
                 assignments.createAssignments(function(assignments) {
                   db.Assignment.bulkCreate(assignments)
                   .then(function(assignments){
-                    res.status(200).end();
+                    messages.createMessages(function() {
+                      res.status(200).end();
+                    });
                   })
+                  .catch(function(err) {
+                    if (err) {
+                      console.log(err);
+                      res.status(500).end();
+                    }
+                  });
                 })
-                
-                
-
               })
               .catch(function(err) {
                 if (err) {
@@ -44,7 +50,6 @@ router.post('/create-seed-data', function(req, res, next) {
                   res.status(500).end();
                 }
               });
-
             })
           })
         .catch(function(err) {
