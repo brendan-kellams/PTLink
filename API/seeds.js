@@ -32,6 +32,7 @@ router.post('/create-seed-data', function(req, res, next) {
                 assignments.createAssignments(function(assignments) {
                   db.Assignment.bulkCreate(assignments)
                   .then(function(assignments){
+                    // Adds messages in inbox/outbox
                     messages.createMessages(function() {
                       res.status(200).end();
                     });
