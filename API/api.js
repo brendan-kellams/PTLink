@@ -123,7 +123,7 @@ router.get('/inbox/:userId', function(req, res, next) {
         include: [
           {
             model: db.User,
-            attributes: ['id', 'username']
+            attributes: ['id', 'username', 'email']
           }
         ]
       }
