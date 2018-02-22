@@ -325,8 +325,7 @@
 }
 
 .home .header .navbar .loginBtn,
-.signup .header .navbar .loginBtn,
-.not-found-404 .header .navbar .loginBtn,{
+.signup .header .navbar .loginBtn {
   border-color: #5cb85c;
   color: #5cb85c; 
   font-weight: bold;
@@ -344,8 +343,7 @@
 }
 
 .home .header .navbar .logoutBtn,
-.signup .header .navbar .logoutBtn, 
-.not-found-404 .header .navbar .logoutBtn {
+.signup .header .navbar .logoutBtn {
   border-color: #dc3545;
   color: #dc3545; 
   font-weight: bold;

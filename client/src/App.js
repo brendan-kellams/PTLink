@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Redirect, BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './Routes/Home';
 import Signup from './Routes/Signup';
 import My from './Routes/My';
@@ -50,9 +50,12 @@ class App extends Component {
             path="/my/class" 
             component={Class}
           />
-          <Route 
-            component={GenericNotFound} 
+          <Route
+            exact
+            path="/404"
+            component={GenericNotFound}
           />
+          <Redirect to="/404" />
 
         </Switch>
       </BrowserRouter>
