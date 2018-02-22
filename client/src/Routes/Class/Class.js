@@ -25,6 +25,7 @@ class Class extends Component {
         id: 0,
         name: "Mr. Kellams' Math 101",
       },
+      classTitle: '',
       assignments: [],
       classNotes: [
         {
@@ -90,11 +91,14 @@ class Class extends Component {
             isTeacher: response.data.isTeacher
           });
           // Set classInfo to the current class
+          let classInfo = this.props.history.location.state;
           this.setState({
-            classInfo: this.props.history.location.state
+            classInfo: classInfo,
+            classTitle: classInfo.instructor.username + '\'s ' + classInfo.subject + ' Class (period ' + classInfo.period + ')'
           });
           // Get assignments
           this.getAssignments();
+          console.log(this.state.classInfo);
         }
         else if (response.status === 204) {
           this.setState({
@@ -159,11 +163,12 @@ class Class extends Component {
         </LessonModal>
 
         <MyMainNav
-          onToggle={(isOpen) => this.handleNavToggle(isOpen)} 
+          onToggle={(isOpen) => this.handleNavToggle(isOpen)}
+          history={this.props.history}
           isTeacher={this.state.isTeacher}
         />
         <MyMainContent
-          title={this.state.classObj.name}
+          title={this.state.classTitle}
           contentClasses='class-details'>
           {
             this.state.assignments.map((assignment, index) => {

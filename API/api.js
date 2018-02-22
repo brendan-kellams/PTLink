@@ -265,7 +265,15 @@ router.get('/classroombyuser/:userId', function(req, res, next) {
 router.get('/instructorclasses/:instructorId', function(req, res, next) {
   db.User.findById(req.params.instructorId)
   .then(function(instructor) {
-    instructor.getClassrooms()
+    instructor.getClassrooms({
+      include: [
+        {
+          attributes: ['id', 'username', 'email'],
+          model: db.User,
+          as: 'instructor'
+        }
+      ]
+    })
     .then(function(classrooms) {
       res.status(200).send(classrooms).end();
     })
