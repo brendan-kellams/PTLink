@@ -7,12 +7,13 @@ import { Helper } from '../../Utils';
 class Home extends Component {
 
   state = {
-    userID : -1
+    userID : -1,
   }
 
   componentDidMount() {
     // call API to get userID (or null)
     Helper.printGorilla();
+    Helper.printRageRainbow('y u do dis');
   }
 
   handleSignup (event, role) {
