@@ -71,6 +71,12 @@ class SectionForm extends Component {
               label="homework"
               text={this.props.content.homework}
             />
+            <LessonSection
+              SectionTitle='Due Date'
+              bsClass='danger'
+              label="duedate"
+              text={this.props.content.duedate}
+            />
           </form>
         </div>
       </div>
