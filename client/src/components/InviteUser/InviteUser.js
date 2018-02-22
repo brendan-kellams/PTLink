@@ -42,7 +42,7 @@ class InviteUser extends Component {
   render() {
     return (
       <div className="invite-user-container">
-        <h3>Invite User</h3>
+        <h3 className="sub-title">Invite User</h3>
         <span className={this.props.successMsg + ' success-message'}>Your invite has been sent</span>
         <span className={this.props.errorMsg + ' error error-message'}>Please enter a valid email address</span>
         <form 
@@ -51,10 +51,12 @@ class InviteUser extends Component {
         >
           <input 
             type="text" 
+            className="invite-user-email"
             value={this.state.email} 
             onChange={(event) => this.handleUserInput(event)}
             placeholder="Email" />
           <input 
+            className="btn btn-primary inviteBtn"
             type="submit" 
             value="Invite" 
           />

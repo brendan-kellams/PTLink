@@ -1,0 +1,42 @@
+.classroom-panel .panel {
+  box-shadow: 0 8px 6px -6px #1d2967;
+}
+.classroom-panel .panel-default>.panel-heading {
+  background: bisque;
+  text-align: center;
+}
+
+.classroom-panel .panel-heading {
+  font-family: 'Walter Turncoat', cursive;
+  font-size: 16px;
+  font-weight: bold;
+}
+.classroom-panel .panel-heading .classroom-name {
+  display: inline-block;
+  margin-left: 5px;
+}
+.classroom-panel .school-year,
+.classroom-panel .school-name {
+  font-weight: bold;
+}
+.classroom-panel .list-group-item {
+  border: 1px dotted goldenrod;
+  text-align: center;
+}
+.classroom-panel .classroom-info .label {
+  text-transform: capitalize;
+}
+.classroom-panel .classroom-info .class-grade {
+  margin: 0 5px;
+}
+.classroom-panel .classroom-info .label-grade {
+  background-color: #8E7FAC;
+}
+.classroom-panel .classroom-info .panel-heading {
+  font-family: 'Walter Turncoat', cursive;
+  font-size: 20px;
+}
+
+.classroom-panel .manage-classroom-btn {
+  width: 100%;
+}
