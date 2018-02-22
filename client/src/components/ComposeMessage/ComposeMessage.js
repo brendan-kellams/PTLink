@@ -65,7 +65,7 @@ class ComposeMessage extends Component {
         <h3 className="sub-title">Compose Message</h3>
 
         <div className={this.state.errorMsg + ' error error-message'}>Please enter all required fields</div>
-        <div className={this.state.successMsg + ' message-success'}>Message Sent</div>
+        <div className={this.state.successMsg + ' message-success'}><i class="fa fa-check"></i> Message Sent</div>
         <div className="outbox">  
           <div className="compose-msg">
             <form className="send-msg-form" onSubmit={(event) => this.handleSendMessage(event)} >

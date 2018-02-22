@@ -9,7 +9,7 @@ const LessonModal = (props) => {
             className={props.classes}>
             
             <Modal.Header closeButton>
-                <Modal.Title>New Lesson</Modal.Title>
+                <Modal.Title><i class="fa fa-plus"></i> Add a New Day</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 {props.children}

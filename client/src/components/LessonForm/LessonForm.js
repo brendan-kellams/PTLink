@@ -6,10 +6,10 @@ const LessonForm = props => {
   return (
     <Form horizontal onSubmit={props.handleLogin}>
       <FormGroup controlId="lessondate">
-        <Col componentClass={ControlLabel} md={2}>
+        <Col componentClass={ControlLabel} md={12}>
           Lesson Date
-                </Col>
-        <Col md={10}>
+        </Col>
+        <Col md={12}>
           <FormControl
             type="date"
             placeholder="Lesson Date"
@@ -18,23 +18,23 @@ const LessonForm = props => {
         </Col>
       </FormGroup>
       <FormGroup controlId="link">
-        <Col componentClass={ControlLabel} md={2}>
+        <Col componentClass={ControlLabel} md={12}>
           Lesson Plan
                 </Col>
-        <Col md={10}>
+        <Col md={12}>
           <FormControl
             componentClass='textarea'
             type="link"
-            placeholder="Lesson Plan"
+            placeholder="Lesson Plan (URL)"
             onChange={event => props.handleChange('link', event.target.value)}
             value={props.value.link} />
         </Col>
       </FormGroup>
       <FormGroup controlId="topics">
-        <Col componentClass={ControlLabel} md={2}>
+        <Col componentClass={ControlLabel} md={12}>
           Topics
-                </Col>
-        <Col md={10}>
+        </Col>
+        <Col md={12}>
           <FormControl
             componentClass='textarea'
             type="topics"
@@ -44,10 +44,10 @@ const LessonForm = props => {
         </Col>
       </FormGroup>
       <FormGroup controlId="homework">
-        <Col componentClass={ControlLabel} md={2}>
+        <Col componentClass={ControlLabel} md={12}>
           Homework
-                </Col>
-        <Col md={10}>
+        </Col>
+        <Col md={12}>
           <FormControl
             componentClass='textarea'
             type="homework"
@@ -57,10 +57,10 @@ const LessonForm = props => {
         </Col>
       </FormGroup>
       <FormGroup controlId="duedate">
-        <Col componentClass={ControlLabel} md={2}>
+        <Col componentClass={ControlLabel} md={12}>
           Due Date
                 </Col>
-        <Col md={10}>
+        <Col md={12}>
           <FormControl
             type="date"
             placeholder="Due Date"
@@ -69,8 +69,9 @@ const LessonForm = props => {
         </Col>
       </FormGroup>
       <FormGroup>
-        <Col mdOffset={2} md={10}>
+        <Col mdOffset={0} md={12}>
           <Button
+            className="add-new-day"
             type="submit"
             bsStyle="primary"
             onClick={props.handleSubmit.bind(this)}>

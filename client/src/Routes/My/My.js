@@ -11,7 +11,8 @@ class My extends Component {
     navStateClass   : '',
     mainContentPath : '',
     contentClass    : 'dashboard',
-    classes         : []
+    classes         : [],
+    fetchedClasses  : false,
   }
 
   componentDidMount() {
@@ -33,27 +34,29 @@ class My extends Component {
 
           if (response.data.isTeacher) {
             API.getInstructorClasses(response.data.id, (err, res) => {
-              console.log('return value from getInstructorClasses', res);
+              // console.log('return value from getInstructorClasses', res);
               if (err) {
                 console.log(err);
               }
               else {
                 this.setState({
-                  classes : res.data
+                  classes : res.data,
+                  fetchedClasses : true,
                 });  
               }
             });
           }
           else {
             API.getMyClasses(response.data.id, (err, response) => {
-              console.log('return value from getMyClasses', response);
+              // console.log('return value from getMyClasses', response);
               if (err) {
                 console.log(err);
               }
               else {
                 if (response.status === 200) {
                   this.setState({
-                    classes: response.data
+                    classes: response.data,
+                    fetchedClasses : true,
                   });
                 }
               }
@@ -79,6 +82,29 @@ class My extends Component {
     }
   }
 
+  renderNewUser() {
+    if (this.state.isTeacher) {
+      return (
+        <div className="new-user new-teacher">
+          <div className="clippy"></div>
+          <p>Hi teacher, welcome to PT-Link.</p>
+          <p>It seems like you don't have access to any classes yet.</p>
+          <p>You can add a class <Link to="/my/manage-classes">HERE</Link> and invite users to it from the manage-user page.</p>
+        </div>
+      );
+    }
+    else {
+     return (
+        <div className="new-user new-parent">
+          <div className="clippy"></div>
+          <p>Hi parent, welcome to PT-Link.</p>
+          <p>It seems like you don't have access to any classes yet.</p>
+          <p>You can send a message to a teachers <Link to="/my/messages">HERE</Link> to request access to their classes.</p>"
+        </div>
+      ); 
+    }
+  }
+
   render() {
     return (
       this.state.userPresent === true ? 
@@ -93,6 +119,11 @@ class My extends Component {
           title = "dashboard"
           >
             <div className="dashboard-container">
+            {
+              this.state.fetchedClasses && this.state.classes.length === 0 ?
+              this.renderNewUser() :
+              ''
+            }
             {
               this.state.classes.map(classroom => {
                 return (

@@ -9,8 +9,16 @@ const LessonSection = (props) => {
                     <Panel.Title componentClass="h1">{props.SectionTitle}</Panel.Title>
                 </Panel.Heading>
                 <Panel.Body>
-                    <p>{props.text}</p>
-                    <a href={props.link} target="_blank">{props.link}</a>
+                    {
+                        props.text ? 
+                        <p>{props.text}</p> :
+                        ''    
+                    }
+                    {
+                        props.link ?
+                        <a href={props.link} target="_blank">{props.link}</a> :
+                        ''        
+                    }
                 </Panel.Body>
             </Panel>
         </div>

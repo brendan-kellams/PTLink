@@ -16,7 +16,8 @@ class ManageUsers extends Component {
     classrooms      : [],
     successMsg      : 'hidden',
     errorMsg        : 'hidden',
-    currentClassId  : -1
+    currentClassId  : -1,
+    fetchedUsers    : false,
   }
 
   componentDidMount() {
@@ -44,7 +45,8 @@ class ManageUsers extends Component {
               else {
                 if (response.status === 200) {
                   this.setState({
-                    classrooms: response.data
+                    classrooms: response.data,
+                    fetchedUsers: true,
                   });
                 }
               }
@@ -177,18 +179,28 @@ class ManageUsers extends Component {
                 </div> :
                 <p className="empty-classroom">This classroom is empty</p>
               }
-              {this.state.participants.map(parent => {
-                return (
-                  <div className="row user-row">
-                    <div className="col-xs-2 user-id">{parent.id}</div>
-                    <div className="col-xs-8 user-email">{parent.userEmail}</div>
-                    <div className="col-xs-2 user-operation"><i class="delete-user fa fa-close"></i></div>
-                  </div>
-                )
-              })}
+              {
+                this.state.participants.map(parent => {
+                  return (
+                    <div className="row user-row">
+                      <div className="col-xs-2 user-id">{parent.id}</div>
+                      <div className="col-xs-8 user-email">{parent.userEmail}</div>
+                      <div className="col-xs-2 user-operation"><i class="delete-user fa fa-close"></i></div>
+                    </div>
+                  )
+                })
+              }
             </div>
           </div>
           :
+          
+          this.state.fetchedUsers && this.state.classrooms.length === 0 ?
+          <div className="new-user new-teacher">
+            <div className="clippy"></div>
+            <p>Hi teacher, looks like you don't have access to any classes yet.</p>
+            <p>You can add a class <Link to="/my/manage-classes">HERE</Link> and invite users to it from the this page.</p>
+          </div> :
+          
           this.state.classrooms.map(classroom => {
             return (
               <ClassPanel

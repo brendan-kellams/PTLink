@@ -48,7 +48,7 @@ class Outbox extends Component {
 
   handleDeleteMessage(event, msgID) {
     event.preventDefault();
-    console.log('deleting message', msgID);;
+    // console.log('deleting message', msgID);;
     // call API to delete User
     API.deleteMsg(msgID);
   }

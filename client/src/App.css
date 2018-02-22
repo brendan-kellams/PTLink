@@ -247,13 +247,6 @@
     top: 20px
   }
 }
-/*@media (min-width: 1200px) {
-  .home footer .contact-info,
-  .signup footer .contact-info {
-    top: auto;
-    bottom: 0px;
-  }
-}*/
 
 .home footer .footer-wrapper,
 .signup footer .footer-wrapper {
@@ -272,19 +265,11 @@
   box-shadow: 0 8px 6px -7px black;
 }
 .home footer a:hover,
-.signup footer a:hover {
+.home footer a:focus,
+.signup footer a:hover,
+.signup footer a:focus {
   color: chocolate;
 }
-/*@media (min-width: 768px) {
-  .home footer a,
-  .signup footer a {
-    color: oldlace;
-  }
-  .home footer a:hover,
-  .signup footer a:hover {
-    color: darkslategrey;
-  } 
-}*/
 
 .home footer .footer-wrapper .shareRow,
 .signup footer .footer-wrapper .shareRow {
@@ -321,7 +306,11 @@
   transition: all .2s; /* Animation */
 }
 .home .header .navbar .loginBtn:hover,
-.signup .header .navbar .loginBtn:hover {
+.home .header .navbar .loginBtn:focus,
+.home .header .navbar .loginBtn:active,
+.signup .header .navbar .loginBtn:hover,
+.signup .header .navbar .loginBtn:focus,
+.signup .header .navbar .loginBtn:active {
   color: white;
   background: #5cb85c;
 }
@@ -335,7 +324,11 @@
   transition: all .2s; /* Animation */
 }
 .home .header .navbar .logoutBtn:hover,
-.signup .header .navbar .logoutBtn:hover {
+.home .header .navbar .logoutBtn:focus,
+.home .header .navbar .logoutBtn:active,
+.signup .header .navbar .logoutBtn:hover,
+.signup .header .navbar .logoutBtn:focus,
+.signup .header .navbar .logoutBtn:active {
   color: white;
   background: #dc3545;
 }
@@ -378,7 +371,11 @@
 }
 
 .home .header .dashboardBtn:hover,
-.signup .header .dashboardBtn:hover {
+.home .header .dashboardBtn:active,
+.home .header .dashboardBtn:focus,
+.signup .header .dashboardBtn:hover,
+.signup .header .dashboardBtn:active,
+.signup .header .dashboardBtn:focus {
   background: #0275d8;
   color: white;
 }
@@ -395,7 +392,9 @@
   background: transparent;
   border-color: #419641;
 }
-.home .parents-signup .signupBtn:hover{
+.home .parents-signup .signupBtn:hover,
+.home .parents-signup .signupBtn:active,
+.home .parents-signup .signupBtn:focus {
   color: #2aabd2;
   background: transparent;
   border-color: #2aabd2;  
@@ -446,6 +445,10 @@
   color: red;
   font-weight: bold;
   text-align: center;
+}
+.success-message {
+  color: red;
+  font-weight: bold;
 }
 .navbar-primary-menu .nav-label {
   padding-left: 10px;
@@ -537,7 +540,9 @@
   text-transform: capitalize;
   transition: all .2s; /* Animation */
 }
-.manage-users .back-to-classrooms-btn:hover {
+.manage-users .back-to-classrooms-btn:hover, 
+.manage-users .back-to-classrooms-btn:active,
+.manage-users .back-to-classrooms-btn:focus {
   color: white;
   background: chocolate;
 }
@@ -549,7 +554,9 @@
   text-transform: capitalize; 
   transition: all .2s; /* Animation */
 }
-.manage-users .inviteBtn:hover {
+.manage-users .inviteBtn:hover,
+.manage-users .inviteBtn:active,
+.manage-users .inviteBtn:focus {
   color: white;
   background: slateblue;
 }
@@ -587,4 +594,78 @@
 }
 .manage-users .delete-user {
   color: red;
+}
+
+/* /my/class page */
+.my.my-class .panel-heading h1 {
+  margin-bottom: 0;
+  font-family: 'Walter Turncoat', cursive;
+}
+.my .section-form {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .my .section-form {
+    width: 90%;
+  }
+}
+@media (min-width: 992px) {
+  .my .section-form {
+    width: 85%;
+  }
+}
+.my .section-form-wrapper {
+  position: relative;
+}
+.my .section-form-wrapper .section-date {
+  position: absolute;
+  top: -50px;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  display: inline;
+  background: orchid;
+  font-size: 17px;
+  width: 150px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px 5px 0 0;
+}
+.my .section-form-wrapper .panel-body p {
+  margin: 0;
+}
+.lesson-modal .modal-title {
+  font-family: 'Walter Turncoat', cursive;
+  font-size: 20px;
+}
+.lesson-modal .control-label {
+  text-align: left;
+  margin: 0 0 5px 1px;
+}
+.lesson-modal .add-new-day {
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+}
+.lesson-modal .form-group {
+  margin-bottom: 0;
+}
+
+.my .new-user {
+  font-size: 18px;
+}
+.my .new-user .clippy {
+  width: 50px;
+  height: 100px;
+  background-image: url('/images/clippy.png');
+  background-position: 0 50%;
+  background-size: cover;
+  margin-bottom: 20px;
+}
+.my .message-inbox .message-success {
+  font-weight: bold;
+  color: green;
+}
+.my .message-inbox .error {
+  text-align: left;
 }
