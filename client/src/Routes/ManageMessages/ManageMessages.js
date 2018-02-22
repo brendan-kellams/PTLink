@@ -75,7 +75,6 @@ class ManageMessages extends Component {
           this.setState({
             sent : response.data
           });
-          console.log('yoyoyo, updating sent', response.data);
         }
       }
     });

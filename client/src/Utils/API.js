@@ -120,11 +120,11 @@ export default {
     });
   },
   getMyClasses: function(id, callback) {
-    console.log('calling API to classes I have access to', id);
+    // console.log('calling API to classes I have access to', id);
 
     axios.get('/api/classroombyuser/'+id)
     .then(function(response) {
-      console.log(response);
+      // console.log(response);
       if (typeof callback === 'function') {
         callback(null, response);
       }
@@ -136,7 +136,7 @@ export default {
     });
   },
   setMessageRead: function(msgID, callback) {
-    console.log('calling API to mark a message as READ');
+    // console.log('calling API to mark a message as READ');
     if (typeof callback === 'function') {
       callback();
     }
@@ -168,7 +168,7 @@ export default {
     });
   },
   getMyUsers: function(callback) {
-    console.log('calling API to get users I have access to');
+    // console.log('calling API to get users I have access to');
 
     const yourUsers = [
       {
@@ -209,7 +209,7 @@ export default {
     });
   },
   deleteUser: function(userID) {
-    console.log('deleting user', userID);
+    // console.log('deleting user', userID);
   },
   deleteClass: function(classID, callback) {
     axios.delete('/api/classroom/' + classID)
@@ -225,7 +225,7 @@ export default {
     });
   },
   addClassroom: function(classObj, callback) {
-    console.log('classObj is', classObj);
+    // console.log('classObj is', classObj);
 
     axios.post('/api/classroom', classObj)
     .then(function(response) {
@@ -240,13 +240,13 @@ export default {
     });
   },
   deleteMsg: function(msgID) {
-    console.log('deleting message', msgID);
+    // console.log('deleting message', msgID);
   },
   sendMessage: function(messageObj, callback) {
-    console.log('sending message', messageObj);
+    // console.log('sending message', messageObj);
     axios.post('/api/communication', messageObj)
     .then(function(response) {
-      console.log('pushed new message', response);
+      // console.log('pushed new message', response);
 
       let recipientId = [messageObj.recipientId],
           communicationID = response.data.id,
