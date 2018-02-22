@@ -300,6 +300,20 @@
 
 .home .signupBtn{
   width: 350px;
+  text-transform: uppercase;
+  height: 40px;
+  transition: all .2s; /* Animation */
+}
+
+.home .signupBtn:hover {
+  color: #419641;
+  background: transparent;
+  border-color: #419641;
+}
+.home .parents-signup .signupBtn:hover{
+  color: #2aabd2;
+  background: transparent;
+  border-color: #2aabd2;  
 }
 /* Signin Modal */
 .login-modal .control-label {
