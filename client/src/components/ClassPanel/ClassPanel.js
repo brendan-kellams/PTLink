@@ -1,38 +1,46 @@
 import React from 'react';
 import {Panel, ListGroup, ListGroupItem, Button} from 'react-bootstrap';
+import './ClassPanel.css';
 
 const ClassPanel = props => {
   return (
-    <div className="col-md-3">
+    <div className="classroom-panel col-sm-6">
       <Panel>
         <Panel.Heading>
-          {props.subject} Class
+          <i class="fa fa-slideshare"></i> 
+          <div className="classroom-name">{props.subject} | Grade {props.grade}</div>
         </Panel.Heading>
         <Panel.Body>
           <ListGroup>
-            <ListGroupItem>
-              Subject: {props.subject}
+            <ListGroupItem className="classroom-info">
+              <span className="class-subject label label-success">{props.subject}</span>
+              <span className="class-grade label label-grade">Grade {props.grade}</span>
+              <span className="class-period label label-warning">Period {props.period}</span>
             </ListGroupItem>
-            <ListGroupItem>
-              Period: {props.period}
-            </ListGroupItem>
-            <ListGroupItem>
-              Grade: {props.grade}
-            </ListGroupItem>
-            <ListGroupItem>
-              School Year: {props.schoolyear}
-            </ListGroupItem>
-            <ListGroupItem>
-              School Name: {props.schoolName}
-            </ListGroupItem>
+
+            {
+              props.schoolName ? 
+              <ListGroupItem className="school-name">
+                {props.schoolName}
+              </ListGroupItem>  :
+              ''
+            }
+            {
+              props.schoolyear ? 
+              <ListGroupItem className="school-year">
+                Year: {props.schoolyear}
+              </ListGroupItem>  :
+              ''
+            }
           </ListGroup>
         </Panel.Body>
         <Panel.Footer>
           <Button 
+            className="manage-classroom-btn"
             bsStyle="primary"
             onClick={(e) => props.handleClick(e, props.classroomId)}
           >
-            Manage Class
+            Manage Users In Class
           </Button>
         </Panel.Footer>
       </Panel>

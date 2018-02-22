@@ -36,7 +36,6 @@ class Inbox extends Component {
                   received: messageResponse.data
                 });
               }
-              console.log('heyaf', this.state.received);
             }
           });
         }
