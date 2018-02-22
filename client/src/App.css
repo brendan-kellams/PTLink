@@ -454,15 +454,33 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  max-width: 100%;
+  overflow: hidden;
 }
 .not-found-404 .main-content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0;
+}
+@media(min-width: 992px) {
+   .not-found-404 .main-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  } 
 }
 .not-found-404 .error-text {
-  margin-left: 20px;
+  text-align: center;
+  margin: 0;
+}
+@media (min-width: 992px) {
+  .not-found-404 .error-text {
+    text-align: left;
+    margin: 20px;
+  }
 }
 .not-found-404 .main-content p{
   font-size: 18px;
@@ -471,7 +489,7 @@
   width: 400px;
   height: 50vh;
   background-image: url('/images/monkeyman.jpg');
-  background-position: 0 50%;
+  background-position: 50% 0;
   background-size: 100%;
 }
 /************/

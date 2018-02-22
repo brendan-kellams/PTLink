@@ -27,7 +27,8 @@ class GenericNotFound extends Component {
         <div className="container main-content">
           <div className="error-image"></div>
           <div className="error-text">
-            <h1>This is not the end of the world!</h1>
+            <h1>404. Page Not Found.</h1>
+            <h2>This is not the end of the world!</h2>
             <p>It appears that you stumbled upon a broken link</p>
             <p>It happens to the best of us.</p>
             <p>You might wanna return to the home page <Link to="/">HERE</Link></p>
