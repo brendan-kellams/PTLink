@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { Form, FormGroup, FormControl, ControlLabel, Col } from 'react-bootstrap';
 
 const LessonForm = props => {

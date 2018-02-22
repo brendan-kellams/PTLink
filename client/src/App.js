@@ -7,7 +7,6 @@ import ManageUsers from './Routes/ManageUsers';
 import ManageClasses from './Routes/ManageClasses';
 import ManageMessages from './Routes/ManageMessages';
 import Class from './Routes/Class';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {

@@ -73,7 +73,7 @@ class ManageUsers extends Component {
 
   handleDeleteUser(event, userID) {
     event.preventDefault();
-    console.log('yooooo');
+    // console.log('yooooo');
     // call API to delete User
     API.deleteUser(userID);
   }
@@ -93,7 +93,7 @@ class ManageUsers extends Component {
     API.getParticipants(classroomId, (err, response) => {
       if (err) console.log(err);
       else if (response.status === 200) {
-        console.log(response.data);
+        // console.log(response.data);
         this.setState({
           participants: response.data
         })

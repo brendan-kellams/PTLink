@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 
 import { Header, SignUpInput, BasicBtn, Radio, PublicFooter } from '../../components';
 import { API, Helper } from '../../Utils';
@@ -96,8 +95,8 @@ class Signup extends Component {
       });  
     }
     if (typeof role !== 'undefined' && 
-        role.trim() === 'Teacher' || 
-        role.trim() === 'Parent') {
+        (role.trim() === 'Teacher' || 
+        role.trim() === 'Parent')) {
       this.setState({
         role: role
       });
@@ -177,9 +176,9 @@ class Signup extends Component {
       <PublicFooter>
           <div className="footer-wrapper">
             <div className="shareRow">
-            <a href="//facebook.com/PT-Link-148731259172020/" target="_blank"><i className="fa fa-facebook-square"></i></a> 
-            <a href="//twitter.com/afGroff" target="_blank"><i className="fa fa-twitter-square"></i></a>
-            <a href="//github.com/amcnulty/PTLink" target="_blank"><i className="fa fa-github-square"></i></a></div>
+            <a href="//facebook.com/PT-Link-148731259172020/" target="_blank" rel="noopener noreferrer"><i className="fa fa-facebook-square"></i></a> 
+            <a href="//twitter.com/afGroff" target="_blank" rel="noopener noreferrer"><i className="fa fa-twitter-square"></i></a>
+            <a href="//github.com/amcnulty/PTLink" target="_blank" rel="noopener noreferrer"><i className="fa fa-github-square"></i></a></div>
             <div className="copyright brand-font"><i className="fa fa-copyright"></i> 2018 The Gorilla Gang</div>
           </div>
         </PublicFooter>

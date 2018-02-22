@@ -37,7 +37,7 @@ class ComposeMessage extends Component {
         !Helper.propIsEmpty(this.state.title) &&
         !Helper.propIsEmpty(this.state.body)) {
       API.getUserByEmail(this.state.userEmail, (userObj) => {
-        console.log('got the userObj', userObj);
+        // console.log('got the userObj', userObj);
         let toUserID = userObj.data.id,
             senderId = this.props.currentUserId;
 
@@ -47,7 +47,12 @@ class ComposeMessage extends Component {
           senderId  : senderId,
           recipientId : toUserID,
         }, () => {
-          this.setState({successMsg : ''});
+          this.setState({
+            userEmail : '',
+            title     : '',
+            body      : '',
+            successMsg : ''
+          });
           this.props.updateSent();
         });
         

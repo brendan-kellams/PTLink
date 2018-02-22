@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { BasicBtn, Header, PublicFooter } from '../../components';
 
+import { Helper } from '../../Utils';
+
 class Home extends Component {
 
   state = {
@@ -10,6 +12,7 @@ class Home extends Component {
 
   componentDidMount() {
     // call API to get userID (or null)
+    Helper.printGorilla();
   }
 
   handleSignup (event, role) {
