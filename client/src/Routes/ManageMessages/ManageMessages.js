@@ -32,6 +32,19 @@ class ManageMessages extends Component {
             userId: response.data.id,
             isTeacher: response.data.isTeacher
           });
+
+          API.getMessagesSent(response.data.id, (err, response) => {
+            if (err) {
+              console.log(err);
+            }
+            else {
+              if (response.status === 200) {
+                this.setState({
+                  sent : response.data
+                });
+              }
+            }
+          });
         }
         else if (response.status === 204) {
           this.setState({
@@ -52,7 +65,21 @@ class ManageMessages extends Component {
     }
   }
 
-  
+  updateSent(userID) {
+    API.getMessagesSent(userID, (err, response) => {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        if (response.status === 200) {
+          this.setState({
+            sent : response.data
+          });
+          console.log('yoyoyo, updating sent', response.data);
+        }
+      }
+    });
+  }
 
   handleDeleteMessage(event, msgID) {
     event.preventDefault();
@@ -88,10 +115,19 @@ class ManageMessages extends Component {
                 <Tab eventKey={1} title="Inbox">
                   <Inbox
                     currentUserId={this.state.userId}
+                    updateSent={() => this.updateSent(this.state.userId)}
                   />
                 </Tab>
                 <Tab eventKey={2} title="Outbox">
-                  <Outbox/>
+                {
+                  this.state.sent ? 
+                  <Outbox
+                    sent={this.state.sent}
+                  /> :
+                  <Outbox
+                    sent={this.state.sent}
+                  />
+                }
                 </Tab>
               </Tabs>
             </nav>

@@ -47,7 +47,8 @@ class ComposeMessage extends Component {
           senderId  : senderId,
           recipientId : toUserID,
         }, () => {
-          this.setState({successMsg : ''});  
+          this.setState({successMsg : ''});
+          this.props.updateSent();
         });
         
       });
