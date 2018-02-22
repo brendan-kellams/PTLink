@@ -41,6 +41,7 @@
 
 .class-div .thumbnail {
   border: 0;
+  box-shadow: none;
 }
 
 .class-div .class-icon {
