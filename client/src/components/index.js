@@ -1,6 +1,7 @@
 export {default as BasicBtn} from './BasicBtn';
 export {default as Header} from './Header';
 export {default as Footer} from './Footer';
+export {default as PublicFooter} from './PublicFooter';
 export {default as MyMainNav} from './MyMainNav';
 export {default as MyMainContent} from './MyMainContent';
 export {default as InviteUser} from './InviteUser';

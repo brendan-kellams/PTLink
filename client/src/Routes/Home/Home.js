@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { BasicBtn, Header, Footer } from '../../components';
+import { BasicBtn, Header, PublicFooter } from '../../components';
 
 class Home extends Component {
 
@@ -61,7 +61,7 @@ class Home extends Component {
         </div>
         
 
-        <Footer>
+        <PublicFooter>
           <div className="footer-wrapper">
             <div className="shareRow">
             <a href="//facebook.com/PT-Link-148731259172020/" target="_blank"><i className="fa fa-facebook-square"></i></a> 
@@ -69,7 +69,7 @@ class Home extends Component {
             <a href="//github.com/amcnulty/PTLink" target="_blank"><i className="fa fa-github-square"></i></a></div>
             <div className="copyright brand-font"><i className="fa fa-copyright"></i> 2018 The Gorilla Gang</div>
           </div>
-        </Footer>
+        </PublicFooter>
       </div>
     )
   }

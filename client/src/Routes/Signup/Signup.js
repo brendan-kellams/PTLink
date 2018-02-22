@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Header, SignUpInput, BasicBtn, Radio, Footer } from '../../components';
+import { Header, SignUpInput, BasicBtn, Radio, PublicFooter } from '../../components';
 import { API, Helper } from '../../Utils';
 
 class Signup extends Component {
@@ -174,7 +174,7 @@ class Signup extends Component {
         </div>
       </div>
 
-      <Footer>
+      <PublicFooter>
           <div className="footer-wrapper">
             <div className="shareRow">
             <a href="//facebook.com/PT-Link-148731259172020/" target="_blank"><i className="fa fa-facebook-square"></i></a> 
@@ -182,7 +182,7 @@ class Signup extends Component {
             <a href="//github.com/amcnulty/PTLink" target="_blank"><i className="fa fa-github-square"></i></a></div>
             <div className="copyright brand-font"><i className="fa fa-copyright"></i> 2018 The Gorilla Gang</div>
           </div>
-        </Footer>
+        </PublicFooter>
     </div>
     )
   }
