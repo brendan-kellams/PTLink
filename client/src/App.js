@@ -6,6 +6,7 @@ import My from './Routes/My';
 import ManageUsers from './Routes/ManageUsers';
 import ManageClasses from './Routes/ManageClasses';
 import ManageMessages from './Routes/ManageMessages';
+import GenericNotFound from './Routes/GenericNotFound';
 import Class from './Routes/Class';
 import './App.css';
 
@@ -49,6 +50,10 @@ class App extends Component {
             path="/my/class" 
             component={Class}
           />
+          <Route 
+            component={GenericNotFound} 
+          />
+
         </Switch>
       </BrowserRouter>
     )
