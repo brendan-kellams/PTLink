@@ -9,6 +9,12 @@
   justify-content: center;
   flex-direction: column;
 }
+.my.my-class footer {
+  display: none;
+}
+.my.my-class.isTeacher footer {
+  display: block;
+}
 .my-class .footer .container {
   text-align: center;
 }
