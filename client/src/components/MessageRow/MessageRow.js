@@ -13,7 +13,7 @@ const MessageRow = (props) => {
           }
           {
             props.isReceived ?  
-            <div className="col-md-4 message-title">
+            <div className="col-sm-4 message-title">
               <a href="#" onClick={(event) => props.viewMsg(event, {
                 id : props.messageID,
                 title : props.title,
@@ -26,7 +26,7 @@ const MessageRow = (props) => {
               {props.title}
               </a>
             </div> : 
-            <div className="col-md-4 message-title">
+            <div className="col-sm-4 message-title">
               <a href="#" onClick={(event) => props.viewMsg(event, {
                 id : props.messageID,
                 title : props.title,
@@ -40,23 +40,26 @@ const MessageRow = (props) => {
           }
           {
               props.isReceived ? 
-              <div className="col-md-3 message-from">
+              <div className="col-sm-4 message-from">
                 {props.fromUser}
               </div> :
-              <div className="col-md-3 message-to">
+              <div className="col-sm-4 message-to">
                 {props.toUser}
               </div>
           }
-          <div className="col-md-3 message-dt">
+          <div className="col-sm-3 message-dt">
           {props.msgDT}
           </div>
-          <div className="col-md-1 message-operation">
+          {/*
+            <div className="col-md-1 message-operation">
             <a  href="#"
                 onClick={(event) => props.handleDelete(event, props.messageID)}
             >
               <i className="fa fa-times"></i>
             </a>
           </div>
+          */}
+          
         </div>
     );
 }

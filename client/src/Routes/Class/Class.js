@@ -142,10 +142,19 @@ class Class extends Component {
     }
   }
 
+  getContentClasses() {
+    if (this.state.isTeacher) {
+      return ' isTeacher';
+    }
+    else {
+      return '';
+    }
+  }
+
   render() {
     return (
       this.state.userPresent ? 
-      <div className={'container-fluid my my-class ' + this.state.navStateClass}>
+      <div className={'container-fluid my my-class ' + this.state.navStateClass + this.getContentClasses()}>
 
         <LessonModal
           classes="lesson-modal"
@@ -165,7 +174,7 @@ class Class extends Component {
         />
         <MyMainContent
           title={this.state.classTitle}
-          contentClasses='class-details'>
+          contentClasses={this.getContentClasses() + ' class-details'}>
           {
             this.state.assignments.map((assignment, index) => {
               return (
