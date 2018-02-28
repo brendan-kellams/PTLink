@@ -17,7 +17,7 @@ const LessonSection = (props) => {
                     }
                     {
                         props.link && Helper.isALink(props.link) ?
-                        <a href={'//' + props.link} target="_blank">{props.link}</a> :
+                        <a href={props.link} target="_blank">{props.link}</a> :
                         <p>{props.link}</p>
                     }
                 </Panel.Body>
