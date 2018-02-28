@@ -668,6 +668,7 @@
 }
 .manage-users .delete-user {
   color: red;
+  display: none;
 }
 
 /* /my/class page */
