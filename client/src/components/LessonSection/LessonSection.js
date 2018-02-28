@@ -1,5 +1,6 @@
 import React from 'react';
 import {Panel} from 'react-bootstrap';
+import { Helper } from '../../Utils';
 
 const LessonSection = (props) => {
     return (
@@ -15,9 +16,9 @@ const LessonSection = (props) => {
                         ''    
                     }
                     {
-                        props.link ?
-                        <a href={props.link} target="_blank">{props.link}</a> :
-                        ''        
+                        props.link && Helper.isALink(props.link) ?
+                        <a href={'//' + props.link} target="_blank">{props.link}</a> :
+                        <p>{props.link}</p>
                     }
                 </Panel.Body>
             </Panel>

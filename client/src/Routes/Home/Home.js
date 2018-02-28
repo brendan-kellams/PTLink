@@ -13,7 +13,7 @@ class Home extends Component {
   componentDidMount() {
     // call API to get userID (or null)
     Helper.printGorilla();
-    Helper.printRageRainbow('y u do dis');
+    // Helper.printRageRainbow('y u do dis');
   }
 
   handleSignup (event, role) {

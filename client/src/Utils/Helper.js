@@ -15,6 +15,17 @@ export default {
     return newDate.toLocaleString();
 
   },
+  isALink: function(string) {
+    let urlPattern = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&=\/]*)/g,
+        matchResult = string.match(urlPattern);
+
+    if (matchResult === null || matchResult[0] !== string.trim()) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  },
   printGorilla: function() {
 
     console.log(`%c                 ,.-" "-.,
