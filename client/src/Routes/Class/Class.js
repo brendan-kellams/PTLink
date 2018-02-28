@@ -67,6 +67,14 @@ class Class extends Component {
           this.handleClose();
         }
       }
+      // clear the modal form
+      this.setState({
+        lessondate : '',
+        topics : '',
+        link: '',
+        homework: '',
+        duedate: ''
+      });
     });
   }
   componentDidMount() {
