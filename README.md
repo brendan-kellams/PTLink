@@ -1,6 +1,6 @@
 # PTLink
 A parent teacher linking system.
-##Authors
+## Authors
 
 * **Brendan Kellams - *Front End Developer/Marketing* - [Brendan's Github](https://github.com/brendan-kellams)
 * **Andy Kwong - *Front End Developer/QA Engineer* - [Andy's Github](https://github.com/yankwong)
