@@ -1,5 +1,9 @@
 # PTLink
-A parent teacher linking system.
+PT-Link is an educational-communication application that allows parents and teachers to stay connected regarding what content is being taught in class. The content covers each lesson plan, topics covered in class, homework, and the due date the homework. Teachers and parents are also able to communicate through a messaging service to answer additional questions.
+
+# Website
+[PT-Link](https://pt-link.herokuapp.com/)
+
 ## Authors
 
 * **Brendan Kellams** - *Front End Developer/Marketing* - [Brendan's Github](https://github.com/brendan-kellams)
