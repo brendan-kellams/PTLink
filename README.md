@@ -4,6 +4,13 @@ PT-Link is an educational-communication application that allows parents and teac
 # Website
 [PT-Link](https://pt-link.herokuapp.com/)
 
+## Technologies
+* **ReactJS** - [Link](https://github.com/facebook/react)
+* **CSS** - [Link](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* **ExpressJS** - [Link](https://github.com/expressjs/express)
+* **MySQL** - [Link](https://www.mysql.com/)
+* **Heroku** - [Link](https://www.heroku.com/)
+
 ## Authors
 
 * **Brendan Kellams** - *Front End Developer/Marketing* - [Brendan's Github](https://github.com/brendan-kellams)
